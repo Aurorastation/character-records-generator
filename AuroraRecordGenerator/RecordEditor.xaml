@@ -24,13 +24,16 @@
             <TabItem Header="General">
                 <ScrollViewer>
                     <StackPanel>
+                        <TextBlock Margin="10,10,10,10"
+                                       Text="- Bold fields with a * are required. Otherwise, if you leave a box blank, it'll just leave that field off the final result.&#x0a;- Hover over the fields for tooltips! Or look at the default watermark value for an idea about what to write."
+                                       VerticalAlignment="Top" FontWeight="SemiBold"/>
                         <GroupBox Header="Basic Information" controls:ControlsHelper.ContentCharacterCasing="Normal"
                                   Height="200">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="160" />
                                     <ColumnDefinition Width="260" />
-                                    <ColumnDefinition />
+                                    <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <TextBox Height="26"
                                          Margin="10,26,5,0"
@@ -40,7 +43,7 @@
                                 <TextBox Height="26"
                                          Margin="0,26,0,0"
                                          TextWrapping="Wrap"
-                                         ToolTip="Your character's middle name. Optional." Grid.Column="1"
+                                         ToolTip="Your character's middle name." Grid.Column="1"
                                          HorizontalAlignment="Left" Width="120" VerticalAlignment="Top"
                                          Text="{Binding Path=MiddleName}" TabIndex="2" />
                                 <TextBox Height="26"
@@ -49,24 +52,24 @@
                                          ToolTip="Your character's last name. Required." Grid.Column="1"
                                          Text="{Binding Path=LastName}" controls:TextBoxHelper.Watermark="Doe" TabIndex="3" />
                                 <TextBlock Grid.Column="0" Margin="10,10,10,0" TextWrapping="Wrap"
-                                           Text="First"
+                                           Text="First*" FontWeight="DemiBold"
                                            VerticalAlignment="Top" Height="16" />
                                 <TextBlock HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap"
-                                           Text="Middle (Optional)" VerticalAlignment="Top" Grid.Column="1"
+                                           Text="Middle" VerticalAlignment="Top" Grid.Column="1"
                                            Height="15.96" Width="120"/>
                                 <TextBlock Margin="125,10,10,0" TextWrapping="Wrap"
                                            Text="Last"
                                            VerticalAlignment="Top" Grid.Column="1" Height="15.96"/>
                                 <TextBox Height="26"
                                          Margin="5,26,10.5,0" TextWrapping="Wrap"
-                                         ToolTip="Your character's name suffix, if present. Optional." Grid.Column="2"
+                                         ToolTip="Your character's name suffix, if present." Grid.Column="2"
                                          VerticalAlignment="Top"
                                          Text="{Binding Path=NameSuffix}" controls:TextBoxHelper.Watermark="Jr." TabIndex="4" />
                                 <TextBlock HorizontalAlignment="Left" Margin="5,10,0,0" TextWrapping="Wrap"
-                                           Text="Suffix (Optional)" VerticalAlignment="Top" Grid.Column="2"
+                                           Text="Suffix" VerticalAlignment="Top" Grid.Column="2"
                                            Height="15.96" Width="150" />
                                 <TextBlock Grid.Column="0" Margin="10,57,10,0" TextWrapping="Wrap"
-                                           Text="Species"
+                                           Text="Species*" FontWeight="DemiBold"
                                            VerticalAlignment="Top" Height="15.96"/>
                                 <ComboBox Grid.Column="0" x:Name="SpeciesCombo" Margin="10,73,5,0"
                                           VerticalAlignment="Top"
@@ -80,14 +83,14 @@
                                          VerticalAlignment="Top" Width="120"
                                          ToolTip="Your character's preferred pronouns."
                                          Text="{Binding Path=Pronouns}"
-                                         controls:TextBoxHelper.Watermark="he/him"
+                                         controls:TextBoxHelper.Watermark="He/Him"
                                          Grid.Column="1" Height="26" TabIndex="6"/>
                                 <DatePicker Margin="125,73,0,0" VerticalAlignment="Top"
                                             SelectedDateFormat="Short" DisplayDateEnd="2470-01-01"
                                             DisplayDateStart="1955-01-01" DisplayDate="2464-01-01" Grid.Column="1"
                                             Height="26"
                                             SelectedDate="{Binding Path=BirthDate}" TabIndex="7" />
-                                <TextBlock Margin="125,57,40.96,0" TextWrapping="Wrap" Text="Date of Birth"
+                                <TextBlock Margin="125,57,40.96,0" TextWrapping="Wrap" Text="Date of Birth*" FontWeight="DemiBold"
                                            VerticalAlignment="Top" Grid.Column="1" Height="15.96" />
                                 <TextBlock Grid.Column="1" Margin="0,0,0,45" TextWrapping="Wrap" Text="Next of Kin"
                                            VerticalAlignment="Bottom" HorizontalAlignment="Left" />
@@ -95,12 +98,12 @@
                                          VerticalAlignment="Bottom" Grid.ColumnSpan="1"
                                          Grid.Column="1"
                                          controls:TextBoxHelper.Watermark="e.g. Jane Doe (mother)"
-                                         Text="{Binding Path=NextOfKin}" TabIndex="11" />
+                                         Text="{Binding Path=NextOfKin}" TabIndex="10" />
                                 <TextBlock HorizontalAlignment="Left" Margin="5,0,0,45"
                                            TextWrapping="Wrap" Text="Employed As" VerticalAlignment="Bottom" Grid.Column="2" />
                                 <TextBox Height="23" Margin="5,0,10,19" TextWrapping="Wrap"
                                          VerticalAlignment="Bottom" controls:TextBoxHelper.Watermark="Assistant"
-                                         Text="{Binding Path=EmployedAs}" Grid.Column="2" TabIndex="10" />
+                                         Text="{Binding Path=EmployedAs}" Grid.Column="2" TabIndex="11" />
                                 <TextBox Grid.Column="2" Height="23" Margin="5,73,10.5,0"
                                          TextWrapping="Wrap" VerticalAlignment="Top" controls:TextBoxHelper.Watermark="Sol Alliance"
                                          Text="{Binding Path=Citizenship}" TabIndex="8" />
@@ -125,13 +128,13 @@
                                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"
                                            VerticalAlignment="Top" Text="Height (cm)" />
                                 <controls:NumericUpDown Grid.Column="0"
-                                                        Value="{Binding Path=CharHeight}"
+                                                        Value="{Binding Path=CharHeight}" controls:TextBoxHelper.Watermark="170.0"
                                                         HorizontalAlignment="Left" Margin="10,26,0,0"
                                                         Minimum="10" Maximum="400" HideUpDownButtons="True" Width="1"
                                                         StringFormat="N1" VerticalAlignment="Top"
                                                         HorizontalContentAlignment="Center" TabIndex="12" />
                                 <controls:NumericUpDown Grid.Column="0"
-                                                        Value="{Binding Path=Weight}"
+                                                        Value="{Binding Path=Weight}" controls:TextBoxHelper.Watermark="65.0"
                                                         HorizontalAlignment="Left" Margin="77.033,26,0,0"
                                                         Minimum="10" Maximum="1000" HideUpDownButtons="True" Width="1"
                                                         StringFormat="N1" VerticalAlignment="Top"
@@ -144,13 +147,15 @@
                                            Text="Skin/Body Color" VerticalAlignment="Top" />
                                 <TextBox Grid.Column="0" Height="23"
                                          Margin="144.033,25.96,261.967,0" TextWrapping="Wrap" VerticalAlignment="Top"
-                                         ToolTip="The color of your character's skin/scales/fur/chassis. Not applicable for Dionae."
+                                         ToolTip="The color of your character's skin/scales/fur/chassis."
+                                         controls:TextBoxHelper.Watermark="Brown"
                                          d:LayoutOverrides="HorizontalAlignment" Text="{Binding Path=SkinColor}" TabIndex="14" />
                                 <TextBlock Grid.Column="0" HorizontalAlignment="Left" Margin="10,57,0,52"
                                            TextWrapping="Wrap"
                                            Text="Distinguishing Features" d:LayoutOverrides="Height" />
                                 <TextBox Grid.Column="0" Height="23"
                                          Margin="10,0,0,26" Text="{Binding Path=DistinguishingFeatures}"
+                                         controls:TextBoxHelper.Watermark="A full sleeve on their right arm; mechanical eyes."
                                          TextWrapping="Wrap" VerticalAlignment="Bottom" TabIndex="17" />
                                 <TextBox Grid.Column="0" Height="23"
                                          Margin="0,25.96,136.967,0"

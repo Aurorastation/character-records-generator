@@ -25,17 +25,17 @@ namespace AuroraRecordGenerator
         [ProtoMember(16)]
         public SpeciesSubType Subspecies { get; set; } = SpeciesSubType.None;
 
-        [ProtoMember(6, IsRequired = true)]
+        [ProtoMember(6)]
         public string Pronouns { get; set; } = string.Empty;
 
         [ProtoMember(7)]
         public DateTime BirthDate { get; set; } = Info.IcDate;
 
         [ProtoMember(8)]
-        public double? CharHeight { get; set; } = 170;
+        public double? CharHeight { get; set; } = null;
 
         [ProtoMember(9)]
-        public double? Weight { get; set; } = 70;
+        public double? Weight { get; set; } = null;
 
         [ProtoMember(10)]
         public string SkinColor { get; set; } = string.Empty;

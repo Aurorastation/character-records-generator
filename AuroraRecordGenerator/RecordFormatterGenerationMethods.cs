@@ -10,9 +10,23 @@ namespace AuroraRecordGenerator
         {
             var record = new StringBuilder();
             record.AppendLine("/// PUBLIC RECORD ///");
-            record.AppendLine(MakeNameLine());
+            if (_targetRecord.FirstName.Any())
+            {
+                record.AppendLine(MakeNameLine());
+            }
+            else
+            {
+                record.AppendLine("Name: Not specified.");
+            }
             record.AppendLine($"Date of Birth: {_targetRecord.BirthDate.ToString("MMMM")} {_targetRecord.BirthDate.Day.Ordinalize()}, {_targetRecord.BirthDate.Year}");
-            record.AppendLine($"Species: {_targetRecord.Species.Humanize()}"); // might fuck up the names
+            if (_targetRecord.Species != SpeciesType.None)
+            {
+                record.AppendLine($"Species: {_targetRecord.Species.Humanize()}"); // might fuck up the names
+            } 
+            else
+            {
+                record.AppendLine("Species: Not specified.");
+            }
             if (_targetRecord.Subspecies != SpeciesSubType.None)
             {
                 record.AppendLine($"{_targetRecord.Subspecies.GetAttributeOfType<SubspeciesMetaAttribute>()?.FieldName ?? "Subspecies"}: {Utility.SubspeciesNiceName(_targetRecord.Subspecies)}");
@@ -37,19 +51,29 @@ namespace AuroraRecordGenerator
                 record.AppendLine($"Weight: {_targetRecord.Weight} kg ({Utility.KgToLb(_targetRecord.Weight ?? 0)} lb)");
 
             // Eye color
-            var trimmedEye = _targetRecord.EyeColor.Trim();
-            record.AppendFormat("Eye Color: {0}\n", trimmedEye.Length > 0 ? trimmedEye : "Not specified.");
+            if (_targetRecord.EyeColor.Any())
+            {
+                var trimmedEye = _targetRecord.EyeColor.Trim();
+                record.AppendFormat("Eye Color: {0}\n", trimmedEye.Length > 0 ? trimmedEye : "Not specified.");
+            }
+            if (_targetRecord.SkinColor.Any())
+            {
+                var bodyColor = _targetRecord.SkinColor.Trim();
+                record.AppendFormat("Skin/Body Color: {0}\n", bodyColor.Length > 0 ? bodyColor : "Not specified.");
+            }
+            if (_targetRecord.HairColor.Any())
+            {
+                var hairColor = _targetRecord.HairColor.Trim();
+                record.AppendFormat("Hair Color: {0}\n", hairColor.Length > 0 ? hairColor : "Not specified.");
+            }
 
-            var bodyColor = _targetRecord.SkinColor.Trim();
-            record.AppendFormat("Skin/Body Color: {0}\n", bodyColor.Length > 0 ? bodyColor : "Not specified.");
-
-            var hairColor = _targetRecord.HairColor.Trim();
-            record.AppendFormat("Hair Color: {0}\n", hairColor.Length > 0 ? hairColor : "Not specified.");
-
-            // identifying features
-            var trimmedFeatures = _targetRecord.DistinguishingFeatures.Trim();
-            record.Append("Distinguishing Features: ");
-            record.AppendLine(trimmedFeatures.Length > 0 ? trimmedFeatures : "None noted.");
+            if (_targetRecord.DistinguishingFeatures.Any())
+            {
+                // identifying features
+                var trimmedFeatures = _targetRecord.DistinguishingFeatures.Trim();
+                record.Append("Distinguishing Features: ");
+                record.AppendLine(trimmedFeatures.Length > 0 ? trimmedFeatures : "None noted.");
+            }
 
             record.AppendLine();
 

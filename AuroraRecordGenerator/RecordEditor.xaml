@@ -248,7 +248,7 @@
                 <ScrollViewer>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="60" />
+                            <RowDefinition Height="50" />
                             <!-- Checkboxes -->
                             <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
@@ -260,21 +260,29 @@
                         </Grid.RowDefinitions>
                         <!-- Opt-Outs -->
                         <Grid Grid.Row="0" ToolTip="If the character wishes to not be cloned.">
-                            <CheckBox x:Name="NoClone" Content="Do Not Clone" HorizontalAlignment="Left"
-                                      Margin="10,10,0,0" VerticalAlignment="Top" TabIndex="1" />
-                            <CheckBox x:Name="NoProsthetic" Content="No Prosthetics"
-                                      HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top"
-                                      ToolTip="If the character should not be fitted with prosthetics." TabIndex="3" />
-                            <CheckBox x:Name="NoBorg" Content="Do Not Borgify" HorizontalAlignment="Left"
-                                      Margin="136,10,0,0" VerticalAlignment="Top"
-                                      ToolTip="If the character should not be borged." TabIndex="2" />
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="163*"/>
+                                <ColumnDefinition Width="163*"/>
+                                <ColumnDefinition Width="163*"/>
+                                <ColumnDefinition Width="163*"/>
+                                <ColumnDefinition Width="163*"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox x:Name="NoBorg" Content="Do Not Borgify"
+                                      HorizontalAlignment="Left"
+                                      Margin="0,10,0,0"
+                                      ToolTip="If the character should not be borged." TabIndex="1" Grid.Column="0" />
                             <CheckBox x:Name="NoRevive" Content="Do Not Resuscitate"
-                                      HorizontalAlignment="Left" Margin="136,33,0,0" VerticalAlignment="Top"
-                                      ToolTip="If the character should not be revived." TabIndex="4" />
+                                      HorizontalAlignment="Left"
+                                       Margin="-10,10,0,0" 
+                                      ToolTip="If the character should not be revived." TabIndex="2" Grid.Column="1" />
+                            <CheckBox x:Name="NoProsthetic" Content="No Prosthetics"
+                                      HorizontalAlignment="Left"
+                                      Margin="0,10,0,0"
+                                      ToolTip="If the character should not be fitted with prosthetics." TabIndex="3" Grid.Column="2" />
                         </Grid>
                         <!-- user-resizable stuff is fun! Not. -->
                         <GridSplitter Grid.Row="1" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
-                                      VerticalAlignment="Bottom" Margin="0" Height="10" />
+                                      VerticalAlignment="Bottom" Height="10" />
                         <GridSplitter Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
                         <GridSplitter Grid.Row="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
@@ -286,14 +294,14 @@
                         <GridSplitter Grid.Row="6" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
 
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
+                        <TextBox Margin="0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Public Record"
                                  controls:TextBoxHelper.UseFloatingWatermark="True"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  ToolTip="Public medical notes posted on employment and security records. One per line."
                                  Grid.Row="1" VerticalScrollBarVisibility="Auto"
                                  Text="{Binding Path=MedicalPublicRecord}" TabIndex="5" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True" TextWrapping="Wrap"
+                        <TextBox Margin="0,10" AcceptsReturn="True" TextWrapping="Wrap"
                                  controls:TextBoxHelper.Watermark="Medical History"
                                  controls:TextBoxHelper.UseFloatingWatermark="True"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"

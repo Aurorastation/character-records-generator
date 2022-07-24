@@ -28,9 +28,7 @@ namespace AuroraRecordGenerator
 
         private IList<string> _employmentPublicRecord;
         private IList<string> _employmentExperience;
-        private IList<string> _employmentPreNtEmployment;
         private IList<string> _employmentFormalEducation;
-        private IList<string> _employmentNtEmployment;
         private IList<string> _employmentSkills;
 
         private void UpdateSplitRecords()
@@ -56,9 +54,7 @@ namespace AuroraRecordGenerator
             // employment
             _employmentPublicRecord = _targetRecord.EmploymentPublicRecord?.LineSplit();
             _employmentExperience = _targetRecord.EmploymentExperience?.LineSplit();
-            _employmentPreNtEmployment = _targetRecord.EmploymentPreNtEmployment?.LineSplit();
             _employmentFormalEducation = _targetRecord.EmploymentFormalEducation?.LineSplit();
-            _employmentNtEmployment = _targetRecord.EmploymentNtEmploymentHistory?.LineSplit();
             _employmentSkills = _targetRecord.EmploymentSkills?.LineSplit();
 
             // flush the record cache so they're regenerated

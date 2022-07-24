@@ -25,7 +25,7 @@
                 <ScrollViewer>
                     <StackPanel>
                         <GroupBox Header="Basic Information" controls:ControlsHelper.ContentCharacterCasing="Normal"
-                                  Height="240">
+                                  Height="200">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="160" />
@@ -36,7 +36,7 @@
                                          Margin="10,26,5,0"
                                          TextWrapping="Wrap" VerticalAlignment="Top"
                                          ToolTip="Your character's first name. Required."
-                                         Text="{Binding Path=FirstName}" controls:TextBoxHelper.Watermark="Urist" TabIndex="1" />
+                                         Text="{Binding Path=FirstName}" controls:TextBoxHelper.Watermark="John" TabIndex="1" />
                                 <TextBox Height="26"
                                          Margin="0,26,0,0"
                                          TextWrapping="Wrap"
@@ -47,7 +47,7 @@
                                          Margin="125,26,0,0"
                                          TextWrapping="Wrap" VerticalAlignment="Top"
                                          ToolTip="Your character's last name. Required." Grid.Column="1"
-                                         Text="{Binding Path=LastName}" controls:TextBoxHelper.Watermark="McScientist" TabIndex="3" />
+                                         Text="{Binding Path=LastName}" controls:TextBoxHelper.Watermark="Doe" TabIndex="3" />
                                 <TextBlock Grid.Column="0" Margin="10,10,10,0" TextWrapping="Wrap"
                                            Text="First"
                                            VerticalAlignment="Top" Height="16" />
@@ -61,7 +61,7 @@
                                          Margin="5,26,10.5,0" TextWrapping="Wrap"
                                          ToolTip="Your character's name suffix, if present. Optional." Grid.Column="2"
                                          VerticalAlignment="Top"
-                                         Text="{Binding Path=NameSuffix}" controls:TextBoxHelper.Watermark="the Third" TabIndex="4" />
+                                         Text="{Binding Path=NameSuffix}" controls:TextBoxHelper.Watermark="Jr." TabIndex="4" />
                                 <TextBlock HorizontalAlignment="Left" Margin="5,10,0,0" TextWrapping="Wrap"
                                            Text="Suffix (Optional)" VerticalAlignment="Top" Grid.Column="2"
                                            Height="15.96" Width="150" />
@@ -71,46 +71,44 @@
                                 <ComboBox Grid.Column="0" x:Name="SpeciesCombo" Margin="10,73,5,0"
                                           VerticalAlignment="Top"
                                           ItemsSource="{Binding Source={StaticResource SpeciesEnum}}"
-                                          ToolTip="Your character's species. Required."
+                                          ToolTip="Your character's species."
                                           SelectionChanged="SpeciesSelectChanged" Height="26" TabIndex="5"/>
                                 <TextBlock HorizontalAlignment="Left" Margin="0,57,0,0" TextWrapping="Wrap"
-                                           Text="Gender"
+                                           Text="Pronouns"
                                            VerticalAlignment="Top" Grid.Column="1" Height="15.96" Width="120"/>
-                                <ComboBox x:Name="GenderCombo" HorizontalAlignment="Left" Margin="0,73,0,0"
-                                          VerticalAlignment="Top" Width="120"
-                                          ToolTip="Your character's gender. Does not apply to Dionae and IPCs."
-                                          Grid.Column="1" Height="26" TabIndex="6">
-                                    <ComboBoxItem Content="Male" />
-                                    <!-- Define here instead of loading from enum as we don't want NotApplicable listed -->
-                                    <ComboBoxItem Content="Female" />
-                                </ComboBox>
+                                <TextBox HorizontalAlignment="Left" Margin="0,73,0,0"
+                                         VerticalAlignment="Top" Width="120"
+                                         ToolTip="Your character's preferred pronouns."
+                                         Text="{Binding Path=Pronouns}"
+                                         controls:TextBoxHelper.Watermark="he/him"
+                                         Grid.Column="1" Height="26" TabIndex="6"/>
                                 <DatePicker Margin="125,73,0,0" VerticalAlignment="Top"
                                             SelectedDateFormat="Short" DisplayDateEnd="2470-01-01"
-                                            DisplayDateStart="1955-01-01" DisplayDate="2458-01-01" Grid.Column="1"
+                                            DisplayDateStart="1955-01-01" DisplayDate="2464-01-01" Grid.Column="1"
                                             Height="26"
                                             SelectedDate="{Binding Path=BirthDate}" TabIndex="7" />
                                 <TextBlock Margin="125,57,40.96,0" TextWrapping="Wrap" Text="Date of Birth"
                                            VerticalAlignment="Top" Grid.Column="1" Height="15.96" />
-                                <TextBlock Grid.Column="0" Margin="10,0,0,34" TextWrapping="Wrap" Text="Clearance"
+                                <TextBlock Grid.Column="1" Margin="0,0,0,45" TextWrapping="Wrap" Text="Next of Kin"
                                            VerticalAlignment="Bottom" HorizontalAlignment="Left" />
-                                <TextBox Height="23" Margin="10,0,0,8" TextWrapping="Wrap"
-                                         VerticalAlignment="Bottom" Grid.ColumnSpan="2"
-                                         Grid.Column="0"
-                                         controls:TextBoxHelper.Watermark="Staff (Research, Xenobiology), Command (Research)"
-                                         Text="{Binding Path=Clearance}" TabIndex="11" />
-                                <TextBlock HorizontalAlignment="Left" Margin="5,0,0,85"
+                                <TextBox Height="23" Margin="0,0,0,19" TextWrapping="Wrap"
+                                         VerticalAlignment="Bottom" Grid.ColumnSpan="1"
+                                         Grid.Column="1"
+                                         controls:TextBoxHelper.Watermark="e.g. Jane Doe (mother)"
+                                         Text="{Binding Path=NextOfKin}" TabIndex="11" />
+                                <TextBlock HorizontalAlignment="Left" Margin="5,0,0,45"
                                            TextWrapping="Wrap" Text="Employed As" VerticalAlignment="Bottom" Grid.Column="2" />
-                                <TextBox Height="23" Margin="5,0,10,59" TextWrapping="Wrap"
-                                         VerticalAlignment="Bottom" controls:TextBoxHelper.Watermark="Xenobiologist"
+                                <TextBox Height="23" Margin="5,0,10,19" TextWrapping="Wrap"
+                                         VerticalAlignment="Bottom" controls:TextBoxHelper.Watermark="Assistant"
                                          Text="{Binding Path=EmployedAs}" Grid.Column="2" TabIndex="10" />
                                 <TextBox Grid.Column="2" Height="23" Margin="5,73,10.5,0"
                                          TextWrapping="Wrap" VerticalAlignment="Top" controls:TextBoxHelper.Watermark="Sol Alliance"
                                          Text="{Binding Path=Citizenship}" TabIndex="8" />
                                 <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="5,57,0,0" TextWrapping="Wrap" Text="Citizenship" VerticalAlignment="Top" />
-                                <ComboBox Grid.Column="0" x:Name="SubSpeciesCombo" Margin="10,120,140,0"
+                                <ComboBox Grid.Column="0" x:Name="SubSpeciesCombo" Margin="10,120,5,0"
                                     VerticalAlignment="Top"
                                     ToolTip="Your character's ethnic group or subtype."
-                                    SelectionChanged="SpeciesSelectChanged" Height="26" TabIndex="9" Grid.ColumnSpan="2"
+                                    SelectionChanged="SpeciesSelectChanged" Height="26" TabIndex="9"
     />
                                 <TextBlock Grid.Column="0" Margin="10,104,10,0" TextWrapping="Wrap"
                                     Text="Subtype/Ethnicity"
@@ -184,9 +182,6 @@
                             <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
-                            <RowDefinition Height="122" MinHeight="60" />
-                            <RowDefinition Height="122" MinHeight="60" />
-                            <RowDefinition Height="0" />
                         </Grid.RowDefinitions>
                         <GridSplitter Grid.Row="0" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
@@ -201,45 +196,32 @@
                         <GridSplitter Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Public Record"
+                                 TextWrapping="Wrap" 
+                                 controls:TextBoxHelper.Watermark="Public Record"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True" Grid.Row="0"
                                  ToolTip="Public employment notes posted on security and medical records. One per line."
                                  d:LayoutOverrides="VerticalAlignment" Text="{Binding Path=EmploymentPublicRecord}" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Experience"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Employment History"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True" Grid.Row="1"
-                                 ToolTip="Jobs/departments worked with NT. One per line."
+                                 ToolTip="Previous jobs that the character has worked. One per line.&#x0a;No need to put hyphens/bulletpoints; they'll be added automatically.&#x0a;&#x0a;e.g.&#x0a;Police Cadet, Mendell City [2450 - 2454]&#x0a;Police Officer, Mendell City [2454 - Ongoing]"
                                  d:LayoutOverrides="VerticalAlignment" Text="{Binding Path=EmploymentExperience}" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
-                                 controls:TextBoxHelper.Watermark="Pre-NanoTrasen Employment History"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" Grid.Row="2"
-                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
-                                 ToolTip="Jobs/experience from before NT employment. One per line."
-                                 Text="{Binding Path=EmploymentPreNtEmployment}" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" Grid.Row="3"
-                                 controls:TextBoxHelper.Watermark="Formal Education"
+                                 TextWrapping="Wrap" Grid.Row="2"
+                                 controls:TextBoxHelper.Watermark="Formal Education / Qualifications"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
-                                 ToolTip="Formal education completed or in-progress. One per-line."
+                                 ToolTip="Formal education completed / qualifications acquired. One per-line.&#x0a;No need for bulletpoints; they'll be added automatically.&#x0a;&#x0a;e.g.&#x0a;Manual handling certificate [2450]&#x0a;PhD in Psychology [2460]"
                                  Text="{Binding Path=EmploymentFormalEducation}" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" Grid.Row="4"
-                                 controls:TextBoxHelper.Watermark="NanoTrasen Employment History"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
-                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
-                                 ToolTip="History with employment with NT. One per line, should be in format &quot;Year Description&quot;."
-                                 Text="{Binding Path=EmploymentNtEmploymentHistory}" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap"
-                                 controls:TextBoxHelper.Watermark="Trained-in/Skills" Grid.Row="5"
+                                 controls:TextBoxHelper.Watermark="Other Skills / Ongoing Training" Grid.Row="3"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  Text="{Binding Path=EmploymentSkills}"
-                                 ToolTip="Training or Skills your character has. Anything marked as &quot;Trained&quot; or &quot;Professional&quot; in character skills should go here, along with any amatur skills of note." />
+                                 ToolTip="Any other skills of note, or training being undertaken currently.&#x0a;&#x0a;e.g.&#x0a;First Aid training&#x0a;Chemistry student at Mendell University" />
                     </Grid>
                 </ScrollViewer>
             </TabItem>
@@ -259,7 +241,7 @@
                             <RowDefinition Height="0" />
                         </Grid.RowDefinitions>
                         <!-- Opt-Outs -->
-                        <Grid Grid.Row="0" ToolTip="If the character wishes to not be cloned.">
+                        <Grid Grid.Row="0" ToolTip="If the character should not be borged.">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="163*"/>
                                 <ColumnDefinition Width="163*"/>

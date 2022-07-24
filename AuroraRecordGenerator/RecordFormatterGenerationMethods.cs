@@ -12,17 +12,24 @@ namespace AuroraRecordGenerator
             record.AppendLine("/// PUBLIC RECORD ///");
             record.AppendLine(MakeNameLine());
             record.AppendLine($"Date of Birth: {_targetRecord.BirthDate.ToString("MMMM")} {_targetRecord.BirthDate.Day.Ordinalize()}, {_targetRecord.BirthDate.Year}");
-            record.AppendLine($"Species: {_targetRecord.Species.Humanize()}");// might fuck up the names
+            record.AppendLine($"Species: {_targetRecord.Species.Humanize()}"); // might fuck up the names
             if (_targetRecord.Subspecies != SpeciesSubType.None)
             {
                 record.AppendLine($"{_targetRecord.Subspecies.GetAttributeOfType<SubspeciesMetaAttribute>()?.FieldName ?? "Subspecies"}: {Utility.SubspeciesNiceName(_targetRecord.Subspecies)}");
             }
-            record.AppendLine(_targetRecord.Species.HasGender()
-                ? $"Gender: {_targetRecord.Gender.Humanize()}"
-                : "Gender: Not Applicable.");
-            record.AppendLine($"Citizenship: {_targetRecord.Citizenship.IfEmpty("Not Specified.")}");
-            record.AppendLine($"Clearance Level: {_targetRecord.Clearance.IfEmpty("Not Specified")}");
-            record.AppendLine($"Employed As: {_targetRecord.EmployedAs.IfEmpty("Assistant")}");
+            if (_targetRecord.Pronouns.Any())
+            {
+               record.AppendLine($"Pronouns: {_targetRecord.Pronouns}");
+            }
+            if (_targetRecord.Citizenship.Any()) {
+                record.AppendLine($"Citizenship: {_targetRecord.Citizenship}");
+            }
+            if (_targetRecord.NextOfKin.Any()) {
+                record.AppendLine($"Next of Kin: {_targetRecord.NextOfKin}");
+            }
+            if (_targetRecord.EmployedAs.Any()) {
+                record.AppendLine($"Employed As: {_targetRecord.EmployedAs}");
+            }
             if (_targetRecord.CharHeight != null)
                 record.AppendLine($"Height: {_targetRecord.CharHeight} cm ({Utility.CmToFeet(_targetRecord.CharHeight.Value)})");
 
@@ -31,13 +38,13 @@ namespace AuroraRecordGenerator
 
             // Eye color
             var trimmedEye = _targetRecord.EyeColor.Trim();
-            record.AppendFormat("Eye Color: {0}\n", trimmedEye.Length > 0 ? trimmedEye : "Not Specified.");
+            record.AppendFormat("Eye Color: {0}\n", trimmedEye.Length > 0 ? trimmedEye : "Not specified.");
 
             var bodyColor = _targetRecord.SkinColor.Trim();
-            record.AppendFormat("Skin/Body Color: {0}\n", bodyColor.Length > 0 ? bodyColor : "Not Specified.");
+            record.AppendFormat("Skin/Body Color: {0}\n", bodyColor.Length > 0 ? bodyColor : "Not specified.");
 
             var hairColor = _targetRecord.HairColor.Trim();
-            record.AppendFormat("Hair Color: {0}\n", hairColor.Length > 0 ? hairColor : "Not Specified.");
+            record.AppendFormat("Hair Color: {0}\n", hairColor.Length > 0 ? hairColor : "Not specified.");
 
             // identifying features
             var trimmedFeatures = _targetRecord.DistinguishingFeatures.Trim();
@@ -48,15 +55,15 @@ namespace AuroraRecordGenerator
 
             // general notes
             WriteSectionIfAny(ref record,
-                "General Notes:",
+                "Shared Employment Notes:",
                 _employmentPublicRecord);
 
             WriteSectionIfAny(ref record,
-                "Medical Notes:",
+                "Shared Medical Notes:",
                 _medicalPublicRecord);
 
             WriteSectionIfAny(ref record,
-                "Security Notes:",
+                "Shared Security Notes:",
                 _securityPublicRecord);
 
             _commonRecords = record.ToString();
@@ -72,8 +79,6 @@ namespace AuroraRecordGenerator
 
             if (!_employmentExperience.Any() &&
                 !_employmentFormalEducation.Any() &&
-                !_employmentNtEmployment.Any() &&
-                !_employmentPreNtEmployment.Any() &&
                 !_employmentPublicRecord.Any() &&
                 !_employmentSkills.Any())
             {
@@ -85,23 +90,15 @@ namespace AuroraRecordGenerator
                 recordText.AppendLine();
 
                 WriteSectionIfAny(ref recordText,
-                    "Experience:",
+                    "Employment History:",
                     _employmentExperience);
 
                 WriteSectionIfAny(ref recordText,
-                    "Formal Education History:",
+                    "Qualifications:",
                     _employmentFormalEducation);
 
                 WriteSectionIfAny(ref recordText,
-                    "Pre-NanoTrasen Employment History:",
-                    _employmentPreNtEmployment);
-
-                WriteSectionIfAny(ref recordText,
-                    "NanoTrasen Employment History:",
-                    _employmentNtEmployment);
-
-                WriteSectionIfAny(ref recordText,
-                    "Trained in the following:",
+                    "Other skills:",
                     _employmentSkills);
             }
 

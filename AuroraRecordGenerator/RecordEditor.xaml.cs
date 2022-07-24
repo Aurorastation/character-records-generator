@@ -19,7 +19,6 @@ namespace AuroraRecordGenerator
             // Initialize the record object used for storage and generation
             Data = new Record();
             DataContext = Data;
-            ProtoBuf.Serializer.PrepareSerializer<GenderType>();
             ProtoBuf.Serializer.PrepareSerializer<SpeciesType>();
             ProtoBuf.Serializer.PrepareSerializer<SpeciesSubType>();
             ProtoBuf.Serializer.PrepareSerializer<Record>();
@@ -37,32 +36,6 @@ namespace AuroraRecordGenerator
                 return;
 
             var type = (SpeciesType)SpeciesCombo.SelectedValue;
-
-            switch (type)
-            {
-                // non-gendered species
-                case SpeciesType.Diona:
-                case SpeciesType.IPC:
-                case SpeciesType.Vaurca:
-                    Debug.WriteLine("Disabled GenderCombo, type is " + type);
-                    GenderCombo.IsEnabled = false;
-                    GenderCombo.Text = "N/A";
-                    break;
-                // gendered species
-                case SpeciesType.Human:
-                case SpeciesType.Skrell:
-                case SpeciesType.Tajara:
-                case SpeciesType.Unathi:
-                    Debug.WriteLine("Enabled GenderCombo, type is " + type);
-                    GenderCombo.IsEnabled = true;
-                    break;
-
-                case SpeciesType.None:
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
 
             Debug.WriteLine("Updating subspecies types.");
             var types = GetSpeciesOptions(type);
@@ -89,20 +62,6 @@ namespace AuroraRecordGenerator
 
             // Figure out their species too.
             Data.Species = (SpeciesType)SpeciesCombo.SelectedValue;
-
-            // Finally, gender.
-            switch ((string)GenderCombo.SelectionBoxItem)
-            {
-                case "Male":
-                    Data.Gender = GenderType.Male;
-                    break;
-                case "Female":
-                    Data.Gender = GenderType.Female;
-                    break;
-                default:
-                    Data.Gender = GenderType.NotApplicable;
-                    break;
-            }
 
             var wnd = new GeneratedResultWindow(Data);
             wnd.Show();

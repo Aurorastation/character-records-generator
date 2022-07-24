@@ -19,14 +19,14 @@ namespace AuroraRecordGenerator
         [ProtoMember(4)]
         public string NameSuffix { get; set; } = string.Empty;
 
-        [ProtoMember(5, IsRequired = true)]
+        [ProtoMember(5)]
         public SpeciesType Species { get; set; } = SpeciesType.Human;
 
         [ProtoMember(16)]
         public SpeciesSubType Subspecies { get; set; } = SpeciesSubType.None;
 
         [ProtoMember(6, IsRequired = true)]
-        public GenderType Gender { get; set; }
+        public string Pronouns { get; set; } = string.Empty;
 
         [ProtoMember(7)]
         public DateTime BirthDate { get; set; } = Info.IcDate;
@@ -58,7 +58,7 @@ namespace AuroraRecordGenerator
         // 16 & 17 used to be PictureUrl and PictureCredit, now unused.
 
         [ProtoMember(18)]
-        public string Clearance { get; set; } = string.Empty;
+        public string NextOfKin { get; set; } = string.Empty;
 
         [ProtoMember(19)]
         public string MedicalPublicRecord { get; set; } = string.Empty;
@@ -77,6 +77,8 @@ namespace AuroraRecordGenerator
 
         [ProtoMember(24)]
         public bool NoBorg { get; set; } = false;
+
+        // 25 was NoClone, now unused
 
         [ProtoMember(26)]
         public bool NoRevive { get; set; } = false;
@@ -101,9 +103,6 @@ namespace AuroraRecordGenerator
 
         [ProtoMember(33)]
         public string EmploymentExperience { get; set; } = string.Empty;
-
-        [ProtoMember(34)]
-        public string EmploymentPreNtEmployment { get; set; } = string.Empty;
 
         [ProtoMember(35)]
         public string EmploymentFormalEducation { get; set; } = string.Empty;

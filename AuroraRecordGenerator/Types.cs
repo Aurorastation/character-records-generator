@@ -90,19 +90,6 @@ namespace AuroraRecordGenerator
         HumanOffworld
     }
 
-    [ProtoContract]
-    public enum GenderType
-    {
-        [ProtoEnum]
-        NotApplicable = 0,
-
-        [ProtoEnum]
-        Male,
-
-        [ProtoEnum]
-        Female
-    }
-
     public static class Info
     {
         /// <summary>

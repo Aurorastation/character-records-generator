@@ -25,6 +25,8 @@ namespace AuroraRecordGenerator
         private IList<string> _securityPublicRecord;
         private IList<string> _securityRecords;
         private IList<string> _securityNotes;
+        private IList<string> _securityAttitudeScc;
+        private IList<string> _securityAttitudeCrew;
 
         private IList<string> _employmentPublicRecord;
         private IList<string> _employmentExperience;
@@ -50,6 +52,8 @@ namespace AuroraRecordGenerator
             _securityPublicRecord = _targetRecord.SecurityPublicRecord?.LineSplit();
             _securityRecords = _targetRecord.SecurityRecords?.LineSplit();
             _securityNotes = _targetRecord.SecurityNotes?.LineSplit();
+            _securityAttitudeCrew = _targetRecord.SecurityAttitudeCrew?.LineSplit();
+            _securityAttitudeScc = _targetRecord.SecurityAttitudeScc?.LineSplit();
 
             // employment
             _employmentPublicRecord = _targetRecord.EmploymentPublicRecord?.LineSplit();

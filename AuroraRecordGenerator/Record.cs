@@ -112,5 +112,11 @@ namespace AuroraRecordGenerator
 
         [ProtoMember(37)]
         public string EmploymentSkills { get; set; } = string.Empty;
+
+        [ProtoMember(38)]
+        public string SecurityAttitudeScc { get; set; } = string.Empty;
+
+        [ProtoMember(39)]
+        public string SecurityAttitudeCrew { get; set; } = string.Empty;
     }
 }

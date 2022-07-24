@@ -46,7 +46,7 @@ namespace AuroraRecordGenerator
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
-            SpeciesCombo.SelectedIndex = 0;
+            SpeciesCombo.SelectedIndex = 1;
         }
 
         private void GenerateRecord(object sender, RoutedEventArgs e)

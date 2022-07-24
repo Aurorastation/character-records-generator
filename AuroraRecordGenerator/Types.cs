@@ -90,6 +90,26 @@ namespace AuroraRecordGenerator
         HumanOffworld
     }
 
+    // Currently unused
+    [ProtoContract]
+    public enum ThreatLevel
+    {
+        [ProtoEnum]
+        Minimal = 0,
+
+        [ProtoEnum]
+        Low,
+
+        [ProtoEnum]
+        Medium,
+
+        [ProtoEnum]
+        High,
+
+        [ProtoEnum]
+        Extreme
+    }
+
     public static class Info
     {
         /// <summary>

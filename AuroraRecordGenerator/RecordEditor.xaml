@@ -17,6 +17,11 @@
                 <x:Type TypeName="local:SpeciesType" />
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <ObjectDataProvider x:Key="ThreatLevelEnum" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:ThreatLevel" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </controls:MetroWindow.Resources>
     <Grid>
         <controls:MetroAnimatedTabControl Margin="10,10,0,45" controls:TabControlHelper.IsUnderlined="True">
@@ -296,11 +301,11 @@
                                  ToolTip="Dated list of operations, surgeries, checkups of note, etc. One per line."
                                  Grid.Row="2" Text="{Binding Path=MedicalHistory}" TabIndex="6" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True" TextWrapping="Wrap"
-                                 controls:TextBoxHelper.Watermark="Medical Notes"
+                                 controls:TextBoxHelper.Watermark="Medical Notes - prescriptions, allergies, etc."
                                  controls:TextBoxHelper.UseFloatingWatermark="True"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Notes about physical/medical health. One per line." Grid.Row="3"
+                                 ToolTip="Current prescriptions, allergies, etc. One per line." Grid.Row="3"
                                  Text="{Binding Path=MedicalNotes}" TabIndex="7" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Psychiatric History"
@@ -334,32 +339,52 @@
                             <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
+                            <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="0" />
                         </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" Margin="0,10,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Attitude Towards the SCC"
+                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
+                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
+                                 ToolTip="A brief summary of the character's perceived attitude towards the conglomerate."
+                                 Text="{Binding Path=SecurityAttitudeScc}" />
+                            <TextBox Grid.Column="1" Margin="0,10,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Attitude Towards the Crew"
+                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
+                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
+                                 ToolTip="A brief summary of the character's perceived attitude towards the rest of the crew."
+                                 Text="{Binding Path=SecurityAttitudeCrew}" />
+                        </Grid>
+
                         <GridSplitter Grid.Row="0" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
                         <GridSplitter Grid.Row="1" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
                         <GridSplitter Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <TextBox Grid.Row="0" Margin="0,10,0,10" AcceptsReturn="True"
+                        <TextBox Grid.Row="1" Margin="0,10,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Public Record"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  ToolTip="Public security notes added to employment and medical records. One per line."
                                  Text="{Binding Path=SecurityPublicRecord}" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Records"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Arrest History"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
-                                 ToolTip="List of charges, dated if possible. One per line." Grid.Row="1"
+                                 ToolTip="List of charges, dated if possible. One per line." Grid.Row="2"
                                  Text="{Binding Path=SecurityRecords}" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Notes"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Other notes"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  ToolTip="Any things security should keep in mind when dealing with you. One per line."
-                                 Grid.Row="2" Text="{Binding Path=SecurityNotes}" />
+                                 Grid.Row="3" Text="{Binding Path=SecurityNotes}" />
                     </Grid>
                 </ScrollViewer>
             </TabItem>

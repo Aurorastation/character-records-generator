@@ -10,6 +10,8 @@ namespace AuroraRecordGenerator
         {
             var record = new StringBuilder();
             record.AppendLine("/// PUBLIC RECORD ///");
+
+            // TODO: most of this should be replaced by WriteRecordIfAny()
             if (_targetRecord.FirstName.Any())
             {
                 record.AppendLine(MakeNameLine());
@@ -205,7 +207,10 @@ namespace AuroraRecordGenerator
 
             recordText.Append(_commonRecords);
 
-            if (!_securityRecords.Any() && !_securityNotes.Any())
+            if (!_securityRecords.Any() &&
+                !_securityNotes.Any() &&
+                !_securityAttitudeScc.Any() &&
+                !_securityAttitudeCrew.Any())
             {
                 recordText.AppendLine("/// NO SECURITY RECORD FOUND ///");
             }
@@ -213,6 +218,14 @@ namespace AuroraRecordGenerator
             {
                 recordText.AppendLine("/// SECURITY RECORD ///");
                 recordText.AppendLine();
+
+                WriteSectionIfAny(ref recordText,
+                    "Attitude Towards the SCC:",
+                    _securityAttitudeScc);
+
+                WriteSectionIfAny(ref recordText,
+                    "Attitude Towards the Crew:",
+                    _securityAttitudeCrew);
 
                 WriteSectionIfAny(ref recordText,
                     "Notes:",

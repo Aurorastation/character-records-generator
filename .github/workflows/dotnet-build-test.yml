@@ -31,3 +31,33 @@ jobs:
         path: |
           CharacterRecordsGenerator/bin/Release/*.exe
           CharacterRecordsGenerator/bin/Release/*.dll
+  deploy:
+    name: Create release
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - uses: actions/download-artifact@v3
+        with:
+          name: character-records-generator
+      - name: Upload character-records-generator
+        uses: actions/upload-release-asset@v1
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./character-records-generator.zip
+          asset_name: character-records-generator.zip
+          asset_content_type: application/zip

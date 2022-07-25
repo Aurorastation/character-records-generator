@@ -17,7 +17,7 @@ namespace CharacterRecordsGenerator
         public string LastName { get; set; } = string.Empty;
 
         [ProtoMember(4)]
-        public string NameSuffix { get; set; } = string.Empty;
+        public string SpokenLanguages { get; set; } = string.Empty;
 
         [ProtoMember(5)]
         public SpeciesType Species { get; set; } = SpeciesType.Human;

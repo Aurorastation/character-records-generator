@@ -40,6 +40,10 @@ namespace CharacterRecordsGenerator
             if (_targetRecord.Citizenship.Any()) {
                 record.AppendLine($"Citizenship: {_targetRecord.Citizenship}");
             }
+            if (_targetRecord.SpokenLanguages.Any())
+            {
+                record.AppendLine($"Spoken Languages: {_targetRecord.SpokenLanguages}");
+            }
             if (_targetRecord.NextOfKin.Any()) {
                 record.AppendLine($"Next of Kin: {_targetRecord.NextOfKin}");
             }

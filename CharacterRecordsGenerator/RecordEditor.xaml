@@ -71,11 +71,12 @@
                                            VerticalAlignment="Top" Grid.Column="1" Height="15.96"/>
                                 <TextBox Height="26"
                                          Margin="5,26,10.5,0" TextWrapping="Wrap"
-                                         ToolTip="Your character's name suffix, if present." Grid.Column="2"
+                                         ToolTip="Your character's citizenship." Grid.Column="2"
                                          VerticalAlignment="Top"
-                                         Text="{Binding Path=NameSuffix}" controls:TextBoxHelper.Watermark="Jr." TabIndex="4" />
+                                         Text="{Binding Path=Citizenship}"
+                                         controls:TextBoxHelper.Watermark="Coalition of Colonies" TabIndex="4" />
                                 <TextBlock HorizontalAlignment="Left" Margin="5,10,0,0" TextWrapping="Wrap"
-                                           Text="Suffix" VerticalAlignment="Top" Grid.Column="2"
+                                           Text="Citizenship" VerticalAlignment="Top" Grid.Column="2"
                                            Height="15.96" Width="150" />
                                 <TextBlock Grid.Column="0" Margin="10,57,10,0" TextWrapping="Wrap"
                                            Text="Species*" FontWeight="DemiBold"
@@ -114,9 +115,9 @@
                                          VerticalAlignment="Bottom" controls:TextBoxHelper.Watermark="Assistant"
                                          Text="{Binding Path=EmployedAs}" Grid.Column="2" TabIndex="11" />
                                 <TextBox Grid.Column="2" Height="23" Margin="5,73,10.5,0"
-                                         TextWrapping="Wrap" VerticalAlignment="Top" controls:TextBoxHelper.Watermark="Sol Alliance"
-                                         Text="{Binding Path=Citizenship}" TabIndex="8" />
-                                <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="5,57,0,0" TextWrapping="Wrap" Text="Citizenship" VerticalAlignment="Top" />
+                                         TextWrapping="Wrap" VerticalAlignment="Top" controls:TextBoxHelper.Watermark="Tau Ceti Basic, Tradeband"
+                                         Text="{Binding Path=SpokenLanguages}" TabIndex="8" />
+                                <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="5,57,0,0" TextWrapping="Wrap" Text="Spoken Languages" VerticalAlignment="Top" />
                                 <ComboBox Grid.Column="0" x:Name="SubSpeciesCombo" Margin="10,120,5,0"
                                     VerticalAlignment="Top"
                                     ToolTip="Your character's ethnic group or subtype."

@@ -85,10 +85,9 @@ namespace CharacterRecordsGenerator
         private string MakeNameLine()
         {
             var builder = new StringBuilder("Name: ");
-            builder.Append(_targetRecord.FirstName);
+            builder.Append(_targetRecord.FirstName.SpaceIfValue());
             builder.Append(_targetRecord.MiddleName.SpaceIfValue());
-            builder.Append($" {_targetRecord.LastName}");
-            builder.Append(_targetRecord.NameSuffix.SpaceIfValue());
+            builder.Append(_targetRecord.LastName);
             return builder.ToString();
         }
 

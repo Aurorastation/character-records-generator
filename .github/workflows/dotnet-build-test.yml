@@ -26,13 +26,13 @@ jobs:
       run: msbuild $env:Solution_Name /t:Rebuild -property:Configuration=Release
     - name: Unit tests
       run: dotnet test --no-build --verbosity normal
-    - run: zip -r character-records-generator.zip CharacterRecordsGenerator/bin/Release '*.exe' '*.dll'
     - name: Archive
       uses: actions/upload-artifact@v3
       with:
         name: character-records-generator
         path: |
-          CharacterRecordsGenerator/bin/Release/character-records-generator.zip
+          CharacterRecordsGenerator/bin/Release/*.exe
+          CharacterRecordsGenerator/bin/Release/*.dll
   deploy:
     name: Create release
     runs-on: ubuntu-latest
@@ -55,6 +55,7 @@ jobs:
         with:
           name: character-records-generator
       - run: ls
+      - run: zip character-records-generator.zip '*.dll' '*.exe'
       - name: Upload character-records-generator
         uses: actions/upload-release-asset@v1
         env: 

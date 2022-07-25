@@ -15,20 +15,19 @@ namespace AuroraRecordGenerator
             MakeCommonRecords();
         }
 
-        private IList<string> _medicalPublicRecord;
+        private IList<string> _publicNotes;
+
         private IList<string> _medicalHistory;
         private IList<string> _medicalNotes;
         private IList<string> _medicalPsychHistory;
         private IList<string> _medicalPsychNotes;
         private IList<string> _medicalPrescriptions;
 
-        private IList<string> _securityPublicRecord;
         private IList<string> _securityRecords;
         private IList<string> _securityNotes;
         private IList<string> _securityAttitudeScc;
         private IList<string> _securityAttitudeCrew;
 
-        private IList<string> _employmentPublicRecord;
         private IList<string> _employmentExperience;
         private IList<string> _employmentFormalEducation;
         private IList<string> _employmentSkills;
@@ -39,9 +38,9 @@ namespace AuroraRecordGenerator
             {
                 _targetRecord = new Record();
             }
+            _publicNotes = _targetRecord.PublicNotes?.LineSplit();
 
             // Medical
-            _medicalPublicRecord = _targetRecord.MedicalPublicRecord?.LineSplit();
             _medicalHistory = _targetRecord.MedicalHistory?.LineSplit();
             _medicalNotes = _targetRecord.MedicalNotes?.LineSplit();
             _medicalPsychHistory = _targetRecord.MedicalPsychHistory?.LineSplit();
@@ -49,14 +48,12 @@ namespace AuroraRecordGenerator
             _medicalPrescriptions = _targetRecord.MedicalPrescriptions?.LineSplit();
 
             // security
-            _securityPublicRecord = _targetRecord.SecurityPublicRecord?.LineSplit();
             _securityRecords = _targetRecord.SecurityRecords?.LineSplit();
             _securityNotes = _targetRecord.SecurityNotes?.LineSplit();
             _securityAttitudeCrew = _targetRecord.SecurityAttitudeCrew?.LineSplit();
             _securityAttitudeScc = _targetRecord.SecurityAttitudeScc?.LineSplit();
 
             // employment
-            _employmentPublicRecord = _targetRecord.EmploymentPublicRecord?.LineSplit();
             _employmentExperience = _targetRecord.EmploymentExperience?.LineSplit();
             _employmentFormalEducation = _targetRecord.EmploymentFormalEducation?.LineSplit();
             _employmentSkills = _targetRecord.EmploymentSkills?.LineSplit();

@@ -22,8 +22,6 @@ namespace AuroraRecordGenerator
         [ProtoMember(5)]
         public SpeciesType Species { get; set; } = SpeciesType.Human;
 
-        [ProtoMember(16)]
-        public SpeciesSubType Subspecies { get; set; } = SpeciesSubType.None;
 
         [ProtoMember(6)]
         public string Pronouns { get; set; } = string.Empty;
@@ -55,13 +53,16 @@ namespace AuroraRecordGenerator
         [ProtoMember(15)]
         public string Citizenship { get; set; } = string.Empty;
 
-        // 16 & 17 used to be PictureUrl and PictureCredit, now unused.
+        [ProtoMember(16)]
+        public SpeciesSubType Subspecies { get; set; } = SpeciesSubType.None;
+
+        [ProtoMember(17)]
+        public string PublicNotes { get; set; } = string.Empty;
 
         [ProtoMember(18)]
         public string NextOfKin { get; set; } = string.Empty;
 
-        [ProtoMember(19)]
-        public string MedicalPublicRecord { get; set; } = string.Empty;
+        // 19 was used for MedicalPublicRecord, now empty
 
         [ProtoMember(20)]
         public string MedicalHistory { get; set; } = string.Empty;
@@ -89,8 +90,7 @@ namespace AuroraRecordGenerator
         [ProtoMember(28)]
         public string MedicalPrescriptions { get; set; } = string.Empty;
 
-        [ProtoMember(29)]
-        public string SecurityPublicRecord { get; set; } = string.Empty;
+        // 29 was used for SecurityPublicRecord, now empty
 
         [ProtoMember(30)]
         public string SecurityRecords { get; set; } = string.Empty;
@@ -98,8 +98,7 @@ namespace AuroraRecordGenerator
         [ProtoMember(31)]
         public string SecurityNotes { get; set; } = string.Empty;
 
-        [ProtoMember(32)]
-        public string EmploymentPublicRecord { get; set; } = string.Empty;
+        // 32 was used for EmploymentPublicRecord, now empty
 
         [ProtoMember(33)]
         public string EmploymentExperience { get; set; } = string.Empty;

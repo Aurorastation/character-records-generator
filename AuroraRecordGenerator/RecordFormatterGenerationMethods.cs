@@ -81,16 +81,8 @@ namespace AuroraRecordGenerator
 
             // general notes
             WriteSectionIfAny(ref record,
-                "Shared Employment Notes:",
-                _employmentPublicRecord);
-
-            WriteSectionIfAny(ref record,
-                "Shared Medical Notes:",
-                _medicalPublicRecord);
-
-            WriteSectionIfAny(ref record,
-                "Shared Security Notes:",
-                _securityPublicRecord);
+                "Additional Notes:",
+                _publicNotes);
 
             _commonRecords = record.ToString();
         }
@@ -105,7 +97,6 @@ namespace AuroraRecordGenerator
 
             if (!_employmentExperience.Any() &&
                 !_employmentFormalEducation.Any() &&
-                !_employmentPublicRecord.Any() &&
                 !_employmentSkills.Any())
             {
                 recordText.AppendLine("/// NO EMPLOYMENT RECORD FOUND ///");

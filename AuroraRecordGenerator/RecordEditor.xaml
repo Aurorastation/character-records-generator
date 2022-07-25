@@ -7,7 +7,7 @@
                       xmlns:system="clr-namespace:System;assembly=mscorlib"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       mc:Ignorable="d"
-                      Title="Aurora Character Records Generator" Height="563" Width="719.583"
+                      Title="Aurora Character Records Generator, 2464 edition" Height="697" Width="719.583"
                       GlowBrush="{DynamicResource AccentColorBrush}"
                       TitleCharacterCasing="Normal" Loaded="WindowLoaded">
     <controls:MetroWindow.Resources>
@@ -24,7 +24,11 @@
         </ObjectDataProvider>
     </controls:MetroWindow.Resources>
     <Grid>
-        <controls:MetroAnimatedTabControl Margin="10,10,0,45" controls:TabControlHelper.IsUnderlined="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="93*"/>
+        </Grid.ColumnDefinitions>
+        <controls:MetroAnimatedTabControl Margin="10,10,0,45" controls:TabControlHelper.IsUnderlined="True" Grid.ColumnSpan="2">
             <!-- General Character Information -->
             <TabItem Header="General">
                 <ScrollViewer>
@@ -180,6 +184,29 @@
                                            Text="Eye Color" VerticalAlignment="Top" />
                             </Grid>
                         </GroupBox>
+                        <GroupBox Header="Additional Information" controls:ControlsHelper.ContentCharacterCasing="Normal"
+                                  Height="160">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="122"
+                                               MinHeight="60"/>
+                                </Grid.RowDefinitions>
+                                <GridSplitter Grid.Row="0"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Bottom"
+                                              Margin="0"
+                                              Height="10" />
+                                <TextBox Grid.Row="0"
+                                         Margin="0,10,0,10"
+                                         AcceptsReturn="True"
+                                         TextWrapping="Wrap"
+                                         VerticalScrollBarVisibility="Auto"
+                                         controls:TextBoxHelper.Watermark="Any additional notes that should be present on all three records.&#x0a;&#x0a;e.g.&#x0a;John Doe is here for a two-month cultural exchange.&#x0a;John Doe has been known to [...]."
+                                         ToolTip="Additional public notes that will be visible on all three records."
+                                         Text="{Binding Path=PublicNotes}"
+                                         d:LayoutOverrides="VerticalAlignment"/>
+                            </Grid>
+                        </GroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -191,7 +218,6 @@
                             <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
-                            <RowDefinition Height="122" MinHeight="60" />
                         </Grid.RowDefinitions>
                         <GridSplitter Grid.Row="0" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
@@ -199,27 +225,14 @@
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
                         <GridSplitter Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <GridSplitter Grid.Row="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
-                                      VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <GridSplitter Grid.Row="4" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
-                                      VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <GridSplitter Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
-                                      VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" 
-                                 controls:TextBoxHelper.Watermark="Public Record"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
-                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True" Grid.Row="0"
-                                 ToolTip="Public employment notes posted on security and medical records. One per line."
-                                 d:LayoutOverrides="VerticalAlignment" Text="{Binding Path=EmploymentPublicRecord}" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Employment History"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
-                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True" Grid.Row="1"
+                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True" Grid.Row="0"
                                  ToolTip="Previous jobs that the character has worked. One per line.&#x0a;No need to put hyphens/bulletpoints; they'll be added automatically.&#x0a;&#x0a;e.g.&#x0a;Police Cadet, Mendell City [2450 - 2454]&#x0a;Police Officer, Mendell City [2454 - Ongoing]"
                                  d:LayoutOverrides="VerticalAlignment" Text="{Binding Path=EmploymentExperience}" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" Grid.Row="2"
+                                 TextWrapping="Wrap" Grid.Row="1"
                                  controls:TextBoxHelper.Watermark="Formal Education / Qualifications"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
@@ -227,7 +240,7 @@
                                  Text="{Binding Path=EmploymentFormalEducation}" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap"
-                                 controls:TextBoxHelper.Watermark="Other Skills / Ongoing Training" Grid.Row="3"
+                                 controls:TextBoxHelper.Watermark="Other Skills / Ongoing Training" Grid.Row="2"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  Text="{Binding Path=EmploymentSkills}"
@@ -283,50 +296,40 @@
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
                         <GridSplitter Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <GridSplitter Grid.Row="6" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
-                                      VerticalAlignment="Bottom" Margin="0" Height="10" />
-
-                        <TextBox Margin="0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Public Record"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True"
-                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
-                                 ToolTip="Public medical notes posted on employment and security records. One per line."
-                                 Grid.Row="1" VerticalScrollBarVisibility="Auto"
-                                 Text="{Binding Path=MedicalPublicRecord}" TabIndex="5" />
                         <TextBox Margin="0,10" AcceptsReturn="True" TextWrapping="Wrap"
                                  controls:TextBoxHelper.Watermark="Medical History"
                                  controls:TextBoxHelper.UseFloatingWatermark="True"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
                                  ToolTip="Dated list of operations, surgeries, checkups of note, etc. One per line."
-                                 Grid.Row="2" Text="{Binding Path=MedicalHistory}" TabIndex="6" />
+                                 Grid.Row="1" Text="{Binding Path=MedicalHistory}" TabIndex="6" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True" TextWrapping="Wrap"
                                  controls:TextBoxHelper.Watermark="Medical Notes - prescriptions, allergies, etc."
                                  controls:TextBoxHelper.UseFloatingWatermark="True"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Current prescriptions, allergies, etc. One per line." Grid.Row="3"
+                                 ToolTip="Current prescriptions, allergies, etc. One per line." Grid.Row="2"
                                  Text="{Binding Path=MedicalNotes}" TabIndex="7" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Psychiatric History"
                                  controls:TextBoxHelper.UseFloatingWatermark="True"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Dated records of psych evals and other psychological events." Grid.Row="4"
+                                 ToolTip="Dated records of psych evals and other psychological events." Grid.Row="3"
                                  Text="{Binding Path=MedicalPsychHistory}" TabIndex="8" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Psychiatric Notes"
                                  controls:TextBoxHelper.UseFloatingWatermark="True"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Notes about mental/psychiatric health. One per line." Grid.Row="5"
+                                 ToolTip="Notes about mental/psychiatric health. One per line." Grid.Row="4"
                                  Text="{Binding Path=MedicalPsychNotes}" TabIndex="9" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Prescriptions"
                                  controls:TextBoxHelper.UseFloatingWatermark="True"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Notes regarding assigned prescriptions. One per line." Grid.Row="6"
+                                 ToolTip="Notes regarding assigned prescriptions. One per line." Grid.Row="5"
                                  Text="{Binding Path=MedicalPrescriptions}" TabIndex="10" />
                     </Grid>
                 </ScrollViewer>
@@ -336,7 +339,6 @@
                 <ScrollViewer>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
@@ -367,30 +369,24 @@
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
                         <GridSplitter Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <TextBox Grid.Row="1" Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Public Record"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
-                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
-                                 ToolTip="Public security notes added to employment and medical records. One per line."
-                                 Text="{Binding Path=SecurityPublicRecord}" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Arrest History"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
-                                 ToolTip="List of charges, dated if possible. One per line." Grid.Row="2"
+                                 ToolTip="List of charges, dated if possible. One per line." Grid.Row="1"
                                  Text="{Binding Path=SecurityRecords}" />
                         <TextBox Margin="0,10,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Other notes"
                                  controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  ToolTip="Any things security should keep in mind when dealing with you. One per line."
-                                 Grid.Row="3" Text="{Binding Path=SecurityNotes}" />
+                                 Grid.Row="2" Text="{Binding Path=SecurityNotes}" />
                     </Grid>
                 </ScrollViewer>
             </TabItem>
         </controls:MetroAnimatedTabControl>
         <!-- Footer -->
-        <Grid Height="45" VerticalAlignment="Bottom">
+        <Grid Height="45" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
             <Button Content="Open" HorizontalAlignment="Left" Margin="10,9.66,0,10" Width="75"
                     d:LayoutOverrides="Height" Click="OpenContent" />
             <Button Content="Save" HorizontalAlignment="Left" Margin="90,10,0,9.66" Width="75"

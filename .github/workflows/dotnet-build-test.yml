@@ -28,7 +28,6 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: character-records-generator
-        path: CharacterRecordsGenerator/bin/Release/
-          !*.config
-          !*.xml
-          !*.pdb
+        path: |
+          CharacterRecordsGenerator/bin/Release/*.exe
+          CharacterRecordsGenerator/bin/Release/*.dll

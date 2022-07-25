@@ -1,0 +1,26 @@
+name: ci build and test
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      Solution_Name: CharacterRecordsGenerator.sln
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Add MSBuild to path
+      uses: microsoft/setup-msbuild@v1.1
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1 
+    - name: Restore nuget
+      run: nuget restore $env:Solution_Name
+    - name: Build
+      run: msbuild $env:Solution_Name /t:Rebuild -property:Configuration=Release
+    - name: Unit tests
+      run: dotnet test --no-build --verbosity normal

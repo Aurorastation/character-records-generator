@@ -24,3 +24,11 @@ jobs:
       run: msbuild $env:Solution_Name /t:Rebuild -property:Configuration=Release
     - name: Unit tests
       run: dotnet test --no-build --verbosity normal
+    - name: Archive
+      uses: actions/upload-artifact@v3
+      with:
+        name: character-records-generator
+        path: CharacterRecordsGenerator/bin/Release/
+          !*.config
+          !*.xml
+          !*.pdb

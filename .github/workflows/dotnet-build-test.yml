@@ -54,12 +54,14 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: character-records-generator
+      - run: ls -FlasR "character-records-generator"
+      - run: zip -r "character-records-generator.zip" character-records-generator // debugging workflow
       - name: Upload character-records-generator
         uses: actions/upload-release-asset@v1
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./character-records-generator
+          asset_path: ./character-records-generator.zip
           asset_name: character-records-generator.zip
           asset_content_type: application/zip

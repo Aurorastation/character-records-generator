@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace AuroraRecordGenerator
+namespace CharacterRecordsGenerator
 {
     internal partial class RecordFormatter
     {

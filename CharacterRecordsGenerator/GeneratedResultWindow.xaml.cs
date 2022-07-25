@@ -1,4 +1,4 @@
-﻿namespace AuroraRecordGenerator
+﻿namespace CharacterRecordsGenerator
 {
     public partial class GeneratedResultWindow
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace AuroraRecordGenerator
+namespace CharacterRecordsGenerator
 {
     /// <summary>
     /// Interaction logic for RecordEditor.xaml

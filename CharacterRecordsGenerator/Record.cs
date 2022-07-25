@@ -1,7 +1,7 @@
 ﻿using System;
 using ProtoBuf;
 
-namespace AuroraRecordGenerator
+namespace CharacterRecordsGenerator
 {
     [ProtoContract]
     public class Record

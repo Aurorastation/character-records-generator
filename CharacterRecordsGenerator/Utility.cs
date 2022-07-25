@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace AuroraRecordGenerator
+namespace CharacterRecordsGenerator
 {
     public static class Utility
     {

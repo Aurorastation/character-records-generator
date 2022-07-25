@@ -1,7 +1,7 @@
-﻿<Application x:Class="AuroraRecordGenerator.App"
+﻿<Application x:Class="CharacterRecordsGenerator.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:AuroraRecordGenerator"
+             xmlns:local="clr-namespace:CharacterRecordsGenerator"
              StartupUri="RecordEditor.xaml">
     <Application.Resources>
         <ResourceDictionary>

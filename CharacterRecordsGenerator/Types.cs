@@ -1,7 +1,7 @@
 ﻿using ProtoBuf;
 using System;
 
-namespace AuroraRecordGenerator
+namespace CharacterRecordsGenerator
 {
     [ProtoContract]
     public enum SpeciesType

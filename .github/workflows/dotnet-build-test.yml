@@ -61,4 +61,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./character-records-generator
+          asset_name: character-records-generator.zip
           asset_content_type: application/zip

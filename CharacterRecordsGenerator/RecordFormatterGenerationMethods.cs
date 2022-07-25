@@ -104,10 +104,12 @@ namespace CharacterRecordsGenerator
                 !_employmentSkills.Any())
             {
                 recordText.AppendLine("/// NO EMPLOYMENT RECORD FOUND ///");
+                recordText.AppendLine();
             }
             else
             {
                 recordText.AppendLine("/// EMPLOYMENT RECORD ///");
+                recordText.AppendLine("This information has been verified by employment agents within the External Affairs department, and any comments, questions, or concerns about the legitimacy of such must be sent in a secure document to the same department.");
                 recordText.AppendLine();
 
                 WriteSectionIfAny(ref recordText,
@@ -121,8 +123,10 @@ namespace CharacterRecordsGenerator
                 WriteSectionIfAny(ref recordText,
                     "Other skills:",
                     _employmentSkills);
+
             }
 
+            recordText.AppendLine($"LAST UPDATED: {Utility.HumanisedDate(Info.IcDate)}");
             return recordText.ToString();
         }
 
@@ -145,6 +149,7 @@ namespace CharacterRecordsGenerator
                 !_targetRecord.NoRevive)
             {
                 recordText.AppendLine("/// NO MEDICAL RECORD FOUND ///");
+                recordText.AppendLine();
             }
             else
             {
@@ -152,7 +157,7 @@ namespace CharacterRecordsGenerator
                 recordText.AppendLine();
 
                 recordText.AppendLine(
-                    " The following information is protected by doctor-patient confidentiality laws. Do not release without patient's consent.\n");
+                    "The following information is protected by doctor-patient confidentiality laws. Do not release without patient's consent.\n");
 
                 if (_targetRecord.NoBorg || _targetRecord.NoProsthetic || _targetRecord.NoRevive)
                 {
@@ -189,8 +194,10 @@ namespace CharacterRecordsGenerator
                 WriteSectionIfAny(ref recordText,
                     "Prescriptions:",
                     _medicalPrescriptions);
-            }
 
+                
+            }
+            recordText.AppendLine($"LAST UPDATED: {Utility.HumanisedDate(Info.IcDate)}");
             return recordText.ToString();
         }
 
@@ -208,6 +215,7 @@ namespace CharacterRecordsGenerator
                 !_securityAttitudeCrew.Any())
             {
                 recordText.AppendLine("/// NO SECURITY RECORD FOUND ///");
+                recordText.AppendLine();
             }
             else
             {
@@ -231,6 +239,7 @@ namespace CharacterRecordsGenerator
                     _securityRecords);
             }
 
+            recordText.AppendLine($"LAST UPDATED: {Utility.HumanisedDate(Info.IcDate)}");
             return recordText.ToString();
         }
     }

@@ -11,13 +11,13 @@
     <Grid>
         <controls:MetroAnimatedTabControl Margin="10">
             <TabItem Header="Employment">
-                <TextBox x:Name="EmploymentBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas"/>
+                <TextBox x:Name="EmploymentBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas" TextWrapping="Wrap"/>
             </TabItem>
             <TabItem Header="Medical">
-                <TextBox x:Name="MedicalBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas"/>
+                <TextBox x:Name="MedicalBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas" TextWrapping="Wrap"/>
             </TabItem>
             <TabItem Header="Security">
-                <TextBox x:Name="SecurityBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas"/>
+                <TextBox x:Name="SecurityBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas" TextWrapping="Wrap"/>
             </TabItem>
         </controls:MetroAnimatedTabControl>
     </Grid>

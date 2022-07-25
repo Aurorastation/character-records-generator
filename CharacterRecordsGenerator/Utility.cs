@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Humanizer;
 
 namespace CharacterRecordsGenerator
 {
@@ -32,6 +33,8 @@ namespace CharacterRecordsGenerator
         /// <param name="val"></param>
         /// <returns></returns>
         public static string SpaceIfValue(this string val) => string.IsNullOrWhiteSpace(val) ? string.Empty : $"{val} ";
+
+        public static string HumanisedDate(DateTime date) => $"{date.ToString("MMMM")} {date.Day.Ordinalize()}, {date.Year}";
 
         public static string IfEmpty(this string target, string fallback) =>
             target.IsEmpty() ? fallback : target;

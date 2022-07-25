@@ -1,9 +1,9 @@
-﻿<controls:MetroWindow x:Class="AuroraRecordGenerator.GeneratedResultWindow"
+﻿<controls:MetroWindow x:Class="CharacterRecordsGenerator.GeneratedResultWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AuroraRecordGenerator"
+        xmlns:local="clr-namespace:CharacterRecordsGenerator"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         GlowBrush="{DynamicResource AccentColorBrush}"
@@ -11,13 +11,13 @@
     <Grid>
         <controls:MetroAnimatedTabControl Margin="10">
             <TabItem Header="Employment">
-                <TextBox x:Name="EmploymentBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas"/>
+                <TextBox x:Name="EmploymentBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas" TextWrapping="Wrap"/>
             </TabItem>
             <TabItem Header="Medical">
-                <TextBox x:Name="MedicalBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas"/>
+                <TextBox x:Name="MedicalBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas" TextWrapping="Wrap"/>
             </TabItem>
             <TabItem Header="Security">
-                <TextBox x:Name="SecurityBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas"/>
+                <TextBox x:Name="SecurityBox" IsReadOnly="True" IsUndoEnabled="False" AutoWordSelection="True" FontFamily="Consolas" TextWrapping="Wrap"/>
             </TabItem>
         </controls:MetroAnimatedTabControl>
     </Grid>

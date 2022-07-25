@@ -1,4 +1,4 @@
-﻿<controls:MetroWindow x:Class="CharacterRecordsGenerator.RecordEditor"
+<controls:MetroWindow x:Class="CharacterRecordsGenerator.RecordEditor"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,6 +8,9 @@
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       mc:Ignorable="d"
                       Title="Character Records Generator" Height="697" Width="719.583"
+                      ShowIconOnTitleBar="True"
+                      ShowTitleBar="True"
+                      Icon="CRG.ico"
                       GlowBrush="{DynamicResource AccentColorBrush}"
                       TitleCharacterCasing="Normal" Loaded="WindowLoaded">
     <controls:MetroWindow.Resources>
@@ -227,23 +230,30 @@
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
                         <GridSplitter Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Employment History"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
-                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True" Grid.Row="0"
-                                 ToolTip="Previous jobs that the character has worked. One per line.&#x0a;No need to put hyphens/bulletpoints; they'll be added automatically.&#x0a;&#x0a;e.g.&#x0a;Police Cadet, Mendell City [2450 - 2454]&#x0a;Police Officer, Mendell City [2454 - Ongoing]"
-                                 d:LayoutOverrides="VerticalAlignment" Text="{Binding Path=EmploymentExperience}" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" Grid.Row="1"
-                                 controls:TextBoxHelper.Watermark="Formal Education / Qualifications"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
-                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
-                                 ToolTip="Formal education completed / qualifications acquired. One per-line.&#x0a;No need for bulletpoints; they'll be added automatically.&#x0a;&#x0a;e.g.&#x0a;Manual handling certificate [2450]&#x0a;PhD in Psychology [2460]"
-                                 Text="{Binding Path=EmploymentFormalEducation}" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Employment History"/>
+                        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Formal Education / Qualifications"/>
+                        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Other Skills"/>
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap"
-                                 controls:TextBoxHelper.Watermark="Other Skills / Ongoing Training" Grid.Row="2"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
+                                 controls:TextBoxHelper.Watermark="e.g.&#x0a;[2450-2454] Police Cadet, Mendell City&#x0a;[2454-2460] Police Officer, Mendell City&#x0a;[2464-Ongoing] Security Officer, Nanotrasen"
+                                 VerticalScrollBarVisibility="Auto"
+                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True" Grid.Row="0"
+                                 ToolTip="Previous jobs that the character has worked. One per line.&#x0a;No need to put hyphens/bulletpoints; they'll be added automatically.&#x0a;&#x0a;e.g.&#x0a;[2450 - 2454] Police Cadet, Mendell City&#x0a;[2454 - Ongoing] Police Officer, Mendell City"
+                                 d:LayoutOverrides="VerticalAlignment" Text="{Binding Path=EmploymentExperience}" />
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" Grid.Row="1"
+                                 controls:TextBoxHelper.Watermark="e.g.&#x0a;[2452] Manual handling certificate&#x0a;[2460] PhD in Psychology"
+                                 VerticalScrollBarVisibility="Auto"
+                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
+                                 ToolTip="Formal education completed / qualifications acquired. One per-line.&#x0a;No need for bulletpoints; they'll be added automatically.&#x0a;&#x0a;e.g.&#x0a;[2452] Manual handling certificate&#x0a;[2460] PhD in Psychology"
+                                 Text="{Binding Path=EmploymentFormalEducation}" />
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 controls:TextBoxHelper.Watermark="e.g.&#x0a;Currently a culinary student, set to graduate in 2465.&#x0a;First Aid trained" Grid.Row="2"
+                                 VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  Text="{Binding Path=EmploymentSkills}"
                                  ToolTip="Any other skills of note, or training being undertaken currently.&#x0a;&#x0a;e.g.&#x0a;First Aid training&#x0a;Chemistry student at Mendell University" />
@@ -254,6 +264,10 @@
             <TabItem Header="Medical">
                 <ScrollViewer>
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="92*"/>
+                            <ColumnDefinition Width="587*"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50" />
                             <!-- Checkboxes -->
@@ -263,10 +277,12 @@
                             <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="122" MinHeight="60" />
+                            <RowDefinition Height="122" MinHeight="60" />
+                            <RowDefinition Height="122" MinHeight="60" />
                             <RowDefinition Height="0" />
                         </Grid.RowDefinitions>
                         <!-- Opt-Outs -->
-                        <Grid Grid.Row="0" ToolTip="If the character should not be borged.">
+                        <Grid Grid.Row="0" ToolTip="If the character should not be borged." Grid.ColumnSpan="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="163*"/>
                                 <ColumnDefinition Width="163*"/>
@@ -276,63 +292,90 @@
                             </Grid.ColumnDefinitions>
                             <CheckBox x:Name="NoBorg" Content="Do Not Borgify"
                                       HorizontalAlignment="Left"
-                                      Margin="0,10,0,0"
+                                      Margin="0,26,0,0"
                                       ToolTip="If the character should not be borged." TabIndex="1" Grid.Column="0" />
                             <CheckBox x:Name="NoRevive" Content="Do Not Resuscitate"
                                       HorizontalAlignment="Left"
-                                       Margin="-10,10,0,0" 
+                                       Margin="-10,26,0,0" 
                                       ToolTip="If the character should not be revived." TabIndex="2" Grid.Column="1" />
                             <CheckBox x:Name="NoProsthetic" Content="No Prosthetics"
                                       HorizontalAlignment="Left"
-                                      Margin="0,10,0,0"
+                                      Margin="0,26,0,0"
                                       ToolTip="If the character should not be fitted with prosthetics." TabIndex="3" Grid.Column="2" />
                         </Grid>
                         <!-- user-resizable stuff is fun! Not. -->
-                        <GridSplitter Grid.Row="1" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
+                        <GridSplitter Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Height="10" />
-                        <GridSplitter Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
+                        <GridSplitter Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <GridSplitter Grid.Row="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
+                        <GridSplitter Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <GridSplitter Grid.Row="4" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
+                        <GridSplitter Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <GridSplitter Grid.Row="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
+                        <GridSplitter Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <TextBox Margin="0,10" AcceptsReturn="True" TextWrapping="Wrap"
-                                 controls:TextBoxHelper.Watermark="Medical History"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True"
+                        <GridSplitter Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Bottom" Margin="0" Height="10" />
+                        <GridSplitter Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Bottom" Margin="0" Height="10" />
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Opt-outs"/>
+                        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Allergies"/>
+                        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Current Medications/Prescriptions"/>
+                        <TextBlock Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Medication History"/>
+                        <TextBlock Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Surgical History"/>
+                        <TextBlock Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Physical Evaluations"/>
+                        <TextBlock Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Documented Psychological Disorders"/>
+                        <TextBlock Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Psychological Evaluations"/>
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True" TextWrapping="Wrap"
+                                 controls:TextBoxHelper.Watermark="e.g.&#x0a;Peanuts (severe)&#x0a;Latex (minor irritation)"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Dated list of operations, surgeries, checkups of note, etc. One per line."
-                                 Grid.Row="1" Text="{Binding Path=MedicalHistory}" TabIndex="6" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True" TextWrapping="Wrap"
-                                 controls:TextBoxHelper.Watermark="Medical Notes - prescriptions, allergies, etc."
-                                 controls:TextBoxHelper.UseFloatingWatermark="True"
+                                 ToolTip="List of allergies. One per line."
+                                 Grid.Row="1" Text="{Binding Path=MedicalAllergies}" TabIndex="6" Grid.ColumnSpan="2" />
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True" TextWrapping="Wrap"
+                                 controls:TextBoxHelper.Watermark="e.g.&#x0a;2x 5u Perconol (daily) for back pain."
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Current prescriptions, allergies, etc. One per line." Grid.Row="2"
-                                 Text="{Binding Path=MedicalNotes}" TabIndex="7" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Psychiatric History"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True"
+                                 ToolTip="Current prescriptions, etc. One per line." Grid.Row="2"
+                                 Text="{Binding Path=MedicalCurrentPrescriptions}" TabIndex="7" Grid.ColumnSpan="2" />
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;[12/07/2462 - 12/08/2462] 5u Hyperzine (daily) for heart injury.&#x0a;[14/09/2463 - 16/09/2463] 30u Nightlife (daily) prescribed for a weekend party."
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Dated records of psych evals and other psychological events." Grid.Row="3"
-                                 Text="{Binding Path=MedicalPsychHistory}" TabIndex="8" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Psychiatric Notes"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True"
+                                 ToolTip="Dated records of medical history. One per line." Grid.Row="3"
+                                 Text="{Binding Path=MedicalHistory}" TabIndex="8" Grid.ColumnSpan="2" />
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;[09/04/2460] Triple coronary artery bypass"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Notes about mental/psychiatric health. One per line." Grid.Row="4"
-                                 Text="{Binding Path=MedicalPsychNotes}" TabIndex="9" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Prescriptions"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True"
+                                 ToolTip="Dated records of surgical history. One per line." Grid.Row="4"
+                                 Text="{Binding Path=MedicalSurgicalHistory}" TabIndex="9" Grid.ColumnSpan="2" />
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;[30/03/2458] Passed - Fully able for work.&#x0a;[29/03/2459] Passed - Fully able for work."
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Notes regarding assigned prescriptions. One per line." Grid.Row="5"
-                                 Text="{Binding Path=MedicalPrescriptions}" TabIndex="10" />
+                                 ToolTip="Dated records of physical evaluations. One per line." Grid.Row="5"
+                                 Text="{Binding Path=MedicalPhysicalEvaluations}" TabIndex="10" Grid.ColumnSpan="2" />
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;Obsessive-compulsive disorder"
+                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
+                                 VerticalScrollBarVisibility="Auto"
+                                 ToolTip="Any documented psychological disorders. One per line." Grid.Row="6"
+                                 Text="{Binding Path=MedicalPsychDisorders}" TabIndex="10" Grid.ColumnSpan="2" />
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;[04/02/2459] Passed - John Doe is an example of excellent mental health."
+                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
+                                 VerticalScrollBarVisibility="Auto"
+                                 ToolTip="Dated records of psychological evaluations. One per line." Grid.Row="7"
+                                 Text="{Binding Path=MedicalPsychEvaluations}" TabIndex="10" Grid.ColumnSpan="2" />
                     </Grid>
                 </ScrollViewer>
             </TabItem>
@@ -351,15 +394,19 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Attitude Towards the SCC"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
+                            <TextBlock Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Attitude Towards the SCC"/>
+                            <TextBlock Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Attitude Towards the Crew"/>
+                            <TextBox Grid.Column="0" Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;John Doe displays a positive attitude towards the corporation."
+                                 VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  ToolTip="A brief summary of the character's perceived attitude towards the conglomerate."
                                  Text="{Binding Path=SecurityAttitudeScc}" />
-                            <TextBox Grid.Column="1" Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Attitude Towards the Crew"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
+                            <TextBox Grid.Column="1" Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;John Doe is generally supportive of the rest of the crew. He is rarely involved in disputes."
+                                 VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  ToolTip="A brief summary of the character's perceived attitude towards the rest of the crew."
                                  Text="{Binding Path=SecurityAttitudeCrew}" />
@@ -371,15 +418,19 @@
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
                         <GridSplitter Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Stretch"
                                       VerticalAlignment="Bottom" Margin="0" Height="10" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Arrest History"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
+                        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Arrest History"/>
+                        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Other Notes"/>
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;[23/04/2464] Battery - Some additional notes"
+                                 VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  ToolTip="List of charges, dated if possible. One per line." Grid.Row="1"
                                  Text="{Binding Path=SecurityRecords}" />
-                        <TextBox Margin="0,10,0,10" AcceptsReturn="True"
-                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Other notes"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" VerticalScrollBarVisibility="Auto"
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;Whilst John Doe's record is clean, they're known to have unsavoury associates outside of work."
+                                 VerticalScrollBarVisibility="Auto"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  ToolTip="Any things security should keep in mind when dealing with you. One per line."
                                  Grid.Row="2" Text="{Binding Path=SecurityNotes}" />

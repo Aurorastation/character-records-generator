@@ -17,11 +17,13 @@ namespace CharacterRecordsGenerator
 
         private IList<string> _publicNotes;
 
-        private IList<string> _medicalHistory;
-        private IList<string> _medicalNotes;
-        private IList<string> _medicalPsychHistory;
-        private IList<string> _medicalPsychNotes;
-        private IList<string> _medicalPrescriptions;
+        private IList<string> _MedicalAllergies;
+        private IList<string> _MedicalCurrentPrescriptions;
+        private IList<string> _MedicalHistory;
+        private IList<string> _MedicalSurgicalHistory;
+        private IList<string> _MedicalPhysicalEvaluations;
+        private IList<string> _MedicalPsychDisorders;
+        private IList<string> _MedicalPsychEvaluations;
 
         private IList<string> _securityRecords;
         private IList<string> _securityNotes;
@@ -41,11 +43,13 @@ namespace CharacterRecordsGenerator
             _publicNotes = _targetRecord.PublicNotes?.LineSplit();
 
             // Medical
-            _medicalHistory = _targetRecord.MedicalHistory?.LineSplit();
-            _medicalNotes = _targetRecord.MedicalNotes?.LineSplit();
-            _medicalPsychHistory = _targetRecord.MedicalPsychHistory?.LineSplit();
-            _medicalPsychNotes = _targetRecord.MedicalPsychNotes?.LineSplit();
-            _medicalPrescriptions = _targetRecord.MedicalPrescriptions?.LineSplit();
+            _MedicalAllergies = _targetRecord.MedicalAllergies?.LineSplit();
+            _MedicalCurrentPrescriptions = _targetRecord.MedicalCurrentPrescriptions?.LineSplit();
+            _MedicalHistory = _targetRecord.MedicalHistory?.LineSplit();
+            _MedicalSurgicalHistory = _targetRecord.MedicalSurgicalHistory?.LineSplit();
+            _MedicalPhysicalEvaluations = _targetRecord.MedicalPhysicalEvaluations?.LineSplit();
+            _MedicalPsychDisorders = _targetRecord.MedicalPsychDisorders?.LineSplit();
+            _MedicalPsychEvaluations = _targetRecord.MedicalPsychEvaluations?.LineSplit();
 
             // security
             _securityRecords = _targetRecord.SecurityRecords?.LineSplit();

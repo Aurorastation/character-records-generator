@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterRecordsGenerator", "CharacterRecordsGenerator\CharacterRecordsGenerator.csproj", "{2E1295C2-7BD9-454E-B13E-8A22448DD5F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterRecordsGenerator.Tests", "CharacterRecordsGeneratorTests\CharacterRecordsGenerator.Tests.csproj", "{195A07A8-03F7-4A1F-932F-73F934EF324F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterRecordsGenerator.Tests", "CharacterRecordsGenerator.Tests\CharacterRecordsGenerator.Tests.csproj", "{195A07A8-03F7-4A1F-932F-73F934EF324F}"
 	ProjectSection(ProjectDependencies) = postProject
 		{2E1295C2-7BD9-454E-B13E-8A22448DD5F6} = {2E1295C2-7BD9-454E-B13E-8A22448DD5F6}
 	EndProjectSection

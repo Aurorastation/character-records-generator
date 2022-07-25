@@ -54,7 +54,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: character-records-generator
-      - run: ls -FlasR "character-records-generator"
+      - run: ls
       - run: zip -r "character-records-generator.zip" character-records-generator // debugging workflow
       - name: Upload character-records-generator
         uses: actions/upload-release-asset@v1

@@ -54,8 +54,9 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: character-records-generator
+          path: character-records-generator
       - run: ls
-      - run: zip character-records-generator.zip '*.dll' '*.exe'
+      - run: zip -r character-records-generator.zip character-records-generator
       - name: Upload character-records-generator
         uses: actions/upload-release-asset@v1
         env: 

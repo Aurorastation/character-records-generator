@@ -139,11 +139,13 @@ namespace CharacterRecordsGenerator
             recordText.Append(_commonRecords);
 
             // TODO: make this less horrible
-            if (!_medicalHistory.Any() &&
-                !_medicalNotes.Any() &&
-                !_medicalPsychHistory.Any() &&
-                !_medicalPsychNotes.Any() &&
-                !_medicalPrescriptions.Any() &&
+            if (!_MedicalAllergies.Any() &&
+                !_MedicalCurrentPrescriptions.Any() &&
+                !_MedicalHistory.Any() &&
+                !_MedicalSurgicalHistory.Any() &&
+                !_MedicalPhysicalEvaluations.Any() &&
+                !_MedicalPsychEvaluations.Any() &&
+                !_MedicalPsychDisorders.Any() &&
                 !_targetRecord.NoBorg &&
                 !_targetRecord.NoProsthetic &&
                 !_targetRecord.NoRevive)
@@ -154,10 +156,8 @@ namespace CharacterRecordsGenerator
             else
             {
                 recordText.AppendLine("/// MEDICAL RECORD ///");
+                recordText.AppendLine("The following information is protected by doctor-patient confidentiality laws. Do not release without patient's consent.");
                 recordText.AppendLine();
-
-                recordText.AppendLine(
-                    "The following information is protected by doctor-patient confidentiality laws. Do not release without patient's consent.\n");
 
                 if (_targetRecord.NoBorg || _targetRecord.NoProsthetic || _targetRecord.NoRevive)
                 {
@@ -176,26 +176,34 @@ namespace CharacterRecordsGenerator
                 }
 
                 WriteSectionIfAny(ref recordText,
-                    "Notes:",
-                    _medicalNotes);
+                    "Current Prescriptions:",
+                    _MedicalCurrentPrescriptions);
 
                 WriteSectionIfAny(ref recordText,
-                    "Medical History:",
-                    _medicalHistory);
+                    "Allergies:",
+                    _MedicalAllergies);
 
                 WriteSectionIfAny(ref recordText,
-                    "Psychiatric Notes:",
-                    _medicalPsychNotes);
+                    "Surgical History:",
+                    _MedicalSurgicalHistory);
 
                 WriteSectionIfAny(ref recordText,
-                    "Psychiatric History:",
-                    _medicalPsychHistory);
+                    "Medication History:",
+                    _MedicalHistory);
 
                 WriteSectionIfAny(ref recordText,
-                    "Prescriptions:",
-                    _medicalPrescriptions);
+                    "Physical Evaluations:",
+                    _MedicalPhysicalEvaluations);
+                               
+                WriteSectionIfAny(ref recordText,
+                    "Documented Psychological Disorders:",
+                    _MedicalPsychDisorders);
 
-                
+                WriteSectionIfAny(ref recordText,
+                    "Psychological Evaluations:",
+                    _MedicalPsychEvaluations);
+
+
             }
             recordText.AppendLine($"LAST UPDATED: {Utility.HumanisedDate(Info.IcDate)}");
             return recordText.ToString();
@@ -220,6 +228,7 @@ namespace CharacterRecordsGenerator
             else
             {
                 recordText.AppendLine("/// SECURITY RECORD ///");
+                recordText.AppendLine("This information has been verified by employment agents within the External Affairs department, and any comments, questions, or concerns about the legitimacy of such must be sent in a secure document to the same department.");
                 recordText.AppendLine();
 
                 WriteSectionIfAny(ref recordText,

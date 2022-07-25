@@ -65,21 +65,22 @@ namespace CharacterRecordsGenerator
         // 19 was used for MedicalPublicRecord, now empty
 
         [ProtoMember(20)]
-        public string MedicalHistory { get; set; } = string.Empty;
+        public string MedicalAllergies { get; set; } = string.Empty;
 
         [ProtoMember(21)]
-        public string MedicalNotes { get; set; } = string.Empty;
+        public string MedicalCurrentPrescriptions { get; set; } = string.Empty;
 
         [ProtoMember(22)]
-        public string MedicalPsychHistory { get; set; } = string.Empty;
+        public string MedicalHistory { get; set; } = string.Empty;
 
         [ProtoMember(23)]
-        public string MedicalPsychNotes { get; set; } = string.Empty;
+        public string MedicalSurgicalHistory { get; set; } = string.Empty;
 
         [ProtoMember(24)]
         public bool NoBorg { get; set; } = false;
 
-        // 25 was NoClone, now unused
+        [ProtoMember(25)]
+        public string MedicalPsychDisorders { get; set; } = string.Empty;
 
         [ProtoMember(26)]
         public bool NoRevive { get; set; } = false;
@@ -88,9 +89,10 @@ namespace CharacterRecordsGenerator
         public bool NoProsthetic { get; set; } = false;
 
         [ProtoMember(28)]
-        public string MedicalPrescriptions { get; set; } = string.Empty;
+        public string MedicalPhysicalEvaluations { get; set; } = string.Empty;
 
-        // 29 was used for SecurityPublicRecord, now empty
+        [ProtoMember(29)]
+        public string MedicalPsychEvaluations { get; set; } = string.Empty;
 
         [ProtoMember(30)]
         public string SecurityRecords { get; set; } = string.Empty;

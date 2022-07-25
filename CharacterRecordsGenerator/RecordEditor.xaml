@@ -293,14 +293,17 @@
                             <CheckBox x:Name="NoBorg" Content="Do Not Borgify"
                                       HorizontalAlignment="Left"
                                       Margin="0,26,0,0"
+                                      IsChecked="{Binding Path=NoBorg}"
                                       ToolTip="If the character should not be borged." TabIndex="1" Grid.Column="0" />
                             <CheckBox x:Name="NoRevive" Content="Do Not Resuscitate"
                                       HorizontalAlignment="Left"
                                        Margin="-10,26,0,0" 
+                                      IsChecked="{Binding Path=NoRevive}"
                                       ToolTip="If the character should not be revived." TabIndex="2" Grid.Column="1" />
                             <CheckBox x:Name="NoProsthetic" Content="No Prosthetics"
                                       HorizontalAlignment="Left"
                                       Margin="0,26,0,0"
+                                      IsChecked="{Binding Path=NoProsthetic}"
                                       ToolTip="If the character should not be fitted with prosthetics." TabIndex="3" Grid.Column="2" />
                         </Grid>
                         <!-- user-resizable stuff is fun! Not. -->

@@ -1,6 +1,6 @@
 # Character Records Generator (for Aurora)
 
-[Find the latest release here](https://github.com/Llywelwyn/character-records-generator/releases/tag/v2.0)
+[Find the latest release here](https://github.com/Aurorastation/character-records-generator/releases)
 
 A tool for making setting up employment, medical, and security records a little easier on Aurora, forked from the AuroraRecordGenerator originally created by Lohikar.
 

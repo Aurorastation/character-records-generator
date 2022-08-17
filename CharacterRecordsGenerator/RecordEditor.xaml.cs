@@ -1,4 +1,4 @@
-﻿using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -94,6 +94,24 @@ namespace CharacterRecordsGenerator
                             throw new ArgumentOutOfRangeException();
                     }
                 }
+                // have a path, outdated extension
+                if (Path.GetExtension(_currentFilePath) != ".ss13records")
+                {
+                    switch (
+                        await
+                            this.ShowMessageAsync("Outdated File Extension",
+                                "This profile is using an outdated extension from an older version of the CRG. Press \"OK\" to convert to the new file extension (.ss13records).",
+                                MessageDialogStyle.AffirmativeAndNegative))
+                    {
+                        case MessageDialogResult.Affirmative:
+                            SaveContentAs(null, null);
+                            return;
+                        case MessageDialogResult.Negative:
+                            return;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
 
                 var fs = File.Open(_currentFilePath, FileMode.Truncate);
                 ProtoBuf.Serializer.Serialize(fs, Data);
@@ -107,7 +125,8 @@ namespace CharacterRecordsGenerator
                 AddExtension = true,
                 CheckFileExists = true,
                 CheckPathExists = true,
-                Filter = "Character Profiles (*.ss13prof)|*.ss13prof|All Files (*.*)|*.*"
+                Filter = "Character Profiles (*.ss13records, *.ss13prof)|*.ss13records;*.ss13prof|"
+                       + "All Files (*.*)|*.*"
             };
 
             if (!(dialog.ShowDialog() ?? false)) return;
@@ -133,7 +152,8 @@ namespace CharacterRecordsGenerator
             {
                 AddExtension = true,
                 CheckPathExists = true,
-                Filter = "Character Profiles (*.ss13prof)|*.ss13prof|All Files (*.*)|*.*"
+                Filter = "Character Profiles (*.ss13records)|*.ss13records|"
+                       + "All Files (*.*)|*.*"
             };
             if (!(dialog.ShowDialog() ?? false)) return;
             var fs = File.Open(dialog.FileName, FileMode.Create);

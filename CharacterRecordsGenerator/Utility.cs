@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -52,14 +52,6 @@ namespace CharacterRecordsGenerator
 
             return builder.ToString();
         }
-
-        /// <summary>
-        ///		Returns true if the specified species has gender.
-        /// </summary>
-        /// <param name="species"></param>
-        /// <returns></returns>
-        public static bool HasGender(this SpeciesType species) =>
-            !(species == SpeciesType.Diona || species == SpeciesType.IPC || species == SpeciesType.Vaurca);
 
         public static string SubspeciesNiceName(SpeciesSubType species)
         {

@@ -146,6 +146,7 @@ namespace CharacterRecordsGenerator
                 !_MedicalPhysicalEvaluations.Any() &&
                 !_MedicalPsychEvaluations.Any() &&
                 !_MedicalPsychDisorders.Any() &&
+                !_MedicalPostmortem.Any() &&
                 !_targetRecord.NoBorg &&
                 !_targetRecord.NoProsthetic &&
                 !_targetRecord.NoRevive)
@@ -203,6 +204,9 @@ namespace CharacterRecordsGenerator
                     "Psychological Evaluations:",
                     _MedicalPsychEvaluations);
 
+                WriteSectionIfAny(ref recordText,
+                    "Postmorterm Instructions:",
+                    _MedicalPostmortem);
 
             }
             recordText.AppendLine($"LAST UPDATED: {Utility.HumanisedDate(Info.IcDate)}");

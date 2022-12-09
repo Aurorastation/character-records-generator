@@ -337,6 +337,8 @@
                                       VerticalAlignment="Top" Margin="5,5,5,0" Text="Documented Psychological Disorders"/>
                         <TextBlock Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
                                       VerticalAlignment="Top" Margin="5,5,5,0" Text="Psychological Evaluations"/>
+                        <TextBlock Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Postmortem Instructions"/>
                         <TextBox Margin="0,21,0,10" AcceptsReturn="True" TextWrapping="Wrap"
                                  controls:TextBoxHelper.Watermark="e.g.&#x0a;Peanuts (severe)&#x0a;Latex (minor irritation)"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
@@ -379,6 +381,12 @@
                                  VerticalScrollBarVisibility="Auto"
                                  ToolTip="Dated records of psychological evaluations. One per line." Grid.Row="7"
                                  Text="{Binding Path=MedicalPsychEvaluations}" TabIndex="10" Grid.ColumnSpan="2" />
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a; Cremate and return remains to next of kin, located on Xanu Prime."
+                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
+                                 VerticalScrollBarVisibility="Auto"
+                                 ToolTip="Instructions to execute upon death." Grid.Row="8"
+                                 Text="{Binding Path=MedicalPostmortem}" TabIndex="10" Grid.ColumnSpan="2" />
                     </Grid>
                 </ScrollViewer>
             </TabItem>

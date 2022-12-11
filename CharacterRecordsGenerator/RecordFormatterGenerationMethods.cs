@@ -205,7 +205,7 @@ namespace CharacterRecordsGenerator
                     _MedicalPsychEvaluations);
 
                 WriteSectionIfAny(ref recordText,
-                    "Postmorterm Instructions:",
+                    "Postmortem Instructions:",
                     _MedicalPostmortem);
 
             }

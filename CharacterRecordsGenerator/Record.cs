@@ -62,7 +62,8 @@ namespace CharacterRecordsGenerator
         [ProtoMember(18)]
         public string NextOfKin { get; set; } = string.Empty;
 
-        // 19 was used for MedicalPublicRecord, now empty
+        [ProtoMember(19)]
+        public string MedicalPostmortem { get; set; } = string.Empty;
 
         [ProtoMember(20)]
         public string MedicalAllergies { get; set; } = string.Empty;

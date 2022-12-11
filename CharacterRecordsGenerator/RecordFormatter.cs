@@ -24,6 +24,7 @@ namespace CharacterRecordsGenerator
         private IList<string> _MedicalPhysicalEvaluations;
         private IList<string> _MedicalPsychDisorders;
         private IList<string> _MedicalPsychEvaluations;
+        private IList<string> _MedicalPostmortem;
 
         private IList<string> _securityRecords;
         private IList<string> _securityNotes;
@@ -50,6 +51,7 @@ namespace CharacterRecordsGenerator
             _MedicalPhysicalEvaluations = _targetRecord.MedicalPhysicalEvaluations?.LineSplit();
             _MedicalPsychDisorders = _targetRecord.MedicalPsychDisorders?.LineSplit();
             _MedicalPsychEvaluations = _targetRecord.MedicalPsychEvaluations?.LineSplit();
+            _MedicalPostmortem = _targetRecord.MedicalPostmortem?.LineSplit();
 
             // security
             _securityRecords = _targetRecord.SecurityRecords?.LineSplit();

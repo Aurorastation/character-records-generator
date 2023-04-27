@@ -146,6 +146,7 @@ namespace CharacterRecordsGenerator
                 !_MedicalPhysicalEvaluations.Any() &&
                 !_MedicalPsychEvaluations.Any() &&
                 !_MedicalPsychDisorders.Any() &&
+                !_MedicalPostmortem.Any() &&
                 !_targetRecord.NoBorg &&
                 !_targetRecord.NoProsthetic &&
                 !_targetRecord.NoRevive)
@@ -161,14 +162,12 @@ namespace CharacterRecordsGenerator
 
                 if (_targetRecord.NoBorg || _targetRecord.NoProsthetic || _targetRecord.NoRevive)
                 {
-                    recordText.AppendLine("IMPORTANT NOTES:");
+                    recordText.AppendLine("OPT-OUTS:");
 
                     if (_targetRecord.NoBorg)
                         MakeMedicalNote(ref recordText, "DO NOT BORGIFY");
-
                     if (_targetRecord.NoProsthetic)
                         MakeMedicalNote(ref recordText, "DO NOT INSTALL PROSTHETICS");
-
                     if (_targetRecord.NoRevive)
                         MakeMedicalNote(ref recordText, "DO NOT REVIVE");
 
@@ -176,29 +175,26 @@ namespace CharacterRecordsGenerator
                 }
 
                 WriteSectionIfAny(ref recordText,
+                    "POSTMORTEM INSTRUCTIONS:",
+                    _MedicalPostmortem);
+                WriteSectionIfAny(ref recordText,
+                    "ALLERGIES:",
+                     _MedicalAllergies);
+                WriteSectionIfAny(ref recordText,
                     "Current Prescriptions:",
                     _MedicalCurrentPrescriptions);
-
-                WriteSectionIfAny(ref recordText,
-                    "Allergies:",
-                    _MedicalAllergies);
-
                 WriteSectionIfAny(ref recordText,
                     "Surgical History:",
                     _MedicalSurgicalHistory);
-
                 WriteSectionIfAny(ref recordText,
                     "Medication History:",
                     _MedicalHistory);
-
                 WriteSectionIfAny(ref recordText,
                     "Physical Evaluations:",
-                    _MedicalPhysicalEvaluations);
-                               
+                    _MedicalPhysicalEvaluations);   
                 WriteSectionIfAny(ref recordText,
                     "Documented Psychological Disorders:",
                     _MedicalPsychDisorders);
-
                 WriteSectionIfAny(ref recordText,
                     "Psychological Evaluations:",
                     _MedicalPsychEvaluations);
@@ -234,15 +230,12 @@ namespace CharacterRecordsGenerator
                 WriteSectionIfAny(ref recordText,
                     "Attitude Towards the SCC:",
                     _securityAttitudeScc);
-
                 WriteSectionIfAny(ref recordText,
                     "Attitude Towards the Crew:",
                     _securityAttitudeCrew);
-
                 WriteSectionIfAny(ref recordText,
                     "Notes:",
                     _securityNotes);
-
                 WriteSectionIfAny(ref recordText,
                     "Record:",
                     _securityRecords);

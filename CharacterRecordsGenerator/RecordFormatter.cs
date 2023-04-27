@@ -17,6 +17,7 @@ namespace CharacterRecordsGenerator
 
         private IList<string> _publicNotes;
 
+        private IList<string> _MedicalPostmortem;
         private IList<string> _MedicalAllergies;
         private IList<string> _MedicalCurrentPrescriptions;
         private IList<string> _MedicalHistory;
@@ -43,6 +44,7 @@ namespace CharacterRecordsGenerator
             _publicNotes = _targetRecord.PublicNotes?.LineSplit();
 
             // Medical
+            _MedicalPostmortem = _targetRecord.MedicalPostmortem?.LineSplit();
             _MedicalAllergies = _targetRecord.MedicalAllergies?.LineSplit();
             _MedicalCurrentPrescriptions = _targetRecord.MedicalCurrentPrescriptions?.LineSplit();
             _MedicalHistory = _targetRecord.MedicalHistory?.LineSplit();

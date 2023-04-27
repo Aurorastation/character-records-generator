@@ -324,60 +324,68 @@
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
                                       VerticalAlignment="Top" Margin="5,5,5,0" Text="Opt-outs"/>
                         <TextBlock Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
-                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Allergies"/>
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Postmortem Instructions"/>
                         <TextBlock Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
-                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Current Medications/Prescriptions"/>
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Allergies"/>
                         <TextBlock Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
-                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Medication History"/>
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Current Medications/Prescriptions"/>
                         <TextBlock Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
-                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Surgical History"/>
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Medication History"/>
                         <TextBlock Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
-                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Physical Evaluations"/>
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Surgical History"/>
                         <TextBlock Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
-                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Documented Psychological Disorders"/>
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Physical Evaluations"/>
                         <TextBlock Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
+                                      VerticalAlignment="Top" Margin="5,5,5,0" Text="Documented Psychological Disorders"/>
+                        <TextBlock Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontWeight="DemiBold"
                                       VerticalAlignment="Top" Margin="5,5,5,0" Text="Psychological Evaluations"/>
+                        <TextBox Margin="0,21,0,10" AcceptsReturn="True"
+                                 TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;Cremate and return remains to next of kin, located on Xanu Prime."
+                                 controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
+                                 VerticalScrollBarVisibility="Auto"
+                                 ToolTip="Instructions to execute upon death." Grid.Row="1"
+                                 Text="{Binding Path=MedicalPostmortem}" TabIndex="10" Grid.ColumnSpan="2" />
                         <TextBox Margin="0,21,0,10" AcceptsReturn="True" TextWrapping="Wrap"
                                  controls:TextBoxHelper.Watermark="e.g.&#x0a;Peanuts (severe)&#x0a;Latex (minor irritation)"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
                                  ToolTip="List of allergies. One per line."
-                                 Grid.Row="1" Text="{Binding Path=MedicalAllergies}" TabIndex="6" Grid.ColumnSpan="2" />
+                                 Grid.Row="2" Text="{Binding Path=MedicalAllergies}" TabIndex="6" Grid.ColumnSpan="2" />
                         <TextBox Margin="0,21,0,10" AcceptsReturn="True" TextWrapping="Wrap"
                                  controls:TextBoxHelper.Watermark="e.g.&#x0a;2x 5u Perconol (daily) for back pain."
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Current prescriptions, etc. One per line." Grid.Row="2"
+                                 ToolTip="Current prescriptions, etc. One per line." Grid.Row="3"
                                  Text="{Binding Path=MedicalCurrentPrescriptions}" TabIndex="7" Grid.ColumnSpan="2" />
                         <TextBox Margin="0,21,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;[12/07/2462 - 12/08/2462] 5u Hyperzine (daily) for heart injury.&#x0a;[14/09/2463 - 16/09/2463] 30u Nightlife (daily) prescribed for a weekend party."
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Dated records of medical history. One per line." Grid.Row="3"
+                                 ToolTip="Dated records of medical history. One per line." Grid.Row="4"
                                  Text="{Binding Path=MedicalHistory}" TabIndex="8" Grid.ColumnSpan="2" />
                         <TextBox Margin="0,21,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;[09/04/2460] Triple coronary artery bypass"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Dated records of surgical history. One per line." Grid.Row="4"
+                                 ToolTip="Dated records of surgical history. One per line." Grid.Row="5"
                                  Text="{Binding Path=MedicalSurgicalHistory}" TabIndex="9" Grid.ColumnSpan="2" />
                         <TextBox Margin="0,21,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;[30/03/2458] Passed - Fully able for work.&#x0a;[29/03/2459] Passed - Fully able for work."
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Dated records of physical evaluations. One per line." Grid.Row="5"
+                                 ToolTip="Dated records of physical evaluations. One per line." Grid.Row="6"
                                  Text="{Binding Path=MedicalPhysicalEvaluations}" TabIndex="10" Grid.ColumnSpan="2" />
                         <TextBox Margin="0,21,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;Obsessive-compulsive disorder"
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Any documented psychological disorders. One per line." Grid.Row="6"
+                                 ToolTip="Any documented psychological disorders. One per line." Grid.Row="7"
                                  Text="{Binding Path=MedicalPsychDisorders}" TabIndex="10" Grid.ColumnSpan="2" />
                         <TextBox Margin="0,21,0,10" AcceptsReturn="True"
                                  TextWrapping="Wrap" controls:TextBoxHelper.Watermark="e.g.&#x0a;[04/02/2459] Passed - John Doe is an example of excellent mental health."
                                  controls:TextBoxHelper.IsSpellCheckContextMenuEnabled="True"
                                  VerticalScrollBarVisibility="Auto"
-                                 ToolTip="Dated records of psychological evaluations. One per line." Grid.Row="7"
+                                 ToolTip="Dated records of psychological evaluations. One per line." Grid.Row="8"
                                  Text="{Binding Path=MedicalPsychEvaluations}" TabIndex="10" Grid.ColumnSpan="2" />
                     </Grid>
                 </ScrollViewer>

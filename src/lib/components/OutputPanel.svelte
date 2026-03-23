@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Character } from '$lib/types';
 	import { generateRecord } from '$lib/output';
+	import { encodeCharacterURL } from '$lib/sharing';
 	import { species } from '$lib/data';
 	import OutputTab from './OutputTab.svelte';
 
@@ -21,10 +22,16 @@
 	let output = $derived(
 		activeTab ? generateRecord(character.template, character.data, activeTab, species) : ''
 	);
+
+	async function share() {
+		const encoded = encodeCharacterURL(character);
+		const url = `${window.location.origin}${window.location.pathname}#${encoded}`;
+		await navigator.clipboard.writeText(url);
+	}
 </script>
 
 <div class="flex flex-col h-full min-h-0 rounded border" style="border-color: var(--border); background: var(--bg-card);">
-	<div class="flex border-b" style="border-color: var(--border);">
+	<div class="flex border-b shrink-0" style="border-color: var(--border);">
 		{#each tabs as tab}
 			<button
 				onclick={() => { activeTab = tab.type; }}
@@ -38,5 +45,5 @@
 		{/each}
 	</div>
 
-	<OutputTab {output} />
+	<OutputTab {output} onShare={share} />
 </div>

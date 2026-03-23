@@ -4,7 +4,7 @@
   <xs:element name="species">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="description" type="xs:string" />
+        <xs:element name="description" type="xs:string" minOccurs="0" />
         <xs:element name="languages" type="refList" />
         <xs:element name="citizenships" type="refList" />
         <xs:element name="subspecies" minOccurs="0">
@@ -13,7 +13,7 @@
               <xs:element name="entry" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="description" type="xs:string" />
+                    <xs:element name="description" type="xs:string" minOccurs="0" />
                   </xs:sequence>
                   <xs:attribute name="id" type="xs:string" use="required" />
                   <xs:attribute name="name" type="xs:string" use="required" />

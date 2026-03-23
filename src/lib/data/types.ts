@@ -1,9 +1,9 @@
 export interface SpeciesData {
 	id: string;
 	name: string;
-	description: string;
+	description?: string;
 	subspeciesLabel: string;
-	subspecies: { id: string; name: string; description: string }[];
+	subspecies: { id: string; name: string; description?: string }[];
 	languages: string[];
 	citizenships: string[];
 }
@@ -17,5 +17,5 @@ export interface CitizenshipData {
 export interface LanguageData {
 	id: string;
 	name: string;
-	description: string;
+	description?: string;
 }

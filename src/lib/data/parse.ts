@@ -21,14 +21,14 @@ export function parseSpecies(xml: string): SpeciesData {
 	return {
 		id: root['@_id'],
 		name: root['@_name'],
-		description: root.description.trim(),
+		description: root.description?.trim(),
 		subspeciesLabel: root['@_subspeciesLabel'],
 		languages: extractRefs(root.languages),
 		citizenships: extractRefs(root.citizenships),
 		subspecies: subspecies.map((e: any) => ({
 			id: e['@_id'],
 			name: e['@_name'],
-			description: e.description.trim()
+			description: e.description?.trim()
 		}))
 	};
 }
@@ -47,7 +47,7 @@ export function parseLanguages(xml: string): LanguageData[] {
 	return root.language.map((l: any) => ({
 		id: l['@_id'],
 		name: l['@_name'],
-		description: l.description.trim()
+		description: l.description?.trim()
 	}));
 }
 

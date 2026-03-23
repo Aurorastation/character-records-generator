@@ -1,9 +1,42 @@
-# Character Records Generator (for Aurora)
+# sv
 
-[Find the latest release here](https://github.com/Aurorastation/character-records-generator/releases) - just download the character-records-generator.zip from the latest release and you're good to go.
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-A tool for making setting up employment, medical, and security records a little easier on Aurora, forked from the AuroraRecordGenerator originally created by Lohikar.
+## Creating a project
 
-This modification of the records generator has been made up to date with all of the latest changes to the server, and to better match the example records present on [Aurora's Guide to Character Records](https://wiki.aurorastation.org/index.php?title=Guide_to_Character_Records). Some redundant fields have been removed, and nearly all of the fields are now optional rather than being listed as 'not specified', hopefully to make filling out the records less of a chore if you want to do it piece by piece as you play.
+If you're seeing this, you've probably already done this step. Congrats!
 
-Credit to Lohikar's original AuroraRecordGenerator (https://github.com/Lohikar/AuroraRecordGenerator)
+```sh
+# create a new project
+npx sv create my-app
+```
+
+To recreate this project with the same configuration:
+
+```sh
+# recreate this project
+npx sv@0.12.8 create --template minimal --types ts --no-install .
+```
+
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```sh
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```sh
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.

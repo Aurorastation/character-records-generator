@@ -1,9 +1,8 @@
 <script lang="ts">
 	import Header from '$lib/components/Header.svelte';
-	import DynamicField from '$lib/components/fields/DynamicField.svelte';
+	import SchemaForm from '$lib/components/SchemaForm.svelte';
 	import { roster } from '$lib/state.svelte';
 	import { presets } from '$lib/presets';
-	import { slugify } from '$lib/utils/slugify';
 </script>
 
 <div class="min-h-screen flex flex-col">
@@ -11,28 +10,8 @@
 
 	<main class="flex-1 p-4">
 		{#if roster.active}
-			{@const char = roster.active}
-			<div class="max-w-xl mx-auto flex flex-col gap-6">
-				{#each char.template.records as record}
-					<section>
-						<h2 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color: var(--text-muted);">
-							{record.type}
-						</h2>
-						<div class="flex flex-col gap-4">
-							{#each record.fields as field}
-								<DynamicField
-									{field}
-									value={char.data[slugify(field.label)]}
-									data={char.data}
-									onChange={(v) => {
-										char.data[slugify(field.label)] = v;
-										roster.scheduleSave(char);
-									}}
-								/>
-							{/each}
-						</div>
-					</section>
-				{/each}
+			<div class="max-w-xl mx-auto">
+				<SchemaForm character={roster.active} />
 			</div>
 		{:else}
 			<div class="flex flex-col items-center justify-center gap-4 h-full min-h-[60vh]">

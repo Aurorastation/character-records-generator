@@ -33,11 +33,11 @@ export const roster = {
 		}
 	},
 
-	async create(template: Template) {
+	async create(template: Template, data: Record<string, unknown> = {}) {
 		const char: Character = {
 			id: crypto.randomUUID(),
 			template: $state.snapshot(template),
-			data: {}
+			data: { ...data }
 		};
 		characters.push(char);
 		activeId = char.id;

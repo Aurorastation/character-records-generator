@@ -54,9 +54,7 @@
 
 	async function importCharacter() {
 		if (!charData) return;
-		const char = await roster.create(charData.template);
-		Object.assign(char.data, charData.data);
-		roster.scheduleSave(char);
+		await roster.create(charData.template, charData.data);
 		onClose();
 	}
 

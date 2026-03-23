@@ -63,7 +63,8 @@ function parseOptions(field: any): SelectOption[] {
 function parseField(raw: any): FieldDef {
 	const base = {
 		label: raw['@_label'],
-		...(raw['@_required'] === 'true' && { required: true })
+		...(raw['@_required'] === 'true' && { required: true }),
+		...(raw['@_from'] && { from: raw['@_from'] })
 	};
 	const type = raw['@_type'];
 

@@ -6,6 +6,7 @@ export interface SelectOption {
 export interface BaseFieldDef {
 	label: string;
 	required?: boolean;
+	from?: string;
 }
 
 export interface TextField extends BaseFieldDef {

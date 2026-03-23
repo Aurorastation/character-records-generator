@@ -107,11 +107,13 @@ export function parseTemplate(xml: string, id: string): Template {
 		fields: r.field.map(parseField)
 	}));
 
+	const speciesAttr = root['@_species'];
 	return {
 		id,
 		name: root['@_name'],
 		description: root.description ?? '',
 		schemaVersion: Number(root['@_schemaVersion'] ?? 1),
+		...(speciesAttr && { species: speciesAttr.split(',').map((s: string) => s.trim()) }),
 		records
 	};
 }

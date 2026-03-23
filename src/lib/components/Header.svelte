@@ -6,13 +6,19 @@
 	import { encodeCharacterURL } from '$lib/sharing';
 	import { slugify } from '$lib/utils/slugify';
 	import CharacterSwitcher from './CharacterSwitcher.svelte';
+	import TemplatePicker from './TemplatePicker.svelte';
 	import Modal from './Modal.svelte';
 
 	let shared = $state(false);
 	let confirmDelete = $state(false);
+	let showPicker = $state(false);
 
-	async function createCharacter() {
-		await roster.create(presets[0]);
+	function createCharacter() {
+		if (presets.length === 1) {
+			roster.create(presets[0]);
+		} else {
+			showPicker = true;
+		}
 	}
 
 	async function share() {
@@ -81,6 +87,10 @@
 	</div>
 </div>
 </header>
+
+{#if showPicker}
+	<TemplatePicker onClose={() => { showPicker = false; }} />
+{/if}
 
 {#if confirmDelete && roster.active}
 	<Modal onClose={() => { confirmDelete = false; }}>

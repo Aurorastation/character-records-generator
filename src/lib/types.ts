@@ -101,6 +101,7 @@ export interface Template {
 	name: string;
 	description: string;
 	schemaVersion: number;
+	species?: string[];
 	records: RecordDef[];
 }
 

@@ -6,9 +6,11 @@
 	import ImportModal from '$lib/components/ImportModal.svelte';
 	import { roster } from '$lib/state.svelte';
 	import { presets } from '$lib/presets';
+	import TemplatePicker from '$lib/components/TemplatePicker.svelte';
 
 	let importData = $state<string | null>(null);
 	let mobileView = $state<'edit' | 'preview' | 'split'>('split');
+	let showPicker = $state(false);
 
 	onMount(() => {
 		const hash = window.location.hash.slice(1);
@@ -86,12 +88,18 @@
 		<main class="flex-1 flex flex-col items-center justify-center gap-4">
 			<p style="color: var(--text-muted);">No characters yet.</p>
 			<button
-				onclick={() => roster.create(presets[0])}
+				onclick={() => {
+					if (presets.length === 1) roster.create(presets[0]);
+					else showPicker = true;
+				}}
 				class="px-3 py-1 rounded text-sm border hover:opacity-80"
 				style="border-color: var(--border);"
 			>
 				Get Started
 			</button>
 		</main>
+		{#if showPicker}
+			<TemplatePicker onClose={() => { showPicker = false; }} />
+		{/if}
 	{/if}
 </div>

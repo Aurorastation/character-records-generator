@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { X } from 'lucide-svelte';
 	import type { LanguagesField } from '$lib/types';
 	import { languages } from '$lib/data';
+	import MultiSelectField from './MultiSelectField.svelte';
 
 	let { field, value = ['Tau Ceti Basic'], onChange }: {
 		field: LanguagesField;
@@ -9,89 +9,8 @@
 		onChange: (v: string[]) => void;
 	} = $props();
 
-	let input = $state('');
-	let open = $state(false);
-
-	let available = $derived(
-		languages
-			.filter((l) => !value.includes(l.name))
-			.filter((l) => !input || l.name.toLowerCase().includes(input.toLowerCase()))
-	);
-
-	function add(name: string) {
-		onChange([...value, name]);
-		input = '';
-	}
-
-	function addCustom() {
-		const trimmed = input.trim();
-		if (trimmed && !value.includes(trimmed)) {
-			onChange([...value, trimmed]);
-		}
-		input = '';
-	}
-
-	function remove(name: string) {
-		onChange(value.filter((v) => v !== name));
-	}
+	const options = languages.map((l) => ({ value: l.name, label: l.name }));
+	const multiField = $derived({ ...field, type: 'multi-select' as const, options });
 </script>
 
-<div class="block">
-	<span class="text-sm font-medium">{field.label}{#if field.required}<span style="color: var(--accent);"> *</span>{/if}</span>
-
-	<div class="flex flex-wrap gap-1 mt-1">
-		{#each value as lang}
-			<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-sm" style="background: var(--border); color: var(--text);">
-				{lang}
-				<button onclick={() => remove(lang)} class="hover:opacity-60">
-					<X size={12} />
-				</button>
-			</span>
-		{/each}
-	</div>
-
-	<div class="relative mt-1">
-		<input
-			type="text"
-			bind:value={input}
-			placeholder="Add language..."
-			onfocus={() => { open = true; }}
-			onblur={() => { setTimeout(() => { open = false; }, 150); }}
-			onkeydown={(e) => {
-				if (e.key === 'Enter') {
-					e.preventDefault();
-					if (available.length) add(available[0].name);
-					else addCustom();
-				}
-			}}
-			class="block w-full rounded px-3 py-2 text-sm"
-			style="background: var(--bg-input); border: 1px solid var(--border); color: var(--text);"
-		/>
-		{#if open && (available.length || input.trim())}
-			<ul class="absolute z-10 w-full mt-1 rounded shadow-lg max-h-48 overflow-y-auto" style="background: var(--bg-card); border: 1px solid var(--border);">
-				{#each available as lang}
-					<li>
-						<button
-							onmousedown={(e) => { e.preventDefault(); add(lang.name); }}
-							class="block w-full text-left px-3 py-1.5 text-sm hover:opacity-80"
-							style="color: var(--text);"
-						>
-							{lang.name}
-						</button>
-					</li>
-				{/each}
-				{#if input.trim() && !languages.some((l) => l.name.toLowerCase() === input.trim().toLowerCase())}
-					<li>
-						<button
-							onmousedown={(e) => { e.preventDefault(); addCustom(); }}
-							class="block w-full text-left px-3 py-1.5 text-sm"
-							style="color: var(--text-muted);"
-						>
-							Add "{input.trim()}"
-						</button>
-					</li>
-				{/if}
-			</ul>
-		{/if}
-	</div>
-</div>
+<MultiSelectField field={multiField} {value} {onChange} />

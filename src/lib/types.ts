@@ -107,6 +107,4 @@ export interface Character {
 	id: string;
 	template: Template;
 	data: Record<string, unknown>;
-	createdAt: string;
-	updatedAt: string;
 }

@@ -34,8 +34,15 @@
 		/>
 		<div class="flex-1 min-w-0">
 			<span class="font-medium capitalize">{record.type}</span>
-			{#if record.preamble}
-				<span class="block text-xs truncate" style="color: var(--text-muted);">{record.preamble}</span>
+			{#if record.note || record.preamble}
+				<div class="flex flex-col{record.note && record.preamble ? ' gap-1' : ''}">
+					{#if record.note}
+						<span class="block text-xs" style="color: var(--text-muted);">{record.note}</span>
+					{/if}
+					{#if record.preamble}
+						<span class="block text-xs" style="color: var(--text-muted);">{record.preamble}</span>
+					{/if}
+				</div>
 			{/if}
 		</div>
 		<span class="text-sm tabular-nums" style="color: var(--text-muted);">

@@ -92,6 +92,7 @@ export type FieldDef =
 export interface RecordDef {
 	type: string;
 	preamble?: string;
+	note?: string;
 	fields: FieldDef[];
 }
 

@@ -3,6 +3,7 @@
   <description>The standard record format used by a majority of players.</description>
 
   <record type="public">
+    <note>Basic identification information visible on all records.</note>
     <field label="Name"                     type="text" required="true" />
     <field label="Species"                  type="species" required="true" />
     <field label="Subspecies"               type="subspecies" />

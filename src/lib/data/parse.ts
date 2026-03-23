@@ -103,6 +103,7 @@ export function parseTemplate(xml: string, id: string): Template {
 	const records: RecordDef[] = root.record.map((r: any) => ({
 		type: r['@_type'],
 		preamble: r.preamble?.trim(),
+		note: r.note?.trim(),
 		fields: r.field.map(parseField)
 	}));
 

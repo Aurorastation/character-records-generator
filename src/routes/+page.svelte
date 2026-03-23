@@ -6,9 +6,11 @@
 	import ImportModal from '$lib/components/ImportModal.svelte';
 	import { roster } from '$lib/state.svelte';
 	import { presets } from '$lib/presets';
+	import { parseCharacterFile } from '$lib/file';
 	import TemplatePicker from '$lib/components/TemplatePicker.svelte';
 
 	let importData = $state<string | null>(null);
+	let fileImportData = $state<{ template: any; data: Record<string, unknown> } | null>(null);
 	let mobileView = $state<'edit' | 'preview' | 'split'>('split');
 	let showPicker = $state(false);
 
@@ -24,13 +26,29 @@
 		history.replaceState(null, '', window.location.pathname);
 	}
 
+	function handleFileImport(json: string) {
+		try {
+			fileImportData = parseCharacterFile(json);
+		} catch {
+			// TODO: show error to user
+		}
+	}
+
+	function closeFileImport() {
+		fileImportData = null;
+	}
+
 	const modes = ['edit', 'preview', 'split'] as const;
 </script>
 
 <div class="h-dvh flex flex-col overflow-hidden">
-	<Header />
+	<Header onImport={handleFileImport} />
 
-	{#if importData}
+	{#if fileImportData}
+		<div class="flex-1 overflow-y-auto">
+			<ImportModal fileData={fileImportData} onClose={closeFileImport} />
+		</div>
+	{:else if importData}
 		<div class="flex-1 overflow-y-auto">
 			<ImportModal encoded={importData} onClose={closeImport} />
 		</div>

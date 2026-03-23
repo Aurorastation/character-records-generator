@@ -16,7 +16,7 @@ function fromBase64url(str: string): Uint8Array {
 	return bytes;
 }
 
-function pruneEmpty(data: Record<string, unknown>): Record<string, unknown> {
+export function pruneEmpty(data: Record<string, unknown>): Record<string, unknown> {
 	const out: Record<string, unknown> = {};
 	for (const [k, v] of Object.entries(data)) {
 		if (v === '' || v === undefined || v === null) continue;

@@ -6,7 +6,15 @@
 	import { slugify } from '$lib/utils/slugify';
 	import OutputTab from './OutputTab.svelte';
 
-	let { encoded, onClose }: { encoded: string; onClose: () => void } = $props();
+	let {
+		encoded = '',
+		fileData = null,
+		onClose
+	}: {
+		encoded?: string;
+		fileData?: { template: any; data: Record<string, unknown> } | null;
+		onClose: () => void;
+	} = $props();
 
 	let error = $state('');
 	let type = $state<'character' | 'template' | null>(null);
@@ -16,18 +24,24 @@
 	let activeTab = $state('');
 
 	$effect(() => {
-		try {
-			if (encoded.startsWith('c1.')) {
-				type = 'character';
-				charData = decodeCharacterURL(encoded);
-			} else if (encoded.startsWith('t1.')) {
-				type = 'template';
-				tmplData = decodeTemplateURL(encoded);
-			} else {
-				error = 'Unrecognized share link format.';
+		if (fileData) {
+			type = 'character';
+			charData = fileData;
+			error = '';
+		} else if (encoded) {
+			try {
+				if (encoded.startsWith('c1.')) {
+					type = 'character';
+					charData = decodeCharacterURL(encoded);
+				} else if (encoded.startsWith('t1.')) {
+					type = 'template';
+					tmplData = decodeTemplateURL(encoded);
+				} else {
+					error = 'Unrecognized share link format.';
+				}
+			} catch {
+				error = 'Failed to decode share link.';
 			}
-		} catch {
-			error = 'Failed to decode share link.';
 		}
 	});
 

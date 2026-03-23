@@ -1,17 +1,24 @@
 <script lang="ts">
-	import { Sun, Moon, Share2, Check, Trash2, Plus } from 'lucide-svelte';
+	import { Sun, Moon, Trash2, Plus, Upload } from 'lucide-svelte';
 	import { theme } from '$lib/theme.svelte';
 	import { roster } from '$lib/state.svelte';
 	import { presets } from '$lib/presets';
-	import { encodeCharacterURL } from '$lib/sharing';
 	import { slugify } from '$lib/utils/slugify';
 	import CharacterSwitcher from './CharacterSwitcher.svelte';
 	import TemplatePicker from './TemplatePicker.svelte';
+	import ShareMenu from './ShareMenu.svelte';
 	import Modal from './Modal.svelte';
 
-	let shared = $state(false);
+	let { onImport }: { onImport?: (json: string) => void } = $props();
+
 	let confirmDelete = $state(false);
 	let showPicker = $state(false);
+	let openDropdown = $state<'add' | 'share' | null>(null);
+	let fileInput: HTMLInputElement;
+
+	function toggleDropdown(which: 'add' | 'share') {
+		openDropdown = openDropdown === which ? null : which;
+	}
 
 	function createCharacter() {
 		if (presets.length === 1) {
@@ -19,16 +26,21 @@
 		} else {
 			showPicker = true;
 		}
+		openDropdown = null;
 	}
 
-	async function share() {
-		const char = roster.active;
-		if (!char) return;
-		const encoded = encodeCharacterURL(char);
-		const url = `${window.location.origin}${window.location.pathname}#${encoded}`;
-		await navigator.clipboard.writeText(url);
-		shared = true;
-		setTimeout(() => { shared = false; }, 2000);
+	function triggerImport() {
+		fileInput.click();
+		openDropdown = null;
+	}
+
+	async function handleFile(e: Event) {
+		const input = e.target as HTMLInputElement;
+		const file = input.files?.[0];
+		if (!file) return;
+		const text = await file.text();
+		onImport?.(text);
+		input.value = '';
 	}
 
 	function displayName(): string {
@@ -54,22 +66,40 @@
 		<CharacterSwitcher />
 	{/if}
 
-	<button onclick={createCharacter} class="flex items-center justify-center w-[30px] h-[30px] rounded border hover:opacity-80" style="border-color: var(--border);" title="New character">
-		<Plus size={14} />
-	</button>
+	<span class="relative">
+		<button
+			onclick={(e) => { e.stopPropagation(); toggleDropdown('add'); }}
+			class="flex items-center justify-center w-[30px] h-[30px] rounded border hover:opacity-80"
+			style="border-color: var(--border);"
+			title="Add character"
+		>
+			<Plus size={14} />
+		</button>
 
-	{#if roster.characters.length > 0}
+		{#if openDropdown === 'add'}
+			<nav class="absolute left-0 z-10 mt-1 w-48 rounded border shadow-lg" style="background: var(--bg-card); border-color: var(--border);">
+				<button
+					onclick={createCharacter}
+					class="flex items-center gap-2 w-full text-left px-3 py-2 text-sm hover:opacity-80"
+				>
+					<Plus size={14} /> New character
+				</button>
+				<button
+					onclick={triggerImport}
+					class="flex items-center gap-2 w-full text-left px-3 py-2 text-sm hover:opacity-80"
+				>
+					<Upload size={14} /> Import from file
+				</button>
+			</nav>
+		{/if}
+	</span>
+
+	{#if roster.active}
 		<button onclick={() => { confirmDelete = true; }} class="flex items-center justify-center w-[30px] h-[30px] rounded border hover:opacity-80" style="border-color: var(--border);" title="Delete character">
 			<Trash2 size={14} />
 		</button>
 
-		<button onclick={share} class="flex items-center justify-center h-[30px] rounded border hover:opacity-80 {shared ? 'gap-1 px-2' : 'w-[30px]'}" style="border-color: var(--border);" title="Share character">
-			{#if shared}
-				<Check size={14} /> <span class="text-sm hidden sm:inline">Copied share link</span>
-			{:else}
-				<Share2 size={14} />
-			{/if}
-		</button>
+		<ShareMenu open={openDropdown === 'share'} onToggle={() => toggleDropdown('share')} />
 	{/if}
 
 	<div class="ml-auto flex items-center gap-2">
@@ -87,6 +117,14 @@
 	</div>
 </div>
 </header>
+
+<input
+	bind:this={fileInput}
+	type="file"
+	accept=".json"
+	class="hidden"
+	onchange={handleFile}
+/>
 
 {#if showPicker}
 	<TemplatePicker onClose={() => { showPicker = false; }} />
@@ -106,3 +144,5 @@
 		</div>
 	</Modal>
 {/if}
+
+<svelte:window onclick={() => { openDropdown = null; }} />

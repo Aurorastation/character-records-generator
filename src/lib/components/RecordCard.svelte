@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { slide } from 'svelte/transition';
 	import { ChevronDown } from 'lucide-svelte';
 	import type { RecordDef } from '$lib/types';
 	import DynamicField from './fields/DynamicField.svelte';
@@ -25,11 +26,11 @@
 <section class="rounded border" style="border-color: var(--border); background: var(--bg-card);">
 	<button
 		onclick={() => { expanded = !expanded; }}
-		class="flex items-center w-full px-4 py-3 text-left gap-3"
+		class="flex items-center w-full px-4 py-3 text-left gap-3 min-h-[44px]"
 	>
 		<ChevronDown
 			size={16}
-			class="transition-transform shrink-0"
+			class="shrink-0 transition-transform duration-200"
 			style="transform: rotate({expanded ? '0' : '-90'}deg); color: var(--text-muted);"
 		/>
 		<div class="flex-1 min-w-0">
@@ -51,7 +52,7 @@
 	</button>
 
 	{#if expanded}
-		<div class="px-4 pb-4 flex flex-col gap-4">
+		<div transition:slide={{ duration: 150 }} class="px-4 pb-4 flex flex-col gap-4">
 			{#each record.fields as field}
 				<DynamicField
 					{field}

@@ -16,7 +16,7 @@
 	}
 </script>
 
-<div class="flex flex-col h-full">
+<div class="flex flex-col h-full min-h-0">
 	<div class="flex items-center justify-between px-3 py-2 text-sm" style="color: var(--text-muted);">
 		<span>{wordCount} words</span>
 		<button onclick={copy} class="flex items-center gap-1 px-2 py-1 rounded border hover:opacity-80" style="border-color: var(--border);">

@@ -23,7 +23,7 @@
 	);
 </script>
 
-<div class="flex flex-col h-full rounded border" style="border-color: var(--border); background: var(--bg-card);">
+<div class="flex flex-col h-full min-h-0 rounded border" style="border-color: var(--border); background: var(--bg-card);">
 	<div class="flex border-b" style="border-color: var(--border);">
 		{#each tabs as tab}
 			<button

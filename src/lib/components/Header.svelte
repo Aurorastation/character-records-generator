@@ -1,12 +1,25 @@
 <script lang="ts">
-	import { Sun, Moon } from 'lucide-svelte';
+	import { Sun, Moon, Share2, Check } from 'lucide-svelte';
 	import { theme } from '$lib/theme.svelte';
 	import { roster } from '$lib/state.svelte';
 	import { presets } from '$lib/presets';
+	import { encodeCharacterURL } from '$lib/sharing';
 	import CharacterSwitcher from './CharacterSwitcher.svelte';
+
+	let copied = $state(false);
 
 	async function createCharacter() {
 		await roster.create(presets[0]);
+	}
+
+	async function share() {
+		const char = roster.active;
+		if (!char) return;
+		const encoded = encodeCharacterURL(char);
+		const url = `${window.location.origin}${window.location.pathname}#${encoded}`;
+		await navigator.clipboard.writeText(url);
+		copied = true;
+		setTimeout(() => { copied = false; }, 2000);
 	}
 </script>
 
@@ -21,6 +34,16 @@
 		<span class="text-sm" style="color: var(--text-muted);">
 			{#if roster.saveStatus === 'saving'}Saving...{:else if roster.saveStatus === 'saved'}Saved{/if}
 		</span>
+
+		{#if roster.active}
+			<button onclick={share} class="p-1 rounded hover:opacity-80" title="Copy share link">
+				{#if copied}
+					<Check size={18} />
+				{:else}
+					<Share2 size={18} />
+				{/if}
+			</button>
+		{/if}
 
 		<button
 			onclick={createCharacter}

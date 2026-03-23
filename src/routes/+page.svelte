@@ -1,15 +1,33 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Header from '$lib/components/Header.svelte';
 	import SchemaForm from '$lib/components/SchemaForm.svelte';
 	import OutputPanel from '$lib/components/OutputPanel.svelte';
+	import ImportModal from '$lib/components/ImportModal.svelte';
 	import { roster } from '$lib/state.svelte';
 	import { presets } from '$lib/presets';
+
+	let importData = $state<string | null>(null);
+
+	onMount(() => {
+		const hash = window.location.hash.slice(1);
+		if (hash && (hash.startsWith('c1.') || hash.startsWith('t1.'))) {
+			importData = hash;
+		}
+	});
+
+	function closeImport() {
+		importData = null;
+		history.replaceState(null, '', window.location.pathname);
+	}
 </script>
 
 <div class="min-h-screen flex flex-col">
 	<Header />
 
-	{#if roster.active}
+	{#if importData}
+		<ImportModal encoded={importData} onClose={closeImport} />
+	{:else if roster.active}
 		{@const char = roster.active}
 		<main class="flex-1 grid grid-cols-1 lg:grid-cols-[1fr_1fr]">
 			<div class="p-4">

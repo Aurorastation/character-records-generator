@@ -1,1 +1,31 @@
 @import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+	--bg: #fafafa;
+	--bg-card: #ffffff;
+	--bg-input: #ffffff;
+	--border: #d4d4d4;
+	--text: #171717;
+	--text-muted: #737373;
+	--accent: #0066cc;
+	--accent-hover: #0052a3;
+}
+
+.dark {
+	--bg: #0a0a0a;
+	--bg-card: #171717;
+	--bg-input: #0a0a0a;
+	--border: #2e2e2e;
+	--text: #e5e5e5;
+	--text-muted: #a3a3a3;
+	--accent: #4da6ff;
+	--accent-hover: #80bfff;
+}
+
+body {
+	background-color: var(--bg);
+	color: var(--text);
+	font-family: system-ui, -apple-system, sans-serif;
+}

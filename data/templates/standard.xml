@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="Standard" schemaVersion="1">
+  <description>The standard record format used by a majority of players.</description>
+
+  <record type="public" expanded="true">
+    <field label="Name"                     type="text" />
+    <field label="Species"                  type="species" />
+    <field label="Subspecies"               type="subspecies" />
+    <field label="Pronouns"                 type="text" />
+    <field label="Date of Birth"            type="date" placeholder="March 15th, 2438" />
+    <field label="Citizenship"              type="citizenship" />
+    <field label="Spoken Languages"         type="languages" />
+    <field label="Next of Kin"              type="text" />
+    <field label="Employed As"              type="text" />
+    <field label="Height"                   type="height" />
+    <field label="Weight"                   type="weight" />
+    <field label="Skin Color"               type="text" />
+    <field label="Hair Color"               type="text" />
+    <field label="Eye Color"                type="text" />
+    <field label="Distinguishing Features"  type="textarea" />
+  </record>
+
+  <record type="employment" expanded="false">
+    <preamble>This information has been verified by employment agents within the External Affairs department, and any comments, questions, or concerns about the legitimacy of such must be sent in a secure document to the same department.</preamble>
+    <field label="Employment History" type="list" />
+    <field label="Formal Education"   type="list" />
+    <field label="Other Skills"       type="list" />
+  </record>
+
+  <record type="medical" expanded="false">
+    <preamble>The following information is protected by doctor-patient confidentiality laws. Do not release without patient's consent.</preamble>
+    <field label="Opt-Outs" type="checkbox">
+      <option value="no-borg"       label="Do Not Borgify" />
+      <option value="no-revive"     label="Do Not Revive" />
+      <option value="no-prosthetic" label="Do Not Prostheticize" />
+    </field>
+    <field label="Postmortem Instructions"   type="textarea" />
+    <field label="Allergies"                 type="list" />
+    <field label="Current Prescriptions"     type="list" />
+    <field label="Medication History"        type="list" />
+    <field label="Surgical History"          type="list" />
+    <field label="Physical Evaluations"      type="list" />
+    <field label="Psychological Disorders"   type="list" />
+    <field label="Psychological Evaluations" type="list" />
+  </record>
+
+  <record type="security" expanded="false">
+    <preamble>This information has been verified by employment agents within the External Affairs department, and any comments, questions, or concerns about the legitimacy of such must be sent in a secure document to the same department.</preamble>
+    <field label="Attitude Towards SCC"  type="textarea" />
+    <field label="Attitude Towards Crew" type="textarea" />
+    <field label="Arrest History"        type="list" />
+    <field label="Security Notes"        type="list" />
+  </record>
+</template>

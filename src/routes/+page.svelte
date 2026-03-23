@@ -7,7 +7,6 @@
 	import { roster } from '$lib/state.svelte';
 	import { presets } from '$lib/presets';
 	import TemplatePicker from '$lib/components/TemplatePicker.svelte';
-	import UpgradeModal from '$lib/components/UpgradeModal.svelte';
 
 	let importData = $state<string | null>(null);
 	let mobileView = $state<'edit' | 'preview' | 'split'>('split');
@@ -104,5 +103,3 @@
 		{/if}
 	{/if}
 </div>
-
-<UpgradeModal />

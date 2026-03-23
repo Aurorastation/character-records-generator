@@ -15,7 +15,7 @@ function makeTemplate(fields: any[]): Template {
 describe('buildCharacterSchema', () => {
 	it('validates text fields as optional strings', () => {
 		const schema = buildCharacterSchema(
-			makeTemplate([{ key: 'pronouns', label: 'Pronouns', type: 'text' }])
+			makeTemplate([{ label: 'Pronouns', type: 'text' }])
 		);
 		expect(schema.parse({})).toEqual({});
 		expect(schema.parse({ pronouns: 'She/her' })).toEqual({ pronouns: 'She/her' });
@@ -24,7 +24,7 @@ describe('buildCharacterSchema', () => {
 	it('validates textarea fields as optional strings', () => {
 		const schema = buildCharacterSchema(
 			makeTemplate([
-				{ key: 'distinguishing-features', label: 'Distinguishing Features', type: 'textarea' }
+				{ label: 'Distinguishing Features', type: 'textarea' }
 			])
 		);
 		expect(schema.parse({ 'distinguishing-features': 'Scar across left eye' })).toEqual({
@@ -36,7 +36,7 @@ describe('buildCharacterSchema', () => {
 	it('validates list fields as optional strings', () => {
 		const schema = buildCharacterSchema(
 			makeTemplate([
-				{ key: 'employment-history', label: 'Employment History', type: 'list' }
+				{ label: 'Employment History', type: 'list' }
 			])
 		);
 		expect(schema.parse({ 'employment-history': 'NanoTrasen Intern\nShaft Miner' })).toEqual({
@@ -48,7 +48,7 @@ describe('buildCharacterSchema', () => {
 	it('validates date fields as optional strings', () => {
 		const schema = buildCharacterSchema(
 			makeTemplate([
-				{ key: 'date-of-birth', label: 'Date of Birth', type: 'date', placeholder: 'March 15th, 2438' }
+				{ label: 'Date of Birth', type: 'date', placeholder: 'March 15th, 2438' }
 			])
 		);
 		expect(schema.parse({ 'date-of-birth': 'March 15th, 2438' })).toEqual({
@@ -60,8 +60,7 @@ describe('buildCharacterSchema', () => {
 		const schema = buildCharacterSchema(
 			makeTemplate([
 				{
-					key: 'citizenship',
-					label: 'Citizenship',
+						label: 'Citizenship',
 					type: 'select',
 					options: [{ value: 'biesel', label: 'Republic of Biesel' }]
 				}
@@ -72,7 +71,7 @@ describe('buildCharacterSchema', () => {
 
 	it('validates number fields as optional numbers', () => {
 		const schema = buildCharacterSchema(
-			makeTemplate([{ key: 'age', label: 'Age', type: 'number', min: 0, max: 999 }])
+			makeTemplate([{ label: 'Age', type: 'number', min: 0, max: 999 }])
 		);
 		expect(schema.parse({ age: 30 })).toEqual({ age: 30 });
 		expect(schema.parse({})).toEqual({});
@@ -80,21 +79,21 @@ describe('buildCharacterSchema', () => {
 
 	it('validates height as optional number', () => {
 		const schema = buildCharacterSchema(
-			makeTemplate([{ key: 'height', label: 'Height', type: 'height' }])
+			makeTemplate([{ label: 'Height', type: 'height' }])
 		);
 		expect(schema.parse({ height: 180 })).toEqual({ height: 180 });
 	});
 
 	it('validates weight as optional number', () => {
 		const schema = buildCharacterSchema(
-			makeTemplate([{ key: 'weight', label: 'Weight', type: 'weight' }])
+			makeTemplate([{ label: 'Weight', type: 'weight' }])
 		);
 		expect(schema.parse({ weight: 75 })).toEqual({ weight: 75 });
 	});
 
 	it('validates name as optional string', () => {
 		const schema = buildCharacterSchema(
-			makeTemplate([{ key: 'name', label: 'Name', type: 'text' }])
+			makeTemplate([{ label: 'Name', type: 'text' }])
 		);
 		expect(schema.parse({ name: 'Ka\'Akaix\'Lak Zo\'ra' })).toEqual({
 			name: 'Ka\'Akaix\'Lak Zo\'ra'
@@ -106,8 +105,7 @@ describe('buildCharacterSchema', () => {
 		const schema = buildCharacterSchema(
 			makeTemplate([
 				{
-					key: 'spoken-languages',
-					label: 'Spoken Languages',
+						label: 'Spoken Languages',
 					type: 'multi-select',
 					options: [
 						{ value: 'tau-ceti-basic', label: 'Tau Ceti Basic' },
@@ -126,8 +124,7 @@ describe('buildCharacterSchema', () => {
 		const schema = buildCharacterSchema(
 			makeTemplate([
 				{
-					key: 'opt-outs',
-					label: 'Opt-Outs',
+						label: 'Opt-Outs',
 					type: 'checkbox',
 					options: [
 						{ value: 'no-borg', label: 'Do Not Borgify' },
@@ -145,7 +142,7 @@ describe('buildCharacterSchema', () => {
 	it('validates languages as optional string array', () => {
 		const schema = buildCharacterSchema(
 			makeTemplate([
-				{ key: 'spoken-languages', label: 'Spoken Languages', type: 'languages' }
+				{ label: 'Spoken Languages', type: 'languages' }
 			])
 		);
 		expect(
@@ -157,14 +154,14 @@ describe('buildCharacterSchema', () => {
 
 	it('validates species as optional string', () => {
 		const schema = buildCharacterSchema(
-			makeTemplate([{ key: 'species', label: 'Species', type: 'species' }])
+			makeTemplate([{ label: 'Species', type: 'species' }])
 		);
 		expect(schema.parse({ species: 'tajara' })).toEqual({ species: 'tajara' });
 	});
 
 	it('validates subspecies as optional string', () => {
 		const schema = buildCharacterSchema(
-			makeTemplate([{ key: 'subspecies', label: 'Subspecies', type: 'subspecies' }])
+			makeTemplate([{ label: 'Subspecies', type: 'subspecies' }])
 		);
 		expect(schema.parse({ subspecies: 'zhan-khazan' })).toEqual({
 			subspecies: 'zhan-khazan'
@@ -173,7 +170,7 @@ describe('buildCharacterSchema', () => {
 
 	it('validates citizenship type as optional string', () => {
 		const schema = buildCharacterSchema(
-			makeTemplate([{ key: 'citizenship', label: 'Citizenship', type: 'citizenship' }])
+			makeTemplate([{ label: 'Citizenship', type: 'citizenship' }])
 		);
 		expect(schema.parse({ citizenship: 'sol-alliance' })).toEqual({
 			citizenship: 'sol-alliance'
@@ -183,10 +180,10 @@ describe('buildCharacterSchema', () => {
 	it('allows all fields to be missing', () => {
 		const schema = buildCharacterSchema(
 			makeTemplate([
-				{ key: 'name', label: 'Name', type: 'text' },
-				{ key: 'height', label: 'Height', type: 'height' },
-				{ key: 'spoken-languages', label: 'Spoken Languages', type: 'languages' },
-				{ key: 'skin-color', label: 'Skin Color', type: 'text' }
+				{ label: 'Name', type: 'text' },
+				{ label: 'Height', type: 'height' },
+				{ label: 'Spoken Languages', type: 'languages' },
+				{ label: 'Skin Color', type: 'text' }
 			])
 		);
 		expect(schema.parse({})).toEqual({});
@@ -194,7 +191,7 @@ describe('buildCharacterSchema', () => {
 
 	it('rejects wrong types', () => {
 		const schema = buildCharacterSchema(
-			makeTemplate([{ key: 'height', label: 'Height', type: 'height' }])
+			makeTemplate([{ label: 'Height', type: 'height' }])
 		);
 		expect(() => schema.parse({ height: 'tall' })).toThrow();
 	});

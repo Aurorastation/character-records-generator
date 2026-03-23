@@ -4,7 +4,6 @@ export interface SelectOption {
 }
 
 export interface BaseFieldDef {
-	key: string;
 	label: string;
 }
 

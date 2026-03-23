@@ -1,6 +1,7 @@
 import { XMLParser } from 'fast-xml-parser';
 import type { SpeciesData, CitizenshipData, LanguageData } from './types';
 import type { Template, RecordDef, FieldDef, SelectOption } from '../types';
+import { slugify } from '../utils/slugify';
 
 const parser = new XMLParser({
 	ignoreAttributes: false,
@@ -51,10 +52,6 @@ export function parseLanguages(xml: string): LanguageData[] {
 	}));
 }
 
-function slugify(label: string): string {
-	return label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-}
-
 function parseOptions(field: any): SelectOption[] {
 	if (!field.option) return [];
 	return field.option.map((o: any) => ({
@@ -65,7 +62,6 @@ function parseOptions(field: any): SelectOption[] {
 
 function parseField(raw: any): FieldDef {
 	const base = {
-		key: slugify(raw['@_label']),
 		label: raw['@_label']
 	};
 	const type = raw['@_type'];

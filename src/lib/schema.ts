@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import type { FieldDef, Template } from './types';
+import { slugify } from './utils/slugify';
 
 function zodForField(field: FieldDef): z.ZodTypeAny {
 	switch (field.type) {
@@ -29,7 +30,7 @@ export function buildCharacterSchema(template: Template): z.ZodObject<Record<str
 	const shape: Record<string, z.ZodTypeAny> = {};
 	for (const record of template.records) {
 		for (const field of record.fields) {
-			shape[field.key] = zodForField(field);
+			shape[slugify(field.label)] = zodForField(field);
 		}
 	}
 	return z.object(shape).partial();

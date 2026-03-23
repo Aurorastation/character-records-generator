@@ -1,5 +1,7 @@
 <script lang="ts">
-	let { onClose, children }: { onClose: () => void; children: any } = $props();
+	import type { Snippet } from 'svelte';
+
+	let { onClose, children }: { onClose: () => void; children: Snippet } = $props();
 
 	function handleKeydown(e: KeyboardEvent) {
 		if (e.key === 'Escape') onClose();

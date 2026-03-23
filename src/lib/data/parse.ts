@@ -1,7 +1,6 @@
 import { XMLParser } from 'fast-xml-parser';
 import type { SpeciesData, CitizenshipData, LanguageData } from './types';
 import type { Template, RecordDef, FieldDef, SelectOption } from '../types';
-import { slugify } from '../utils/slugify';
 
 const parser = new XMLParser({
 	ignoreAttributes: false,

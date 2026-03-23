@@ -10,7 +10,7 @@
 	}
 </script>
 
-<header class="flex items-center gap-3 px-4 py-3 border-b" style="border-color: var(--border); background: var(--bg-card);">
+<header class="sticky top-0 z-20 flex items-center gap-3 px-4 py-3 border-b" style="border-color: var(--border); background: var(--bg-card);">
 	<h1 class="font-bold whitespace-nowrap">Aurora Records</h1>
 
 	{#if roster.characters.length > 0}

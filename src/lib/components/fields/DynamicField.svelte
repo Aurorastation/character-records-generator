@@ -6,6 +6,7 @@
 	import NumberField from './NumberField.svelte';
 	import SelectField from './SelectField.svelte';
 	import CheckboxField from './CheckboxField.svelte';
+	import MultiSelectField from './MultiSelectField.svelte';
 	import DateField from './DateField.svelte';
 	import HeightField from './HeightField.svelte';
 	import WeightField from './WeightField.svelte';
@@ -33,7 +34,7 @@
 {:else if field.type === 'select'}
 	<SelectField {field} {value} {onChange} />
 {:else if field.type === 'multi-select'}
-	<CheckboxField field={{ ...field, type: 'checkbox' }} {value} {onChange} />
+	<MultiSelectField {field} {value} {onChange} />
 {:else if field.type === 'checkbox'}
 	<CheckboxField {field} {value} {onChange} />
 {:else if field.type === 'date'}

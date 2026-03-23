@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { X } from 'lucide-svelte';
-	import type { LanguagesField } from '$lib/types';
-	import { languages } from '$lib/data';
+	import type { MultiSelectField } from '$lib/types';
 
-	let { field, value = ['Tau Ceti Basic'], onChange }: {
-		field: LanguagesField;
+	let { field, value = [], onChange }: {
+		field: MultiSelectField;
 		value: string[];
 		onChange: (v: string[]) => void;
 	} = $props();
@@ -13,13 +12,13 @@
 	let open = $state(false);
 
 	let available = $derived(
-		languages
-			.filter((l) => !value.includes(l.name))
-			.filter((l) => !input || l.name.toLowerCase().includes(input.toLowerCase()))
+		field.options
+			.filter((o) => !value.includes(o.value))
+			.filter((o) => !input || o.label.toLowerCase().includes(input.toLowerCase()))
 	);
 
-	function add(name: string) {
-		onChange([...value, name]);
+	function add(val: string) {
+		onChange([...value, val]);
 		input = '';
 	}
 
@@ -31,8 +30,12 @@
 		input = '';
 	}
 
-	function remove(name: string) {
-		onChange(value.filter((v) => v !== name));
+	function remove(val: string) {
+		onChange(value.filter((v) => v !== val));
+	}
+
+	function displayLabel(val: string): string {
+		return field.options.find((o) => o.value === val)?.label ?? val;
 	}
 </script>
 
@@ -40,10 +43,10 @@
 	<span class="text-sm font-medium">{field.label}{#if field.required}<span style="color: var(--accent);"> *</span>{/if}</span>
 
 	<div class="flex flex-wrap gap-1 mt-1">
-		{#each value as lang}
+		{#each value as val}
 			<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-sm" style="background: var(--border); color: var(--text);">
-				{lang}
-				<button onclick={() => remove(lang)} class="hover:opacity-60">
+				{displayLabel(val)}
+				<button onclick={() => remove(val)} class="hover:opacity-60">
 					<X size={12} />
 				</button>
 			</span>
@@ -54,13 +57,13 @@
 		<input
 			type="text"
 			bind:value={input}
-			placeholder="Add language..."
+			placeholder="Add..."
 			onfocus={() => { open = true; }}
 			onblur={() => { setTimeout(() => { open = false; }, 150); }}
 			onkeydown={(e) => {
 				if (e.key === 'Enter') {
 					e.preventDefault();
-					if (available.length) add(available[0].name);
+					if (available.length) add(available[0].value);
 					else addCustom();
 				}
 			}}
@@ -69,18 +72,18 @@
 		/>
 		{#if open && (available.length || input.trim())}
 			<ul class="absolute z-10 w-full mt-1 rounded shadow-lg max-h-48 overflow-y-auto" style="background: var(--bg-card); border: 1px solid var(--border);">
-				{#each available as lang}
+				{#each available as opt}
 					<li>
 						<button
-							onmousedown={(e) => { e.preventDefault(); add(lang.name); }}
+							onmousedown={(e) => { e.preventDefault(); add(opt.value); }}
 							class="block w-full text-left px-3 py-1.5 text-sm hover:opacity-80"
 							style="color: var(--text);"
 						>
-							{lang.name}
+							{opt.label}
 						</button>
 					</li>
 				{/each}
-				{#if input.trim() && !languages.some((l) => l.name.toLowerCase() === input.trim().toLowerCase())}
+				{#if input.trim() && !field.options.some((o) => o.label.toLowerCase() === input.trim().toLowerCase())}
 					<li>
 						<button
 							onmousedown={(e) => { e.preventDefault(); addCustom(); }}

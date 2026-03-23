@@ -9,7 +9,7 @@
 
 <div class="block">
 	<label class="block">
-		<span class="text-sm font-medium">{field.label}</span>
+		<span class="text-sm font-medium">{field.label}{#if field.required}<span style="color: var(--accent);"> *</span>{/if}</span>
 		<select
 			{value}
 			onchange={(e) => onChange((e.target as HTMLSelectElement).value)}

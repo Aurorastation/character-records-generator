@@ -5,7 +5,7 @@
 </script>
 
 <label class="block">
-	<span class="text-sm font-medium">{field.label}</span>
+	<span class="text-sm font-medium">{field.label}{#if field.required}<span style="color: var(--accent);"> *</span>{/if}</span>
 	<div class="flex items-center gap-2 mt-1">
 		<input
 			type="number"

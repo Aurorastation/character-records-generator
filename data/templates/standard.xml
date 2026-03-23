@@ -3,10 +3,15 @@
   <description>The standard record format used by a majority of players.</description>
 
   <record type="public" expanded="true">
-    <field label="Name"                     type="text" />
-    <field label="Species"                  type="species" />
+    <field label="Name"                     type="text" required="true" />
+    <field label="Species"                  type="species" required="true" />
     <field label="Subspecies"               type="subspecies" />
-    <field label="Pronouns"                 type="text" />
+    <field label="Pronouns"                 type="multi-select">
+      <option value="he/him"     label="he/him" />
+      <option value="she/her"    label="she/her" />
+      <option value="they/them"  label="they/them" />
+      <option value="it/its"     label="it/its" />
+    </field>
     <field label="Date of Birth"            type="date" placeholder="March 15th, 2438" />
     <field label="Citizenship"              type="citizenship" />
     <field label="Spoken Languages"         type="languages" />
@@ -29,7 +34,7 @@
 
   <record type="medical" expanded="false">
     <preamble>The following information is protected by doctor-patient confidentiality laws. Do not release without patient's consent.</preamble>
-    <field label="Opt-Outs" type="checkbox">
+    <field label="Opt-Outs" type="multi-select">
       <option value="no-borg"       label="Do Not Borgify" />
       <option value="no-revive"     label="Do Not Revive" />
       <option value="no-prosthetic" label="Do Not Prostheticize" />

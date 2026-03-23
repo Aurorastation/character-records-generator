@@ -10,7 +10,6 @@ const template = {
 	records: [
 		{
 			type: 'public',
-			expanded: true,
 			fields: [
 				{ label: 'Name', type: 'text' as const },
 				{ label: 'Species', type: 'species' as const },

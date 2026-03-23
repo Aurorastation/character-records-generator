@@ -189,7 +189,6 @@ const testTemplate: Template = {
 	records: [
 		{
 			type: 'public',
-			expanded: true,
 			fields: [
 				{ label: 'Name', type: 'text' },
 				{ label: 'Species', type: 'species' },
@@ -198,7 +197,6 @@ const testTemplate: Template = {
 		},
 		{
 			type: 'employment',
-			expanded: false,
 			preamble: 'This information has been verified by employment agents.',
 			fields: [
 				{ label: 'Employment History', type: 'list' },
@@ -207,7 +205,6 @@ const testTemplate: Template = {
 		},
 		{
 			type: 'medical',
-			expanded: false,
 			preamble: 'Protected by doctor-patient confidentiality.',
 			fields: [
 				{
@@ -220,7 +217,6 @@ const testTemplate: Template = {
 		},
 		{
 			type: 'security',
-			expanded: false,
 			preamble: 'This information has been verified by employment agents.',
 			fields: [
 				{ label: 'Attitude Towards SCC', type: 'textarea' },

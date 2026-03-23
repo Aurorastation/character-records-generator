@@ -15,7 +15,6 @@ const testTemplate: Template = {
 	records: [
 		{
 			type: 'public',
-			expanded: true,
 			fields: [
 				{ label: 'Name', type: 'text' },
 				{ label: 'Species', type: 'species' }

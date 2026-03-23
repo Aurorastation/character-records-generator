@@ -8,7 +8,7 @@ function makeTemplate(fields: any[]): Template {
 		name: 'Test',
 		description: '',
 		schemaVersion: 1,
-		records: [{ type: 'public', expanded: true, fields }]
+		records: [{ type: 'public', fields }]
 	};
 }
 

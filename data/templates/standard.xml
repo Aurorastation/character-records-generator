@@ -2,7 +2,7 @@
 <template name="Standard" schemaVersion="1">
   <description>The standard record format used by a majority of players.</description>
 
-  <record type="public" expanded="true">
+  <record type="public">
     <field label="Name"                     type="text" required="true" />
     <field label="Species"                  type="species" required="true" />
     <field label="Subspecies"               type="subspecies" />
@@ -25,14 +25,14 @@
     <field label="Distinguishing Features"  type="textarea" />
   </record>
 
-  <record type="employment" expanded="false">
+  <record type="employment">
     <preamble>This information has been verified by employment agents within the External Affairs department, and any comments, questions, or concerns about the legitimacy of such must be sent in a secure document to the same department.</preamble>
     <field label="Employment History" type="list" />
     <field label="Formal Education"   type="list" />
     <field label="Other Skills"       type="list" />
   </record>
 
-  <record type="medical" expanded="false">
+  <record type="medical">
     <preamble>The following information is protected by doctor-patient confidentiality laws. Do not release without patient's consent.</preamble>
     <field label="Opt-Outs" type="multi-select">
       <option value="no-borg"       label="Do Not Borgify" />
@@ -49,7 +49,7 @@
     <field label="Psychological Evaluations" type="list" />
   </record>
 
-  <record type="security" expanded="false">
+  <record type="security">
     <preamble>This information has been verified by employment agents within the External Affairs department, and any comments, questions, or concerns about the legitimacy of such must be sent in a secure document to the same department.</preamble>
     <field label="Attitude Towards SCC"  type="textarea" />
     <field label="Attitude Towards Crew" type="textarea" />

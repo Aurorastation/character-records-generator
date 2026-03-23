@@ -9,4 +9,10 @@
   <citizenships>
     <ref id="biesel" />
   </citizenships>
+
+  <subspecies>
+    <entry id="offworlder" name="Offworlder">
+      <description>TODO</description>
+    </entry>
+  </subspecies>
 </species>

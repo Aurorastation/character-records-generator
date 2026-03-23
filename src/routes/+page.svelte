@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Eye, PenLine } from 'lucide-svelte';
 	import Header from '$lib/components/Header.svelte';
 	import SchemaForm from '$lib/components/SchemaForm.svelte';
 	import OutputPanel from '$lib/components/OutputPanel.svelte';
@@ -9,7 +8,7 @@
 	import { presets } from '$lib/presets';
 
 	let importData = $state<string | null>(null);
-	let mobileView = $state<'form' | 'preview'>('form');
+	let mobileView = $state<'edit' | 'preview' | 'split'>('split');
 
 	onMount(() => {
 		const hash = window.location.hash.slice(1);
@@ -22,6 +21,8 @@
 		importData = null;
 		history.replaceState(null, '', window.location.pathname);
 	}
+
+	const modes = ['edit', 'preview', 'split'] as const;
 </script>
 
 <div class="h-dvh flex flex-col overflow-hidden">
@@ -33,29 +34,53 @@
 		</div>
 	{:else if roster.active}
 		{@const char = roster.active}
-		<main class="flex-1 grid grid-cols-1 lg:grid-cols-[1fr_1fr] overflow-hidden relative">
-			<div class="overflow-y-auto p-4 {mobileView === 'preview' ? 'hidden lg:block' : ''}">
-				<div class="max-w-xl mx-auto">
-					<SchemaForm character={char} />
-				</div>
+
+		<div class="flex items-center justify-center gap-0 py-1 shrink-0 border-b md:hidden" style="border-color: var(--border); background: var(--bg-card);">
+			{#each modes as mode}
+				<button
+					onclick={() => { mobileView = mode; }}
+					class="px-3 py-0.5 text-sm capitalize"
+					style={mobileView === mode
+						? 'color: var(--text); font-weight: 500;'
+						: 'color: var(--text-muted);'}
+				>
+					{mode}
+				</button>
+			{/each}
+		</div>
+
+		<!-- Desktop: always side-by-side -->
+		<main class="flex-1 hidden md:grid md:grid-cols-[1fr_1fr] overflow-hidden max-w-7xl mx-auto w-full">
+			<div class="overflow-y-auto p-4">
+				<SchemaForm character={char} />
 			</div>
-			<div class="p-4 min-h-0 flex flex-col {mobileView === 'form' ? 'hidden lg:flex' : ''}">
+			<div class="p-4 min-h-0 flex flex-col">
 				<OutputPanel character={char} />
 			</div>
+		</main>
 
-			<div class="fixed bottom-4 right-4 lg:hidden z-10">
-				<button
-					onclick={() => { mobileView = mobileView === 'form' ? 'preview' : 'form'; }}
-					class="flex items-center gap-2 px-3 py-2 rounded-full shadow-lg text-sm"
-					style="background: var(--bg-card); border: 1px solid var(--border); color: var(--text);"
-				>
-					{#if mobileView === 'form'}
-						<Eye size={16} /> Preview
-					{:else}
-						<PenLine size={16} /> Edit
-					{/if}
-				</button>
-			</div>
+		<!-- Mobile: view mode toggle -->
+		<main class="flex-1 flex flex-col overflow-hidden md:hidden">
+			{#if mobileView === 'edit'}
+				<div class="flex-1 overflow-y-auto p-4">
+					<div class="md:max-w-xl md:mx-auto">
+						<SchemaForm character={char} />
+					</div>
+				</div>
+			{:else if mobileView === 'preview'}
+				<div class="flex-1 p-4 min-h-0 flex flex-col">
+					<OutputPanel character={char} />
+				</div>
+			{:else}
+				<div class="flex-1 overflow-y-auto p-4">
+					<div class="md:max-w-xl md:mx-auto">
+						<SchemaForm character={char} />
+					</div>
+				</div>
+				<div class="h-[50%] shrink-0 p-4 min-h-0 flex flex-col border-t" style="border-color: var(--border);">
+					<OutputPanel character={char} />
+				</div>
+			{/if}
 		</main>
 	{:else}
 		<main class="flex-1 flex flex-col items-center justify-center gap-4">

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Sun, Moon, Share2, Check, Trash2 } from 'lucide-svelte';
+	import { Sun, Moon, Share2, Check, Trash2, Plus } from 'lucide-svelte';
 	import { theme } from '$lib/theme.svelte';
 	import { roster } from '$lib/state.svelte';
 	import { presets } from '$lib/presets';
@@ -40,22 +40,29 @@
 	}
 </script>
 
-<header class="flex items-center gap-2 px-4 py-3 border-b shrink-0" style="border-color: var(--border); background: var(--bg-card);">
+<header class="border-b shrink-0" style="border-color: var(--border); background: var(--bg-card);">
+<div class="flex items-center gap-2 px-4 py-3 max-w-7xl mx-auto w-full">
 	<h1 class="font-bold whitespace-nowrap">Aurora Records</h1>
 
 	{#if roster.characters.length > 0}
 		<CharacterSwitcher />
+	{/if}
 
-		<button onclick={share} class="flex items-center justify-center w-[30px] h-[30px] rounded border hover:opacity-80" style="border-color: var(--border);" title="Share character">
+	<button onclick={createCharacter} class="flex items-center justify-center w-[30px] h-[30px] rounded border hover:opacity-80" style="border-color: var(--border);" title="New character">
+		<Plus size={14} />
+	</button>
+
+	{#if roster.characters.length > 0}
+		<button onclick={() => { confirmDelete = true; }} class="flex items-center justify-center w-[30px] h-[30px] rounded border hover:opacity-80" style="border-color: var(--border);" title="Delete character">
+			<Trash2 size={14} />
+		</button>
+
+		<button onclick={share} class="flex items-center justify-center h-[30px] rounded border hover:opacity-80 {shared ? 'gap-1 px-2' : 'w-[30px]'}" style="border-color: var(--border);" title="Share character">
 			{#if shared}
-				<Check size={14} />
+				<Check size={14} /> <span class="text-sm hidden sm:inline">Copied share link</span>
 			{:else}
 				<Share2 size={14} />
 			{/if}
-		</button>
-
-		<button onclick={() => { confirmDelete = true; }} class="flex items-center justify-center w-[30px] h-[30px] rounded border hover:opacity-80" style="border-color: var(--border);" title="Delete character">
-			<Trash2 size={14} />
 		</button>
 	{/if}
 
@@ -63,14 +70,6 @@
 		<span class="text-sm" style="color: var(--text-muted);">
 			{#if roster.saveStatus === 'saving'}Saving...{:else if roster.saveStatus === 'saved'}Saved{/if}
 		</span>
-
-		<button
-			onclick={createCharacter}
-			class="px-3 h-[30px] rounded text-sm border hover:opacity-80"
-			style="border-color: var(--border);"
-		>
-			New Character
-		</button>
 
 		<button onclick={() => theme.toggle()} class="flex items-center justify-center w-[30px] h-[30px] rounded hover:opacity-80" title="Toggle theme">
 			{#if theme.dark}
@@ -80,6 +79,7 @@
 			{/if}
 		</button>
 	</div>
+</div>
 </header>
 
 {#if confirmDelete && roster.active}

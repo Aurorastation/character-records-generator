@@ -2,6 +2,12 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+	--radius: 2px;
+	--radius-lg: 4px;
+	--radius-full: 9999px;
+}
+
 :root {
 	--bg: #fafafa;
 	--bg-card: #ffffff;

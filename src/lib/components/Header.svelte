@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Sun, Moon, Trash2, Plus, Upload } from 'lucide-svelte';
+	import { Sun, Moon, Trash2, Plus, Upload, CircleHelp } from 'lucide-svelte';
 	import { theme } from '$lib/theme.svelte';
 	import { roster } from '$lib/state.svelte';
 	import { presets } from '$lib/presets';
@@ -8,11 +8,13 @@
 	import TemplatePicker from './TemplatePicker.svelte';
 	import ShareMenu from './ShareMenu.svelte';
 	import Modal from './Modal.svelte';
+	import HelpText from './HelpText.svelte';
 
 	let { onImport }: { onImport?: (json: string) => void } = $props();
 
 	let confirmDelete = $state(false);
 	let showPicker = $state(false);
+	let showHelp = $state(false);
 	let openDropdown = $state<'add' | 'share' | null>(null);
 	let fileInput: HTMLInputElement;
 
@@ -109,6 +111,10 @@
 			{#if roster.saveStatus === 'saving'}Saving...{:else if roster.saveStatus === 'saved'}Saved{/if}
 		</span>
 
+		<button onclick={() => { showHelp = true; }} class="flex items-center justify-center w-[30px] h-[30px] rounded hover:opacity-80" title="About">
+			<CircleHelp size={18} />
+		</button>
+
 		<button onclick={() => theme.toggle()} class="flex items-center justify-center w-[30px] h-[30px] rounded hover:opacity-80" title="Toggle theme">
 			{#if theme.dark}
 				<Sun size={18} />
@@ -142,6 +148,21 @@
 			</button>
 			<button onclick={doDelete} class="px-3 py-1 rounded text-sm border hover:opacity-80" style="border-color: var(--border); color: #dc2626;">
 				Delete
+			</button>
+		</div>
+	</Modal>
+{/if}
+
+{#if showHelp}
+	<Modal onClose={() => { showHelp = false; }}>
+		<HelpText />
+		<div class="flex justify-end mt-4">
+			<button
+				onclick={() => { showHelp = false; }}
+				class="px-3 py-1 rounded text-sm border hover:opacity-80"
+				style="border-color: var(--border); color: var(--text);"
+			>
+				Got it
 			</button>
 		</div>
 	</Modal>

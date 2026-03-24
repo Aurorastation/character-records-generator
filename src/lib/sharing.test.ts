@@ -41,7 +41,7 @@ describe('character URL encoding', () => {
 		const encoded = encodeCharacterURL(testCharacter);
 		const decoded = decodeCharacterURL(encoded);
 		expect(decoded.data).toEqual(testCharacter.data);
-		expect(decoded.template.name).toBe('Standard');
+		expect(decoded.template.name).toBe('General');
 	});
 
 	it('uses short encoding for preset templates', () => {

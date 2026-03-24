@@ -22,7 +22,7 @@ describe('exportCharacter', () => {
 		expect(parsed.version).toBe(1);
 		expect(parsed.templateId).toBe('preset:standard');
 		expect(parsed.template).toBeDefined();
-		expect(parsed.template.name).toBe('Standard');
+		expect(parsed.template.name).toBe('General');
 		expect(parsed.data).toEqual({
 			name: 'Yury Zakharov',
 			species: 'human',

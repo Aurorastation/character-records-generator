@@ -40,8 +40,8 @@ describe('isBlankCharacter', () => {
 		expect(isBlankCharacter(makeChar({ 'spoken-languages': [] }))).toBe(true);
 	});
 
-	it('returns true when languages is just the default', () => {
-		expect(isBlankCharacter(makeChar({ 'spoken-languages': ['Tau Ceti Basic'] }))).toBe(true);
+	it('returns false when languages has any value', () => {
+		expect(isBlankCharacter(makeChar({ 'spoken-languages': ['Tau Ceti Basic'] }))).toBe(false);
 	});
 
 	it('returns false when languages has custom values', () => {

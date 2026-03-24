@@ -35,6 +35,9 @@ export const roster = {
 
 	async migrateToPreset(char: Character, preset: Template) {
 		migrateData(char, preset);
+		if (preset.species?.length === 1) {
+			char.data[slugify('Species')] = preset.species[0];
+		}
 		char.template = $state.snapshot(preset);
 		await saveCharacter($state.snapshot(char));
 	},
@@ -62,10 +65,14 @@ export const roster = {
 	},
 
 	async create(template: Template, data: Record<string, unknown> = {}) {
+		const initial: Record<string, unknown> = { ...data };
+		if (template.species?.length === 1) {
+			initial[slugify('Species')] ??= template.species[0];
+		}
 		const char: Character = {
 			id: crypto.randomUUID(),
 			template: $state.snapshot(template),
-			data: { ...data }
+			data: initial
 		};
 		characters.push(char);
 		activeId = char.id;

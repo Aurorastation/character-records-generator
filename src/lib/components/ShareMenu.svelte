@@ -36,12 +36,12 @@
 <span class="relative">
 	<button
 		onclick={(e) => { e.stopPropagation(); onToggle(); }}
-		class="flex items-center justify-center w-[30px] h-[30px] rounded border hover:opacity-80"
+		class="flex items-center justify-center h-[30px] rounded border hover:opacity-80 {copied ? 'gap-1 px-2' : 'w-[30px]'}"
 		style="border-color: var(--border);"
 		title="Share & export"
 	>
 		{#if copied}
-			<Check size={14} />
+			<Check size={14} /> <span class="text-xs">Copied!</span>
 		{:else}
 			<Share2 size={14} />
 		{/if}

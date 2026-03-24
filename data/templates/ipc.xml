@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template name="IPC" schemaVersion="1">
+<template name="IPC" schemaVersion="1" species="ipc">
   <description>The record format recommended on the IPC wiki page for synthetics.</description>
 
   <record type="public">
@@ -10,9 +10,9 @@
     <field label="IPC Model" type="subspecies" />
     <field label="Tag" type="text" />
     <field label="Ownership Status" type="select">
-      <option value="company-owned" label="Company Owned">
-      <option value="owned"         label="Private Owner">
-      <option value="free"          label="Free">
+      <option value="company-owned" label="Company Owned" />
+      <option value="owned"         label="Private Owner" />
+      <option value="free"          label="Free" />
     </field>
     <field label="Owner Name" type="text" />
     <field label="Owner Contact Information" type="text" />

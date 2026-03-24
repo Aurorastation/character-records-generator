@@ -40,7 +40,11 @@
 		style="border-color: var(--border);"
 		title="Share & export"
 	>
-		<Share2 size={14} />
+		{#if copied}
+			<Check size={14} />
+		{:else}
+			<Share2 size={14} />
+		{/if}
 	</button>
 
 	{#if open}

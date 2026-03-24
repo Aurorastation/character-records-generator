@@ -38,8 +38,8 @@
   <record type="medical">
     <preamble>The following information is protected by doctor-patient confidentiality laws. Do not release without patient's consent.</preamble>
     <field label="Opt-Outs" type="multi-select">
-      <option value="no-borg"       label="Do NOT BORGIFY" />
-      <option value="no-revive"     label="DO NOT REVIVE" />
+      <option value="no-borg"       label="DO NOT BORGIFY" />
+      <option value="no-revive"     label="DO NOT RESUSCITATE" />
       <option value="no-prosthetic" label="DO NOT GIVE PROSTHETICS" />
     </field>
     <field label="Postmortem Instructions"   type="textarea" />

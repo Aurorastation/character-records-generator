@@ -1,42 +1,44 @@
-# sv
+# Character Records Generator
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A web-based character records tool for [Aurora Station](https://aurorastation.org/). Hosted at [c.ily.rs](https://c.ily.rs).
 
-## Creating a project
+Pick a template and fill in the form. Each section covers a different record. Blank fields are omitted from the output automatically, so no rush to finish everything.
 
-If you're seeing this, you've probably already done this step. Congrats!
+Characters save to your browser. You can also export to a file or generate a share link: the link itself encodes the full set of records, so functionally it's a save file.
 
-```sh
-# create a new project
-npx sv create my-app
-```
+Share links let the recipient see a preview of your records, with the option to import the character into their own roster.
 
-To recreate this project with the same configuration:
+This tool is entirely data-driven in XML, and it's already set up for template sharing. A visual template editor is coming soon, so anybody can create their own templates and share them between one another.
 
-```sh
-# recreate this project
-npx sv@0.12.8 create --template minimal --types ts --no-install .
-```
+For issues, your best chance of getting a reply is to make an issue here, or to ping @llywelwyn in Discord.
 
-## Developing
+Cheers.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Development
 
 ```sh
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
+Build for production:
 
 ```sh
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+Validate the data files:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+npm run validate
+```
+
+Run tests:
+
+```sh
+npx vitest run
+```
+
+## Where did the old WPF app go?
+
+This used to be a WPF desktop app. The last version of that lives at [`03feee5`](https://github.com/Aurorastation/character-records-generator/tree/03feee572bc7085fd8f9c458490a5dcc642ce689).

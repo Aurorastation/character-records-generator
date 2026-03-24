@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template name="General" schemaVersion="1">
-  <description>The standard record format used by most players.</description>
+<template name="IPC" schemaVersion="1">
+  <description>The record format recommended on the IPC wiki page for synthetics.</description>
 
   <record type="public">
     <note>Basic identification information visible on all records.</note>
-    <field label="Name"                     type="text" />
-    <field label="Species"                  type="species" />
-    <field label="Subspecies"               type="subspecies" />
+    <field label="Designation"              type="text" />
+    <field label="Positronic Manufacture Date" type="date" placeholder="24-03-2460" />
+    <field label="Chassis Manufacture Date" type="date" placeholder="24-03-2460" />
+    <field label="IPC Model" type="subspecies" />
+    <field label="Tag" type="text" />
+    <field label="Ownership Status" type="select">
+      <option value="company-owned" label="Company Owned">
+      <option value="owned"         label="Private Owner">
+      <option value="free"          label="Free">
+    </field>
+    <field label="Owner Name" type="text" />
+    <field label="Owner Contact Information" type="text" />
     <field label="Pronouns"                 type="multi-select">
       <option value="he/him"     label="he/him" />
       <option value="she/her"    label="she/her" />
@@ -14,41 +23,27 @@
       <option value="any/all"    label="any/all" />
       <option value="it/its"     label="it/its" />
     </field>
-    <field label="Date of Birth"            type="date" placeholder="24-03-2450" />
     <field label="Citizenship"              type="citizenship" />
     <field label="Spoken Languages"         type="languages" />
-    <field label="Employed As"              type="text" />
-    <field label="Next of Kin"              type="text" />
     <field label="Height"                   type="height" />
     <field label="Weight"                   type="weight" />
-    <field label="Skin Color"               type="text" />
-    <field label="Hair Color"               type="text" />
-    <field label="Eye Color"                type="text" />
     <field label="Distinguishing Features"  type="textarea" />
   </record>
 
   <record type="employment">
     <preamble>This information has been verified by employment agents within the External Affairs department, and any comments, questions, or concerns about the legitimacy of such must be sent in a secure document to the same department.</preamble>
+    <field label="Manufactured By"   type="textarea" />
     <field label="Employment History" type="list" />
-    <field label="Formal Education"   type="list" />
-    <field label="Other Skills"       type="list" />
+    <field label="Qualifications Summary" type="list" />
+    <field label="Database Certifications" type="list" />
   </record>
 
   <record type="medical">
     <preamble>The following information is protected by doctor-patient confidentiality laws. Do not release without patient's consent.</preamble>
-    <field label="Opt-Outs" type="multi-select">
-      <option value="no-borg"       label="Do NOT BORGIFY" />
-      <option value="no-revive"     label="DO NOT REVIVE" />
-      <option value="no-prosthetic" label="DO NOT GIVE PROSTHETICS" />
-    </field>
-    <field label="Postmortem Instructions"   type="textarea" />
-    <field label="Allergies"                 type="list" />
-    <field label="Current Prescriptions"     type="list" />
-    <field label="Medication History"        type="list" />
-    <field label="Surgical History"          type="list" />
-    <field label="Physical Evaluations"      type="list" />
-    <field label="Psychological Disorders"   type="list" />
-    <field label="Psychological Evaluations" type="list" />
+    <field label="Chassis Repair History" type="list" />
+    <field label="Positronic Repair History" type="list" />
+    <field label="Software Diagnostics History" type="list" />
+    <field label="Roboticist Notes" type="list" />
   </record>
 
   <record type="security">

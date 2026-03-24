@@ -14,11 +14,17 @@
 	let mobileView = $state<'edit' | 'preview' | 'split'>('split');
 	let showPicker = $state(false);
 
-	onMount(() => {
+	function checkHash() {
 		const hash = window.location.hash.slice(1);
 		if (hash && (hash.startsWith('c1.') || hash.startsWith('t1.'))) {
 			importData = hash;
 		}
+	}
+
+	onMount(() => {
+		checkHash();
+		window.addEventListener('hashchange', checkHash);
+		return () => window.removeEventListener('hashchange', checkHash);
 	});
 
 	function closeImport() {

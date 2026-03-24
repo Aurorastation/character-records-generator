@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<species id="tajara" name="Tajara" subspeciesLabel="Ethnicity">
+  <description>The Tajara are a race of humanoids that possess markedly felinoid traits. Tajaran history and society is deeply entrenched in the conflict between its caste system and ruling governments.</description>
+
+  <languages>
+    <ref id="tau-ceti-basic" />
+    <ref id="siikmaas" />
+    <ref id="siiktajr" />
+    <ref id="yassa" />
+    <ref id="nalrasan" />
+    <ref id="delvahhi" />
+    <ref id="sign" />
+    <ref id="tradeband" />
+    <ref id="freespeak" />
+  </languages>
+
+  <citizenships>
+    <ref id="pra" />
+    <ref id="dpra" />
+    <ref id="nka" />
+    <ref id="biesel" />
+  </citizenships>
+
+  <subspecies>
+    <entry id="hharar" name="Hharar">
+      <description>The first Tajaran ethnicity that Humanity came in contact with is generally viewed as the 'typical Tajara', which is reinforced by their numerical superiority over the other groups.</description>
+    </entry>
+    <entry id="zhan" name="Zhan-Khazan">
+      <description>The second most populous of Tajaran ethnicities, and are considered to be the backbone of the Tajaran workforce.</description>
+    </entry>
+    <entry id="msai" name="M'sai">
+      <description>The third most populous Tajaran ethnic group, the M'sai were at one point the hunters for ancient Tajara and evolved to have lithe, slender forms, and light fur that hid them in the blizzards on Adhomai.</description>
+    </entry>
+    <entry id="njarir" name="Njarir'Akhran">
+      <description>The ethnic group that made up teh majority of the plutocracy before the Great War. Their lineage can be traced from careful breeding between Hharar and M'sai, leading to where they are today.</description>
+    </entry>
+  </subspecies>
+</species>

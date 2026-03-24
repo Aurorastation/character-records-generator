@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<species id="vaurca" name="Vaurca" subspeciesLabel="Type">
+  <description>The Vaurca are an insectoid species with a complex caste-based society organised into Hives, each led by a Queen. They communicate primarily through a localised expression of their hivemind. Having arrived in the Orion Spur from deep space, they are one of the newest species to join the galactic stage, and their integration into existing societies remains an ongoing process.</description>
+
+  <languages>
+    <ref id="tau-ceti-basic" />
+    <ref id="hivenet" />
+    <ref id="nralmalic" />
+    <ref id="sintaunathi" />
+    <ref id="sign" />
+    <ref id="tradeband" />
+    <ref id="freespeak" />
+  </languages>
+
+  <citizenships>
+    <ref id="zora" />
+    <ref id="klax" />
+    <ref id="cthur" />
+    <ref id="biesel" />
+  </citizenships>
+
+  <subspecies>
+    <entry id="worker" name="Worker (Type A)">
+      <description>The most common type of Vaurca and the backbone of their societies. Their hardened exoskeleton is approximately half an inch thick, providing protection against harsh radiation and acting as a pressure suit. Workers are bipedal, resistant to brute force, and suited for extended EVA, but slower and less agile than warriors. They are comfortable in any department except security.</description>
+    </entry>
+    <entry id="warrior" name="Warrior (Type BA)">
+      <description>The second most prominent type in Vaurca society, serving as hive security and military. Unlike other types, warriors are not typically passive, making them more suitable for combat-oriented positions. They are most commonly found in security roles but can rarely appear in other departments.</description>
+    </entry>
+    <entry id="attendant" name="Attendant (Type BB)">
+      <description>Digitigrade bipeds built to be agile and quick. Primarily scouts or support personnel, they excel at guerrilla tactics and are commonly attributed to the role of combat medics, providing medical assistance on the field.</description>
+    </entry>
+    <entry id="breeder" name="Breeder (Type CB)">
+      <description>The leaders of Vaurca society. As the only fertile caste, they provide life to the Hive. Some Breeders have recently been used as representatives for their respective queens due to their keen social intelligence. Vaurca Breeders can only be played as Hive Representatives.</description>
+    </entry>
+    <entry id="bulwark" name="Bulwark (Type E)">
+      <description>A bodyform derived from the worker caste in a collaboration between C'thur and Nralakk scientists. Much larger with significantly thicker carapaces than most Vaurca, making them slow but highly resistant to damage, including complete immunity to radiation. Typically used for heavy lifting, agricultural, and industrial work.</description>
+    </entry>
+  </subspecies>
+</species>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<species id="diona" name="Diona" subspeciesLabel="Subspecies">
+  <description>A mysterious plant-like species hailing from the depths of space. Dionae are comprised of cat-sized caterpillar-like creatures called nymphs, which form gestalt consciousnesses when two or more combine. Almost every aspect of the species is a mystery: their origins, behaviour, and functions. They are capable of great intellectual and biological feats, surviving primarily off the electromagnetic spectrum and biological matter.</description>
+
+  <languages>
+    <ref id="tau-ceti-basic" />
+    <ref id="rootsong" />
+    <ref id="nralmalic" />
+    <ref id="sintaunathi" />
+    <ref id="sintaazaziba" />
+    <ref id="sign" />
+    <ref id="tradeband" />
+    <ref id="freespeak" />
+  </languages>
+
+  <citizenships>
+    <ref id="biesel" />
+    <ref id="nralakk-federation" />
+    <ref id="hieroaetheria" />
+    <ref id="ekane" />
+    <ref id="glaorr" />
+    <ref id="coalition" />
+    <ref id="none" />
+  </citizenships>
+
+  <subspecies>
+    <entry id="geras" name="Geras">
+      <description>The older, more common form of Dionae gestalt. Their bark is fully developed, providing greater resistance to damage but making them slower. Geras gestalts can live for up to a thousand years, and their long lifespans grant them vast experience and knowledge.</description>
+    </entry>
+    <entry id="coeus" name="Coeus">
+      <description>Younger Dionae gestalts whose bark is not as developed as that of the Geras. Generally considered a Coeus until about 80 years old, though some can be as old as 180. Due to having less bark, Coeus are faster but less resistant to damage. They tend to be more formative, idealistic, and pacifistic than their older counterparts.</description>
+    </entry>
+  </subspecies>
+</species>

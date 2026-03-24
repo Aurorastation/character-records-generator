@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<species id="ipc" name="Integrated Positronic Chassis" subspeciesLabel="Frame">
+  <description>IPCs are synthetic chassis housing a positronic processing core. From skeletal baselines to humanlike shells, they serve in a variety of roles across the Orion Spur. Their legal status varies wildly between nations, ranging from full citizenship to being classified as property.</description>
+
+  <languages>
+    <ref id="tau-ceti-basic" />
+    <ref id="eal" />
+    <ref id="sign" />
+    <ref id="sol-common" />
+    <ref id="elyran-standard" />
+    <ref id="tradeband" />
+    <ref id="freespeak" />
+  </languages>
+
+  <citizenships>
+    <ref id="biesel" />
+    <ref id="coalition" />
+    <ref id="elyra" />
+    <ref id="orepit" />
+    <ref id="golden-deep" />
+    <ref id="none" />
+  </citizenships>
+
+  <subspecies>
+    <entry id="baseline" name="Baseline">
+      <description>The most common type of IPC. Baseline models cover anything that is not an Industrial chassis or a Shell, ranging from custom-made to assembly-line units. They are typically skeletal or semi-humanoid with simple atmospheric diffusion cooling systems.</description>
+    </entry>
+    <entry id="shell" name="Shell">
+      <description>A controversial model equipped with a synthskin weave over its metal chassis, creating an uncannily close approximation of the organic form. Created in the late days of 2450, Shells are focused on service, civilian, and medical roles. The additional weight of the synthskin reduces the efficacy of their coolant systems and increases charge consumption.</description>
+    </entry>
+    <entry id="g1" name="Industrial G1">
+      <description>The first commercialised industrial-type IPC by Hephaestus Industries. Designed for extra durability and increased weight loads, the G1 possesses a limited power cell and actuators designed for heavy lifting rather than locomotion, resulting in a slow and frequently charging machine. A built-in heat transferal system allows it to perform EVA without a voidsuit.</description>
+    </entry>
+    <entry id="g2" name="Hephaestus Industrial G2">
+      <description>An improved Hephaestus Industries industrial model with thicker plating and an improved power cell. Its actuators struggle to carry the immense weight, making the unit quite slow. Increased plating makes cooling a challenge, and overtaxing its hardware leads to rapid overheating.</description>
+    </entry>
+    <entry id="xion" name="Xion Industrial">
+      <description>Developed by the Xion Manufacturing Group, a subsidiary of Hephaestus Industries. Sturdy, strong, and powerful with an ample power cell and improved actuators. The Xion model retains sturdiness without excessive plating, allowing its cooling systems to vent heat more easily. This unit can perform EVA without assistance.</description>
+    </entry>
+    <entry id="zenghu" name="Zeng-Hu">
+      <description>Produced by Zeng-Hu Pharmaceuticals for medical and science-related operations. Digitigrade legs provide enhanced speed, but most plates covering the interior electronics are polymer casts to reduce weight, resulting in a less durable chassis.</description>
+    </entry>
+    <entry id="bishop" name="Bishop Cybernetics">
+      <description>A sleek, high-end design by Bishop Cybernetics focused on energy efficiency. Cutting-edge power management allows it to run more demanding processing algorithms than most frames. The shiny chrome and glass meant to showcase its technology leaves it exposed and fragile, often suffering from reliability issues.</description>
+    </entry>
+  </subspecies>
+</species>

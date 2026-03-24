@@ -1,9 +1,44 @@
-# Character Records Generator (for Aurora)
+# Character Records Generator
 
-[Find the latest release here](https://github.com/Aurorastation/character-records-generator/releases) - just download the character-records-generator.zip from the latest release and you're good to go.
+A web-based character records tool for [Aurora Station](https://aurorastation.org/). Hosted at [c.ily.rs](https://c.ily.rs).
 
-A tool for making setting up employment, medical, and security records a little easier on Aurora, forked from the AuroraRecordGenerator originally created by Lohikar.
+Pick a template and fill in the form. Each section covers a different record. Blank fields are omitted from the output automatically, so no rush to finish everything.
 
-This modification of the records generator has been made up to date with all of the latest changes to the server, and to better match the example records present on [Aurora's Guide to Character Records](https://wiki.aurorastation.org/index.php?title=Guide_to_Character_Records). Some redundant fields have been removed, and nearly all of the fields are now optional rather than being listed as 'not specified', hopefully to make filling out the records less of a chore if you want to do it piece by piece as you play.
+Characters save to your browser. You can also export to a file or generate a share link: the link itself encodes the full set of records, so functionally it's a save file.
 
-Credit to Lohikar's original AuroraRecordGenerator (https://github.com/Lohikar/AuroraRecordGenerator)
+Share links let the recipient see a preview of your records, with the option to import the character into their own roster.
+
+This tool is entirely data-driven in XML, and it's already set up for template sharing. A visual template editor is coming soon, so anybody can create their own templates and share them between one another.
+
+For issues, your best chance of getting a reply is to make an issue here, or to ping @llywelwyn in Discord.
+
+Cheers.
+
+## Development
+
+```sh
+npm install
+npm run dev
+```
+
+Build for production:
+
+```sh
+npm run build
+```
+
+Validate the data files:
+
+```sh
+npm run validate
+```
+
+Run tests:
+
+```sh
+npx vitest run
+```
+
+## Where did the old WPF app go?
+
+This used to be a WPF desktop app. The last version of that lives at [`03feee5`](https://github.com/Aurorastation/character-records-generator/tree/03feee572bc7085fd8f9c458490a5dcc642ce689).

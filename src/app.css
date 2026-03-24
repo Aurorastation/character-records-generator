@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--radius: 2px;
+	--radius-lg: 4px;
+	--radius-full: 9999px;
+}
+
+:root {
+	--bg: #fafafa;
+	--bg-card: #ffffff;
+	--bg-input: #ffffff;
+	--border: #d4d4d4;
+	--text: #171717;
+	--text-muted: #737373;
+	--accent: #0066cc;
+	--accent-hover: #0052a3;
+	--error: #dc2626;
+}
+
+.dark {
+	--bg: #0a0a0a;
+	--bg-card: #171717;
+	--bg-input: #0a0a0a;
+	--border: #2e2e2e;
+	--text: #e5e5e5;
+	--text-muted: #a3a3a3;
+	--accent: #4da6ff;
+	--accent-hover: #80bfff;
+	--error: #f87171;
+}
+
+body {
+	background-color: var(--bg);
+	color: var(--text);
+	font-family: system-ui, -apple-system, sans-serif;
+}
+
+.field-error input,
+.field-error select,
+.field-error textarea {
+	border-color: var(--error) !important;
+}

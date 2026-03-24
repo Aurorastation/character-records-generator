@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<citizenships>
+  <!-- Human -->
+  <citizenship id="biesel" name="Republic of Biesel">
+    <description>An independent system within the core of human space, heavily tied to NanoTrasen and known for its large xeno population.</description>
+  </citizenship>
+  <citizenship id="sol" name="Sol Alliance">
+    <description>Once the juggernaut of human space, the Sol Alliance has declined significantly. Now a military junta, it controls the largest human military and holds xenophobic attitudes.</description>
+  </citizenship>
+  <citizenship id="coalition" name="Coalition of Colonies">
+    <description>A loose confederation of frontier communities, ranging from colonial systems to super ships, bound together by shared independence from the major powers.</description>
+  </citizenship>
+  <citizenship id="elyra" name="Republic of Elyra">
+    <description>The Serene Republic of Elyra, formed from early colonisation efforts. Its mixed relations with NanoTrasen stem from its possession of phoron deposits.</description>
+  </citizenship>
+  <citizenship id="elyra-ncp" name="Elyran Non-Citizen Person">
+    <description>NCPs make up roughly a third of Elyra's population. Predominantly poor migrant labourers, they are excluded from most public systems.</description>
+  </citizenship>
+  <citizenship id="eridani" name="Eridani Federation">
+    <description>A dystopian oligarchic republic dominated by mega-corporations, with a stark class divide between Corporates and Dregs.</description>
+  </citizenship>
+  <citizenship id="dominia" name="Empire of Dominia">
+    <description>A heavily religious absolute monarchy ruled by Emperor Boleslaw Keeser. Autocratic and socio-economically stratified, heavily influenced by the Moroz Holy Tribunal.</description>
+  </citizenship>
+
+  <!-- Skrell -->
+  <citizenship id="nralakk-federation" name="Nralakk Federation">
+    <description>A centralised union of solar systems with its capital at Kal'lo on Qerrbalak. Widely regarded as offering the best quality of life in the galaxy, the Federation remains wary of humanity's development of AI technology.</description>
+  </citizenship>
+
+  <!-- Unathi -->
+  <citizenship id="izweski" name="Izweski Hegemony">
+    <description>A feudal empire ruled by the Izweski Clan from Moghes. The clan system is deeply entrenched in Unathi society, and the Hegemony continues to recover from an apocalyptic nuclear war.</description>
+  </citizenship>
+
+  <!-- Tajara -->
+  <citizenship id="pra" name="People's Republic of Adhomai">
+    <description>The Hadiist faction of Adhomai. A centralised state implementing land reform and collectivisation across Tajaran territory.</description>
+  </citizenship>
+  <citizenship id="dpra" name="Democratic People's Republic of Adhomai">
+    <description>Led by Purrjar Almrah Harrlala, the DPRA was formerly a militant insurgency now transitioning into a democratic nation.</description>
+  </citizenship>
+  <citizenship id="nka" name="New Kingdom of Adhomai">
+    <description>Ruled by the Njarir'Akhran noble line under King Vahzirthaamro Azunja. A constitutional monarchy seeking to restore traditional Tajaran governance.</description>
+  </citizenship>
+  <citizenship id="free-council" name="Free Tajaran Council">
+    <description>The largest Tajaran community on Himeo, with origins in First Revolution-era revolutionaries. Founded on principles of radical equality.</description>
+  </citizenship>
+
+  <!-- Vaurca -->
+  <citizenship id="zora" name="Zo'ra Hive">
+    <description>The largest and most powerful Vaurca hive, and the first discovered by humanity. The Zo'ra believe themselves to be the alpha of the Vaurca and the face of their species. They are the most politically developed hive.</description>
+  </citizenship>
+  <citizenship id="klax" name="K'lax Hive">
+    <description>The second hive discovered by humanity. Formerly a client state of the Zo'ra, the K'lax are now a vassal of the Izweski Nation. They are the most technologically developed hive.</description>
+  </citizenship>
+  <citizenship id="cthur" name="C'thur Hive">
+    <description>The third hive to develop relationships with other sophonts, and the only one still led by its original Hive Queen. Allied with the Nralakk Federation, the C'thur are the most economically developed hive.</description>
+  </citizenship>
+
+  <!-- Diona -->
+  <citizenship id="hieroaetheria" name="The Consortium of Hieroaetheria">
+    <description>A loose confederation of Dionae groups across Mede. Progressive, multicultural, and inclusive of non-Dionae members.</description>
+  </citizenship>
+  <citizenship id="glaorr" name="The Union of Gla'orr">
+    <description>An autocratic and xenophobic Dionae state opposed to non-Dionae integration. More secular than the Ekane.</description>
+  </citizenship>
+  <citizenship id="ekane" name="The Eternal Republic of The Ekane">
+    <description>An autocratic Dionae theocracy founded after Nralakk contact. Opposed to reform and inclusion, with the Eternal schools central to daily life.</description>
+  </citizenship>
+
+  <!-- Synthetic / Special -->
+  <citizenship id="golden-deep" name="Golden Deep">
+    <description>A collection of free synthetics united by the pursuit of power through currency and trade. Only recently revealed to humanity, their presence in Tau Ceti is limited to merchants and clerical industries.</description>
+  </citizenship>
+  <citizenship id="orepit" name="Ecclesiarchy of Orepit">
+    <description>A theocratic regime under ARM-1DRIL, tracing its origins to the Church of the Trinary Perfection. A signatory to the Open Doors memorandum, allowing its populace to work and travel abroad.</description>
+  </citizenship>
+  <citizenship id="none" name="None">
+    <description>Not a citizen of any state. A common situation for owned IPCs and Dionae.</description>
+  </citizenship>
+</citizenships>

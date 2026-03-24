@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="template">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="description" type="xs:string" />
+        <xs:element name="record" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="preamble" type="xs:string" minOccurs="0" />
+              <xs:element name="note" type="xs:string" minOccurs="0" />
+              <xs:element name="field" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="option" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="value" type="xs:string" use="required" />
+                        <xs:attribute name="label" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="label" type="xs:string" use="required" />
+                  <xs:attribute name="type" type="fieldType" use="required" />
+                  <xs:attribute name="required" type="xs:boolean" />
+                  <xs:attribute name="placeholder" type="xs:string" />
+                  <xs:attribute name="from" type="xs:string" />
+                  <xs:attribute name="min" type="xs:decimal" />
+                  <xs:attribute name="max" type="xs:decimal" />
+                  <xs:attribute name="unit" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="type" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="schemaVersion" type="xs:positiveInteger" use="required" />
+      <xs:attribute name="species" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="fieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="name" />
+      <xs:enumeration value="text" />
+      <xs:enumeration value="textarea" />
+      <xs:enumeration value="list" />
+      <xs:enumeration value="number" />
+      <xs:enumeration value="select" />
+      <xs:enumeration value="multi-select" />
+      <xs:enumeration value="checkbox" />
+      <xs:enumeration value="date" />
+      <xs:enumeration value="height" />
+      <xs:enumeration value="weight" />
+      <xs:enumeration value="species" />
+      <xs:enumeration value="subspecies" />
+      <xs:enumeration value="citizenship" />
+      <xs:enumeration value="languages" />
+      <xs:enumeration value="separator" />
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

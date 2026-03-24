@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<species id="skrell" name="Skrell" subspeciesLabel="Subspecies">
+  <description>Skrell are a species of amphibious bipeds, originating from the planet of Qerrbalak. With longer lifespans than most sophonts, combined with their earlier development of organized societies, skrell are the oldest spacefaring species in the Orion Spur.</description>
+
+  <languages>
+    <ref id="tau-ceti-basic" />
+    <ref id="nralmalic" />
+    <ref id="sign" />
+    <ref id="sol-common" />
+    <ref id="tradeband" />
+    <ref id="freespeak" />
+  </languages>
+
+  <citizenships>
+    <ref id="nralakk-federation" />
+    <ref id="biesel" />
+    <ref id="sol" />
+    <ref id="coalition" />
+    <ref id="eridani" />
+    <ref id="hieroaetheria" />
+    <ref id="izweski" />
+  </citizenships>
+
+  <subspecies>
+    <entry id="axiori" name="Axiori">
+      <description>More visibly aquatic, having larger tails, eyes, and more prominently webbed feet in order to improve their ability to swim underwater. The average Axiori skrell is shorter, heavier, and usually has darker-colored skin coloration than the other two subspecies.</description>
+    </entry>
+    <entry id="xiialt" name="Xiialt">
+      <description>Xiialt skrell, having adapted to live primarily on land, are usually taller and leaner than Axiori. They possess longer, more developed legs, but usually have much smaller tails, or lack them entirely.</description>
+    </entry>
+    <entry id="xiori" name="Xiori">
+      <description>A hybrid between Xiialt and Axiori skrell, and possess multiple traits from either group. Axiori features maintain slight prominence in Xiori skrell.</description>
+    </entry>
+  </subspecies>
+</species>

@@ -15,7 +15,7 @@
 	let importError = $state<string | null>(null);
 	let mobileView = $state<'edit' | 'preview' | 'split'>('split');
 	let showPicker = $state(false);
-	let emptyFileInput: HTMLInputElement;
+	let emptyFileInput = $state<HTMLInputElement>();
 
 	function checkHash() {
 		const hash = window.location.hash.slice(1);

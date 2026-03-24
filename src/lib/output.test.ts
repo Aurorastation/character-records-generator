@@ -101,6 +101,11 @@ describe('formatFieldOutput', () => {
 		expect(formatFieldOutput(field, 'hharar', stubSpecies, 'tajara')).toBe('Ethnicity: Hharar');
 	});
 
+	it('formats custom subspecies with dynamic label', () => {
+		const field: FieldDef = { label: 'Subspecies', type: 'subspecies' };
+		expect(formatFieldOutput(field, 'asdfg', stubSpecies, 'tajara')).toBe('Ethnicity: asdfg');
+	});
+
 	it('returns null for empty subspecies', () => {
 		const field: FieldDef = { label: 'Subspecies', type: 'subspecies' };
 		expect(formatFieldOutput(field, '', stubSpecies, 'tajara')).toBeNull();

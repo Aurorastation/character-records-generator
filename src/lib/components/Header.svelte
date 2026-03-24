@@ -62,7 +62,7 @@
 
 <header class="border-b shrink-0" style="border-color: var(--border); background: var(--bg-card);">
 <div class="flex items-center gap-2 px-4 py-3 max-w-7xl mx-auto w-full">
-	<h1 class="font-bold whitespace-nowrap">Aurora Records</h1>
+	<h1 class="font-bold whitespace-nowrap">Character Records</h1>
 
 	{#if roster.characters.length > 0}
 		<CharacterSwitcher />

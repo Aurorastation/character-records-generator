@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { FileText, Link2, Users } from 'lucide-svelte';
 	import Header from '$lib/components/Header.svelte';
 	import SchemaForm from '$lib/components/SchemaForm.svelte';
 	import OutputPanel from '$lib/components/OutputPanel.svelte';
@@ -11,8 +12,10 @@
 
 	let importData = $state<string | null>(null);
 	let fileImportData = $state<{ template: any; data: Record<string, unknown> } | null>(null);
+	let importError = $state<string | null>(null);
 	let mobileView = $state<'edit' | 'preview' | 'split'>('split');
 	let showPicker = $state(false);
+	let emptyFileInput: HTMLInputElement;
 
 	function checkHash() {
 		const hash = window.location.hash.slice(1);
@@ -35,8 +38,9 @@
 	function handleFileImport(json: string) {
 		try {
 			fileImportData = parseCharacterFile(json);
+			importError = null;
 		} catch {
-			// TODO: show error to user
+			importError = 'Could not read that file. Check that it\u2019s a valid character export.';
 		}
 	}
 
@@ -44,11 +48,27 @@
 		fileImportData = null;
 	}
 
+	async function handleEmptyFileImport(e: Event) {
+		const input = e.target as HTMLInputElement;
+		const file = input.files?.[0];
+		if (!file) return;
+		const text = await file.text();
+		handleFileImport(text);
+		input.value = '';
+	}
+
 	const modes = ['edit', 'preview', 'split'] as const;
 </script>
 
 <div class="h-dvh flex flex-col overflow-hidden">
 	<Header onImport={handleFileImport} />
+
+	{#if importError}
+		<div class="px-4 py-2 text-sm flex items-center justify-center gap-2 border-b" style="background: color-mix(in srgb, var(--error) 8%, var(--bg)); color: var(--error); border-color: var(--border);">
+			<span>{importError}</span>
+			<button onclick={() => { importError = null; }} class="underline hover:opacity-80">Dismiss</button>
+		</div>
+	{/if}
 
 	{#if fileImportData}
 		<div class="flex-1 overflow-y-auto">
@@ -109,19 +129,56 @@
 			{/if}
 		</main>
 	{:else}
-		<main class="flex-1 flex flex-col items-center justify-center gap-4">
-			<p style="color: var(--text-muted);">No characters yet.</p>
-			<button
-				onclick={() => {
-					if (presets.length === 1) roster.create(presets[0]);
-					else showPicker = true;
-				}}
-				class="px-3 py-1 rounded text-sm border hover:opacity-80"
-				style="border-color: var(--border);"
-			>
-				Get Started
-			</button>
+		<main class="flex-1 flex items-center justify-center p-6">
+			<div class="max-w-md w-full flex flex-col gap-6" style="color: var(--text-muted);">
+				<div class="text-sm flex flex-col gap-4">
+					<p>
+						Pick a template and fill in the form. Each section covers a different record. Blank fields are omitted from the output automatically, so no rush to finish everything.
+					</p>
+					<p>
+						Characters save to your browser. You can also export to a file or generate a share link: the link itself encodes the full set of records, so functionally it's a save file.
+					</p>
+					<p>
+						Share links let the recipient see a preview of your records, with the option to import the character into their own roster.
+					</p>
+					<p>
+						This tool is entirely data-driven in XML, and it's already set up for template sharing. A visual template editor is coming soon, so anybody can create their own templates and share them between one another.
+					</p>
+					<p>
+						Cheers.
+					</p>
+				</div>
+
+				<div class="flex gap-3">
+					<button
+						onclick={() => {
+							if (presets.length === 1) roster.create(presets[0]);
+							else showPicker = true;
+						}}
+						class="flex-1 px-4 py-2 rounded text-sm font-medium hover:opacity-90"
+						style="background: var(--accent); color: white;"
+					>
+						New Character
+					</button>
+					<button
+						onclick={() => emptyFileInput.click()}
+						class="px-4 py-2 rounded text-sm border hover:opacity-80"
+						style="border-color: var(--border); color: var(--text-muted);"
+					>
+						Import
+					</button>
+				</div>
+			</div>
 		</main>
+
+		<input
+			bind:this={emptyFileInput}
+			type="file"
+			accept=".json"
+			class="hidden"
+			onchange={handleEmptyFileImport}
+		/>
+
 		{#if showPicker}
 			<TemplatePicker onClose={() => { showPicker = false; }} />
 		{/if}

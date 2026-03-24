@@ -17,6 +17,7 @@
 	--text-muted: #737373;
 	--accent: #0066cc;
 	--accent-hover: #0052a3;
+	--error: #dc2626;
 }
 
 .dark {
@@ -28,10 +29,17 @@
 	--text-muted: #a3a3a3;
 	--accent: #4da6ff;
 	--accent-hover: #80bfff;
+	--error: #f87171;
 }
 
 body {
 	background-color: var(--bg);
 	color: var(--text);
 	font-family: system-ui, -apple-system, sans-serif;
+}
+
+.field-error input,
+.field-error select,
+.field-error textarea {
+	border-color: var(--error) !important;
 }

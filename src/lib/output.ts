@@ -48,7 +48,7 @@ export function formatFieldOutput(
 			const sp = speciesData.find((s) => s.id === currentSpecies);
 			if (!sp) return null;
 			const sub = sp.subspecies.find((s) => s.id === value);
-			return sub ? `${sp.subspeciesLabel}: ${sub.name}` : null;
+			return sub ? `${sp.subspeciesLabel}: ${sub.name}` : `${sp.subspeciesLabel}: ${value}`;
 		}
 
 		case 'languages': {

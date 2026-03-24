@@ -13,6 +13,12 @@
 
   <citizenships>
     <ref id="nralakk-federation" />
+    <ref id="biesel" />
+    <ref id="sol" />
+    <ref id="coalition" />
+    <ref id="eridani" />
+    <ref id="hieroaetheria" />
+    <ref id="izweski" />
   </citizenships>
 
   <subspecies>

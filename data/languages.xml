@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <languages>
-  <language id="tau-ceti-basic" name="Tau Ceti Basic">
-    <description>TODO</description>
-  </language>
+  <language id="tau-ceti-basic"  name="Tau Ceti Basic"         shortname="TCB"></language>
+  <language id="eal"             name="Encoded Audio Language" shortname="EAL"></language>
+  <language id="sign"            name="Sign Language">                         </language>
+  <language id="sol-common"      name="Sol Common">                            </language>
+  <language id="elyran-standard" name="Elyran Standard">                       </language>
+  <language id="freespeak"       name="Freespeak">                             </language>
+  <language id="tradeband"       name="Tradeband">                             </language>
+  <language id="siikmaas"        name="Siik'maas">                             </language>
+  <language id="siiktajr"        name="Siik'tajr">                             </language>
+  <language id="yassa"           name="Ya'ssa">                                </language>
+  <language id="delvahhi"        name="Delvahhi">                              </language>
+  <language id="nalrasan"        name="Nal'rasan">                             </language>
+  <language id="sintaunathi"     name="Sinta'Unathi">                          </language>
+  <language id="sintaazaziba"    name="Sinta'Azaziba">                         </language>
+  <language id="nralmalic"       name="Nral'Malic">                            </language>
+  <language id="rootsong"        name="Rootsong">                              </language>
+  <language id="hivenet"         name="Hivenet">                               </language>
 </languages>

@@ -43,6 +43,7 @@
 
   <xs:simpleType name="fieldType">
     <xs:restriction base="xs:string">
+      <xs:enumeration value="name" />
       <xs:enumeration value="text" />
       <xs:enumeration value="textarea" />
       <xs:enumeration value="list" />
@@ -57,6 +58,7 @@
       <xs:enumeration value="subspecies" />
       <xs:enumeration value="citizenship" />
       <xs:enumeration value="languages" />
+      <xs:enumeration value="separator" />
     </xs:restriction>
   </xs:simpleType>
 

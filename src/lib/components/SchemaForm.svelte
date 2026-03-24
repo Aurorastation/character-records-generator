@@ -14,6 +14,17 @@
 	let showTemplateSwitcher = $state(false);
 	let showMigrationModal = $state(false);
 
+	let speciesKeys = $derived(new Set(
+		character.template.records.flatMap((r) => r.fields)
+			.filter((f) => f.type === 'species')
+			.map((f) => slugify(f.label))
+	));
+	const SPECIES_DEPENDENT_TYPES = new Set(['subspecies', 'citizenship', 'languages']);
+	let speciesDependentKeys = $derived(new Set(
+		character.template.records.flatMap((r) => r.fields)
+			.filter((f) => SPECIES_DEPENDENT_TYPES.has(f.type))
+			.map((f) => slugify(f.label))
+	));
 	let speciesKey = slugify('Species');
 
 	let pendingMigration = $derived.by(() => {
@@ -59,9 +70,8 @@
 		return null;
 	});
 
-	function switchTemplate(template: Template) {
-		character.template = $state.snapshot(template);
-		roster.scheduleSave(character);
+	async function switchTemplate(template: Template) {
+		await roster.migrateToPreset(character, template);
 		dismissed = null;
 		showTemplateSwitcher = false;
 	}
@@ -143,6 +153,11 @@
 			data={character.data}
 			onFieldChange={(key, value) => {
 				character.data[key] = value;
+				if (speciesKeys.has(key)) {
+					for (const depKey of speciesDependentKeys) {
+						character.data[depKey] = '';
+					}
+				}
 				roster.scheduleSave(character);
 			}}
 		/>

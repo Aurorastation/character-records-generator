@@ -63,7 +63,9 @@
 
 	function charName(): string {
 		if (!charData) return 'Unknown';
-		return (charData.data[slugify('Name')] as string) || 'Unnamed Character';
+		const nameField = charData.template.records.flatMap((r: any) => r.fields).find((f: any) => f.type === 'name');
+		const key = nameField ? slugify(nameField.label) : slugify('Name');
+		return (charData.data[key] as string) || 'Unnamed Character';
 	}
 
 	async function importCharacter() {

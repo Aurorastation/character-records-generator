@@ -9,6 +9,11 @@ export interface BaseFieldDef {
 	from?: string;
 }
 
+export interface NameField extends BaseFieldDef {
+	type: 'name';
+	placeholder?: string;
+}
+
 export interface TextField extends BaseFieldDef {
 	type: 'text';
 	placeholder?: string;
@@ -74,7 +79,13 @@ export interface LanguagesField extends BaseFieldDef {
 	type: 'languages';
 }
 
+export interface SeparatorField {
+	type: 'separator';
+	label: string;
+}
+
 export type FieldDef =
+	| NameField
 	| TextField
 	| TextareaField
 	| ListField
@@ -88,7 +99,8 @@ export type FieldDef =
 	| SpeciesField
 	| SubspeciesField
 	| CitizenshipField
-	| LanguagesField;
+	| LanguagesField
+	| SeparatorField;
 
 export interface RecordDef {
 	type: string;

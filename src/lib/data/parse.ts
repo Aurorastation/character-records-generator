@@ -68,6 +68,7 @@ function parseField(raw: any): FieldDef {
 	const type = raw['@_type'];
 
 	switch (type) {
+		case 'name':
 		case 'text':
 		case 'textarea':
 		case 'date':
@@ -80,6 +81,8 @@ function parseField(raw: any): FieldDef {
 		case 'citizenship':
 		case 'languages':
 			return { ...base, type };
+		case 'separator':
+			return { type: 'separator', label: raw['@_label'] ?? '' };
 		case 'number':
 			return {
 				...base,

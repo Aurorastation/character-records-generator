@@ -1,6 +1,7 @@
 import type { Character, Template } from './types';
 import { pruneEmpty } from './sharing';
 import { presets } from './presets';
+import { slugify } from './utils/slugify';
 
 interface CharacterFilePayload {
 	version: number;
@@ -44,7 +45,9 @@ export function parseCharacterFile(json: string): { template: Template | Omit<Te
 }
 
 export function characterFileName(char: Character): string {
-	const name = char.data.name as string | undefined;
+	const nameField = char.template.records.flatMap((r) => r.fields).find((f) => f.type === 'name');
+	const key = nameField ? slugify(nameField.label) : 'name';
+	const name = char.data[key] as string | undefined;
 	if (!name || !name.trim()) return 'character.json';
 	return name.trim().replace(/[^a-zA-Z0-9'-]/g, '-').replace(/-+/g, '-') + '.json';
 }

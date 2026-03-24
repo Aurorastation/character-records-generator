@@ -46,7 +46,9 @@
 	function displayName(): string {
 		const char = roster.active;
 		if (!char) return '';
-		const name = char.data[slugify('Name')];
+		const nameField = char.template.records.flatMap((r) => r.fields).find((f) => f.type === 'name');
+		const key = nameField ? slugify(nameField.label) : slugify('Name');
+		const name = char.data[key];
 		return (name as string) || 'Unnamed Character';
 	}
 

@@ -4,6 +4,7 @@ import { slugify } from './utils/slugify';
 
 function zodForField(field: FieldDef): z.ZodTypeAny {
 	switch (field.type) {
+		case 'name':
 		case 'text':
 		case 'textarea':
 		case 'list':
@@ -30,6 +31,7 @@ export function buildCharacterSchema(template: Template): z.ZodObject<Record<str
 	const shape: Record<string, z.ZodTypeAny> = {};
 	for (const record of template.records) {
 		for (const field of record.fields) {
+			if (field.type === 'separator') continue;
 			shape[slugify(field.label)] = zodForField(field);
 		}
 	}

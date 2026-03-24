@@ -13,8 +13,9 @@
 
 	let expanded = $state(false);
 
+	let dataFields = $derived(record.fields.filter((f) => f.type !== 'separator'));
 	let filled = $derived(
-		record.fields.filter((f) => {
+		dataFields.filter((f) => {
 			const v = data[slugify(f.label)];
 			if (v === undefined || v === null || v === '' || v === 0) return false;
 			if (Array.isArray(v) && v.length === 0) return false;
@@ -47,7 +48,7 @@
 			{/if}
 		</div>
 		<span class="text-sm tabular-nums" style="color: var(--text-muted);">
-			{filled}/{record.fields.length}
+			{filled}/{dataFields.length}
 		</span>
 	</button>
 

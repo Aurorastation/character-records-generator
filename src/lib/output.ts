@@ -11,6 +11,7 @@ export function formatFieldOutput(
 	currentSpecies?: string
 ): string | null {
 	switch (field.type) {
+		case 'name':
 		case 'text':
 		case 'date':
 		case 'citizenship':
@@ -125,12 +126,32 @@ function renderFields(
 	speciesData?: SpeciesData[],
 	currentSpecies?: string
 ): string[] {
-	const lines: string[] = [];
+	// Split fields into groups by separator boundaries
+	const groups: FieldDef[][] = [[]];
 	for (const field of fields) {
-		const out = formatFieldOutput(field, data[slugify(field.label)], speciesData, currentSpecies);
-		if (out) lines.push(out);
+		if (field.type === 'separator') {
+			groups.push([]);
+		} else {
+			groups[groups.length - 1].push(field);
+		}
 	}
-	return lines;
+
+	const rendered = groups.map((group) => {
+		const lines: string[] = [];
+		for (const field of group) {
+			const out = formatFieldOutput(field, data[slugify(field.label)], speciesData, currentSpecies);
+			if (out) lines.push(out);
+		}
+		return lines;
+	});
+
+	const result: string[] = [];
+	for (const lines of rendered) {
+		if (!lines.length) continue;
+		if (result.length) result.push('');
+		result.push(...lines);
+	}
+	return result;
 }
 
 function splitLines(text: string | undefined): string[] {

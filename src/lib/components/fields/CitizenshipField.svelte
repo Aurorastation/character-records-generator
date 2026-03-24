@@ -1,8 +1,21 @@
 <script lang="ts">
 	import type { CitizenshipField } from '$lib/types';
-	import { citizenships } from '$lib/data';
+	import { citizenships, species } from '$lib/data';
+	import { slugify } from '$lib/utils/slugify';
 
-	let { field, value = '', onChange }: { field: CitizenshipField; value: string; onChange: (v: string) => void } = $props();
+	let { field, value = '', onChange, data }: {
+		field: CitizenshipField;
+		value: string;
+		onChange: (v: string) => void;
+		data: Record<string, unknown>;
+	} = $props();
+
+	let currentSpecies = $derived(species.find((s) => s.id === data[slugify('Species')]));
+	let filtered = $derived(
+		currentSpecies
+			? citizenships.filter((c) => currentSpecies!.citizenships.includes(c.id))
+			: citizenships
+	);
 
 	let custom = $state(false);
 
@@ -16,7 +29,7 @@
 		}
 	}
 
-	let isCustom = $derived(custom || (value !== '' && !citizenships.some((c) => c.name === value)));
+	let isCustom = $derived(custom || (value !== '' && !filtered.some((c) => c.name === value)));
 </script>
 
 <label class="block">
@@ -47,7 +60,7 @@
 			style="background: var(--bg-input); border: 1px solid var(--border); color: var(--text);"
 		>
 			<option value="">—</option>
-			{#each citizenships as c}
+			{#each filtered as c}
 				<option value={c.name}>{c.name}</option>
 			{/each}
 			<option value="__custom">Other...</option>

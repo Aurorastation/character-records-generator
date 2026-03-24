@@ -2,8 +2,10 @@
 	import { roster } from '$lib/state.svelte';
 	import { slugify } from '$lib/utils/slugify';
 
-	function displayName(char: { data: Record<string, unknown> }): string {
-		const name = char.data[slugify('Name')];
+	function displayName(char: { template: { records: { fields: { type: string; label: string }[] }[] }; data: Record<string, unknown> }): string {
+		const nameField = char.template.records.flatMap((r) => r.fields).find((f) => f.type === 'name');
+		const key = nameField ? slugify(nameField.label) : slugify('Name');
+		const name = char.data[key];
 		return (name as string) || 'Unnamed Character';
 	}
 </script>

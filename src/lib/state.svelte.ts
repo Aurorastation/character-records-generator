@@ -9,6 +9,14 @@ let saveStatus = $state<'idle' | 'saving' | 'saved'>('idle');
 let saveTimer: ReturnType<typeof setTimeout> | null = null;
 let statusTimer: ReturnType<typeof setTimeout> | null = null;
 
+const SINGLETON_TYPES = new Set([
+	'name', 'species', 'subspecies', 'citizenship', 'languages', 'height', 'weight'
+]);
+
+function allFields(template: Template) {
+	return template.records.flatMap((r) => r.fields).filter((f) => f.type !== 'separator');
+}
+
 function migrateData(char: Character, preset: Template) {
 	for (const record of preset.records) {
 		for (const field of record.fields) {
@@ -24,6 +32,22 @@ function migrateData(char: Character, preset: Template) {
 					break;
 				}
 			}
+		}
+	}
+
+	const oldByType = new Map<string, string>();
+	for (const f of allFields(char.template)) {
+		if (SINGLETON_TYPES.has(f.type)) {
+			oldByType.set(f.type, slugify(f.label));
+		}
+	}
+	for (const f of allFields(preset)) {
+		if (!SINGLETON_TYPES.has(f.type)) continue;
+		const newKey = slugify(f.label);
+		if (char.data[newKey] !== undefined) continue;
+		const oldKey = oldByType.get(f.type);
+		if (oldKey && oldKey !== newKey && char.data[oldKey] !== undefined) {
+			char.data[newKey] = char.data[oldKey];
 		}
 	}
 }

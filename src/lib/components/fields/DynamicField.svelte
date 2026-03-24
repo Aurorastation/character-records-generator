@@ -14,6 +14,7 @@
 	import SubspeciesField from './SubspeciesField.svelte';
 	import CitizenshipField from './CitizenshipField.svelte';
 	import LanguagesField from './LanguagesField.svelte';
+	import SeparatorField from './SeparatorField.svelte';
 
 	let { field, value, onChange, data }: {
 		field: FieldDef;
@@ -23,7 +24,9 @@
 	} = $props();
 </script>
 
-{#if field.type === 'text'}
+{#if field.type === 'name'}
+	<TextField field={{ ...field, type: 'text' }} {value} {onChange} />
+{:else if field.type === 'text'}
 	<TextField {field} {value} {onChange} />
 {:else if field.type === 'textarea'}
 	<TextareaField {field} {value} {onChange} />
@@ -48,7 +51,9 @@
 {:else if field.type === 'subspecies'}
 	<SubspeciesField {field} {value} {onChange} {data} />
 {:else if field.type === 'citizenship'}
-	<CitizenshipField {field} {value} {onChange} />
+	<CitizenshipField {field} {value} {onChange} {data} />
 {:else if field.type === 'languages'}
-	<LanguagesField {field} {value} {onChange} />
+	<LanguagesField {field} {value} {onChange} {data} />
+{:else if field.type === 'separator'}
+	<SeparatorField {field} />
 {/if}

@@ -4,7 +4,7 @@
 
   <record type="public">
     <note>Basic identification information visible on all records.</note>
-    <field label="Name"                     type="text" />
+    <field label="Name"                     type="name" />
     <field label="Species"                  type="species" />
     <field label="Subspecies"               type="subspecies" />
     <field label="Pronouns"                 type="multi-select">
@@ -19,6 +19,7 @@
     <field label="Spoken Languages"         type="languages" />
     <field label="Employed As"              type="text" />
     <field label="Next of Kin"              type="text" />
+    <field label="Separator" type="separator" label="Appearance" />
     <field label="Height"                   type="height" />
     <field label="Weight"                   type="weight" />
     <field label="Skin Color"               type="text" />

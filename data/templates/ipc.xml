@@ -4,18 +4,8 @@
 
   <record type="public">
     <note>Basic identification information visible on all records.</note>
-    <field label="Designation"              type="text" />
-    <field label="Positronic Manufacture Date" type="date" placeholder="24-03-2460" />
-    <field label="Chassis Manufacture Date" type="date" placeholder="24-03-2460" />
+    <field label="Designation"              type="name" />
     <field label="IPC Model" type="subspecies" />
-    <field label="Tag" type="text" />
-    <field label="Ownership Status" type="select">
-      <option value="company-owned" label="Company Owned" />
-      <option value="owned"         label="Private Owner" />
-      <option value="free"          label="Free" />
-    </field>
-    <field label="Owner Name" type="text" />
-    <field label="Owner Contact Information" type="text" />
     <field label="Pronouns"                 type="multi-select">
       <option value="he/him"     label="he/him" />
       <option value="she/her"    label="she/her" />
@@ -25,9 +15,21 @@
     </field>
     <field label="Citizenship"              type="citizenship" />
     <field label="Spoken Languages"         type="languages" />
+    <field label="Separator" type="separator" label="Chassis" />
+    <field label="Positronic Manufacture Date" type="date" placeholder="24-03-2460" />
+    <field label="Chassis Manufacture Date" type="date" placeholder="24-03-2460" />
+    <field label="Tag" type="text" />
     <field label="Height"                   type="height" />
     <field label="Weight"                   type="weight" />
     <field label="Distinguishing Features"  type="textarea" />
+    <field label="Separator" type="separator" label="Ownership" />
+    <field label="Ownership Status" type="select">
+      <option value="company-owned" label="Company Owned" />
+      <option value="owned"         label="Private Owner" />
+      <option value="free"          label="Free" />
+    </field>
+    <field label="Owner Name" type="text" />
+    <field label="Owner Contact Information" type="text" />
   </record>
 
   <record type="employment">

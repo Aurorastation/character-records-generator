@@ -2,6 +2,7 @@
 <species id="tajara" name="Tajara">
   <labels>
     <label for="subspecies">Ethnicity</label>
+    <label for="skin-color">Fur Colour</label>
   </labels>
   <description>The Tajara are a race of humanoids that possess markedly felinoid traits. Tajaran history and society is deeply entrenched in the conflict between its caste system and ruling governments.</description>
 

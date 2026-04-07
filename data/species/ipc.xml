@@ -2,6 +2,9 @@
 <species id="ipc" name="Integrated Positronic Chassis">
   <labels>
     <label for="subspecies">Frame</label>
+    <label for="skin-color">Chassis Colour</label>
+    <label for="date-of-birth">Manufacture Date</label>
+    <label for="surgical-history">Repair History</label>
   </labels>
   <description>IPCs are synthetic chassis housing a positronic processing core. From skeletal baselines to humanlike shells, they serve in a variety of roles across the Orion Spur. Their legal status varies wildly between nations, ranging from full citizenship to being classified as property.</description>
 

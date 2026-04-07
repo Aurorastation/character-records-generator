@@ -83,6 +83,9 @@ export function formatFieldOutput(
 			const optLabels = vals.map((v) => field.options.find((o) => o.value === v)?.label ?? v);
 			return `${label}: ${optLabels.join(', ')}`;
 		}
+
+		case 'separator':
+			return null;
 	}
 }
 

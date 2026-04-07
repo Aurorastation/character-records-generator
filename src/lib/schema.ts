@@ -24,6 +24,9 @@ function zodForField(field: FieldDef): z.ZodTypeAny {
 		case 'checkbox':
 		case 'languages':
 			return z.array(z.string()).optional();
+
+		case 'separator':
+			return z.never();
 	}
 }
 

@@ -22,7 +22,7 @@ export function diffTemplates(old: Template, current: Template): TemplateDiff {
 
 	for (const record of current.records) {
 		for (const field of record.fields) {
-			if (!field.from) continue;
+			if (field.type === 'separator' || !field.from) continue;
 			const fromNames = field.from.split(',').map((s) => s.trim());
 			const match = fromNames.find((f) => oldFields.has(f));
 			if (match && !newFields.has(match)) {

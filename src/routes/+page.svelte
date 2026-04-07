@@ -145,7 +145,7 @@
 						New Character
 					</button>
 					<button
-						onclick={() => emptyFileInput.click()}
+						onclick={() => emptyFileInput!.click()}
 						class="px-4 py-2 rounded text-sm border hover:opacity-80"
 						style="border-color: var(--border); color: var(--text-muted);"
 					>

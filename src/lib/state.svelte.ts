@@ -20,7 +20,7 @@ function allFields(template: Template) {
 function migrateData(char: Character, preset: Template) {
 	for (const record of preset.records) {
 		for (const field of record.fields) {
-			if (!field.from) continue;
+			if (field.type === 'separator' || !field.from) continue;
 			const newKey = slugify(field.label);
 			if (char.data[newKey] !== undefined) continue;
 			const oldNames = field.from.split(',').map((s) => s.trim());

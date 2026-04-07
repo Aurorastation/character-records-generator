@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<species id="human" name="Human" subspeciesLabel="Variant">
+<species id="human" name="Human">
+  <labels>
+    <label for="subspecies">Variant</label>
+  </labels>
   <description>Humans originated on Earth.</description>
 
   <languages>

@@ -5,13 +5,22 @@ import type { Template, RecordDef, FieldDef, SelectOption } from '../types';
 const parser = new XMLParser({
 	ignoreAttributes: false,
 	attributeNamePrefix: '@_',
-	isArray: (name) => ['entry', 'ref', 'field', 'record', 'option', 'citizenship', 'language'].includes(name),
+	isArray: (name) => ['entry', 'ref', 'field', 'record', 'option', 'citizenship', 'language', 'label'].includes(name),
 	trimValues: true
 });
 
 function extractRefs(container: any): string[] {
 	if (!container?.ref) return [];
 	return container.ref.map((r: any) => r['@_id']);
+}
+
+function extractLabels(container: any): Record<string, string> {
+	if (!container?.label) return {};
+	const labels: Record<string, string> = {};
+	for (const l of container.label) {
+		labels[l['@_for']] = typeof l === 'string' ? l : l['#text'];
+	}
+	return labels;
 }
 
 export function parseSpecies(xml: string): SpeciesData {
@@ -22,7 +31,7 @@ export function parseSpecies(xml: string): SpeciesData {
 		id: root['@_id'],
 		name: root['@_name'],
 		description: root.description?.trim(),
-		subspeciesLabel: root['@_subspeciesLabel'],
+		labels: extractLabels(root.labels),
 		languages: extractRefs(root.languages),
 		citizenships: extractRefs(root.citizenships),
 		subspecies: subspecies.map((e: any) => ({

@@ -12,7 +12,6 @@
 
 	let currentSpecies = $derived(species.find((s) => s.id === data[slugify('Species')]));
 	let subs = $derived(currentSpecies?.subspecies ?? []);
-	let label = $derived(currentSpecies?.subspeciesLabel ?? field.label);
 	let selected = $derived(subs.find((s) => s.id === value));
 
 	let custom = $state(false);
@@ -33,7 +32,7 @@
 {#if subs.length > 0 || isCustom}
 	<div class="block">
 		<label class="block">
-			<span class="text-sm font-medium">{label}{#if field.required}<span style="color: var(--accent);"> *</span>{/if}</span>
+			<span class="text-sm font-medium">{field.label}{#if field.required}<span style="color: var(--accent);"> *</span>{/if}</span>
 			{#if isCustom}
 				<div class="flex items-center gap-2 mt-1">
 					<input

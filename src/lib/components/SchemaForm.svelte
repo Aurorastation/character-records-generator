@@ -13,7 +13,6 @@
 	let dismissed = $state<string | null>(null);
 	let showTemplateSwitcher = $state(false);
 	let showMigrationModal = $state(false);
-
 	let speciesKeys = $derived(new Set(
 		character.template.records.flatMap((r) => r.fields)
 			.filter((f) => f.type === 'species')
@@ -160,6 +159,7 @@
 				}
 				roster.scheduleSave(character);
 			}}
+			onSave={() => roster.scheduleSave(character)}
 		/>
 	{/each}
 </div>

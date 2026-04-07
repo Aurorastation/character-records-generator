@@ -2,7 +2,7 @@ export interface SpeciesData {
 	id: string;
 	name: string;
 	description?: string;
-	subspeciesLabel: string;
+	labels: Record<string, string>;
 	subspecies: { id: string; name: string; description?: string }[];
 	languages: string[];
 	citizenships: string[];

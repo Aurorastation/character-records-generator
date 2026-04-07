@@ -8,7 +8,7 @@ const stubSpecies: SpeciesData[] = [
 		id: 'human',
 		name: 'Human',
 		description: '',
-		subspeciesLabel: 'Variant',
+		labels: { subspecies: 'Variant' },
 		subspecies: [{ id: 'offworlder', name: 'Offworlder', description: '' }],
 		languages: ['tau-ceti-basic'],
 		citizenships: ['biesel']
@@ -17,7 +17,7 @@ const stubSpecies: SpeciesData[] = [
 		id: 'tajara',
 		name: 'Tajara',
 		description: '',
-		subspeciesLabel: 'Ethnicity',
+		labels: { subspecies: 'Ethnicity' },
 		subspecies: [
 			{ id: 'hharar', name: 'Hharar', description: '' },
 			{ id: 'zhan-khazan', name: 'Zhan-Khazan', description: '' }
@@ -183,6 +183,53 @@ describe('formatFieldOutput', () => {
 		expect(formatFieldOutput(field, ['engineering', 'medical'])).toBe(
 			'Other Skills: Engineering, Medical'
 		);
+	});
+
+	it('uses species label override for text fields', () => {
+		const field: FieldDef = { label: 'Skin Color', type: 'text' };
+		const sp: SpeciesData[] = [
+			{
+				id: 'tajara',
+				name: 'Tajara',
+				labels: { 'skin-color': 'Fur Colour' },
+				subspecies: [],
+				languages: [],
+				citizenships: []
+			}
+		];
+		expect(formatFieldOutput(field, 'Brown', sp, 'tajara')).toBe('Fur Colour: Brown');
+	});
+
+	it('uses default label when species has no override', () => {
+		const field: FieldDef = { label: 'Hair Color', type: 'text' };
+		const sp: SpeciesData[] = [
+			{
+				id: 'tajara',
+				name: 'Tajara',
+				labels: { 'skin-color': 'Fur Colour' },
+				subspecies: [],
+				languages: [],
+				citizenships: []
+			}
+		];
+		expect(formatFieldOutput(field, 'Black', sp, 'tajara')).toBe('Hair Color: Black');
+	});
+
+	it('uses default label when useSpeciesLabel flag is false', () => {
+		const field: FieldDef = { label: 'Skin Color', type: 'text' };
+		const sp: SpeciesData[] = [
+			{
+				id: 'tajara',
+				name: 'Tajara',
+				labels: { 'skin-color': 'Fur Colour' },
+				subspecies: [],
+				languages: [],
+				citizenships: []
+			}
+		];
+		expect(
+			formatFieldOutput(field, 'Brown', sp, 'tajara', { 'skin-color': { useSpeciesLabel: false } })
+		).toBe('Skin Color: Brown');
 	});
 });
 

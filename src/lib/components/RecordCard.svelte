@@ -5,10 +5,11 @@
 	import DynamicField from './fields/DynamicField.svelte';
 	import { slugify } from '$lib/utils/slugify';
 
-	let { record, data, onFieldChange }: {
+	let { record, data, onFieldChange, onSave }: {
 		record: RecordDef;
 		data: Record<string, unknown>;
 		onFieldChange: (key: string, value: any) => void;
+		onSave: () => void;
 	} = $props();
 
 	let expanded = $state(false);
@@ -76,6 +77,7 @@
 						{field}
 						value={data[key]}
 						{data}
+						{onSave}
 						onChange={(v) => onFieldChange(key, v)}
 					/>
 					{#if hasError}

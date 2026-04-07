@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<species id="vaurca" name="Vaurca" subspeciesLabel="Type">
+<species id="vaurca" name="Vaurca">
+  <labels>
+    <label for="subspecies">Type</label>
+  </labels>
   <description>The Vaurca are an insectoid species with a complex caste-based society organised into Hives, each led by a Queen. They communicate primarily through a localised expression of their hivemind. Having arrived in the Orion Spur from deep space, they are one of the newest species to join the galactic stage, and their integration into existing societies remains an ongoing process.</description>
 
   <languages>
